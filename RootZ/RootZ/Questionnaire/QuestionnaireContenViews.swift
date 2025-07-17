@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentViews: View {
     @StateObject private var viewModel = OnboardingViewModel()
     
     var body: some View {
@@ -27,6 +27,18 @@ struct ContentView: View {
                 OnboardingStepView2(viewModel: viewModel)
             case 3:
                 OnboardingStepView3(viewModel: viewModel)
+            case 4:
+                OnboardingStepView4(viewModel: viewModel)
+            case 5:
+                OnboardingStepView5(viewModel: viewModel)
+            case 6:
+                OnboardingStepView6(viewModel: viewModel)
+            case 7:
+                OnboardingStepView7(viewModel: viewModel)
+            case 8:
+                OnboardingStepView8(viewModel: viewModel)
+            
+            
             default:
                 Text("Étape non définie")
             }
@@ -37,8 +49,8 @@ struct ContentView: View {
 }
 
 
-struct ContentView_Previews: PreviewProvider {
+struct ContentViews_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentViews()
     }
 }
