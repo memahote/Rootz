@@ -9,17 +9,13 @@ import SwiftUI
 
 struct storymode: View {
     var body: some View {
-        VStack {
-            HStack {
-                Button {
-                    
-                } label: {
-                    Image(.berberFlag)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 75, height: 75)
-                }
-
+        ZStack {
+            Color.fondAfrique
+                .ignoresSafeArea()
+            
+            VStack {
+                StoryModeHeaderView()
+                
             }
         }
     }
