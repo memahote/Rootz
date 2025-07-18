@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct StoryModeHeaderView: View {
+    
     var body: some View {
         VStack {
             
             HStack (alignment: .bottom){
-                Button {
-                    
+                
+                NavigationLink {
+                    CultureChoice()
                 } label: {
                     Image(.berberFlag)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 55, height: 55)
+                        .frame(width: 45, height: 45)
                         .shadow(radius: 5)
                 }
                 
@@ -26,12 +28,12 @@ struct StoryModeHeaderView: View {
                 
                 HStack (alignment: .top){
                     Text("0")
-                        .font(.custom("Quicksand", size: 40))
+                        .font(.custom("Quicksand", size: 30))
                         .foregroundStyle(.gray)
                     Image(.flammeOff)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 40, height: 40)
+                        .frame(width: 30, height: 30)
                 }
                 
             }
@@ -61,6 +63,8 @@ struct StoryModeHeaderView: View {
             
             
         }
+        
+        Spacer()
     }
 }
 

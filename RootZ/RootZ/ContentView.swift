@@ -9,13 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+       CultureCard(
+        culture: CulturesModel(
+            name: "Berbère",
+            flag: "Berber_flag",
+            chapters: [],
+            primaryColor: "",
+            secondaryColor: "",
+            isUnlock: true,
+            progressbar: 0.6)
+       )
     }
 }
 
