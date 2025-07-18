@@ -15,6 +15,12 @@ struct storymode: View {
             
             VStack {
                 StoryModeHeaderView()
+                ModulePathView(
+                    modules: ChapterData.berbereChapters[0].modules,
+                    onSelect: { index in
+                        print("Module \(index) sélectionné")
+                    }
+                )
                 
             }
         }
