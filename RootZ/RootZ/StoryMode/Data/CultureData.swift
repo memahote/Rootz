@@ -14,8 +14,10 @@ struct CultureData {
                     name: "Berbère",
                     flag: "Berber_flag",
                     chapters: ChapterData.berbereChapters,
-                    primaryColor: "#C94411",
-                    secondaryColor: "#E39163",
+                    backgroundColor: "FondAfrique",
+                    buttonColor: "ButtonAfrique",
+                    accentColor: "CouleurAccent",
+                    accent2Color: "CouleurAccent2",
                     isUnlock: true,
                     progressbar: 0.6
                 ),
@@ -23,8 +25,10 @@ struct CultureData {
                     name: "Réunion",
                     flag: "Reunion_flag",
                     chapters: ChapterData.berbereChapters,
-                    primaryColor: "#C94411",
-                    secondaryColor: "#E39163",
+                    backgroundColor: "BubbleBackground",
+                    buttonColor: "ButtonBlue",
+                    accentColor: "BackgroundBlue",
+                    accent2Color: "CouleurAccent2",
                     isUnlock: false,
                     progressbar: 0
                 ),
@@ -32,11 +36,13 @@ struct CultureData {
                     name: "Berbère",
                     flag: "Berber_flag",
                     chapters: ChapterData.berbereChapters,
-                    primaryColor: "#C94411",
-                    secondaryColor: "#E39163",
+                    backgroundColor: "FondAfrique",
+                    buttonColor: "ButtonAfrique",
+                    accentColor: "CouleurAccent",
+                    accent2Color: "CouleurAccent2",
                     isUnlock: true,
-                    progressbar: 0.2
-                ),
+                    progressbar: 0.6
+                )
         
     ]
 }

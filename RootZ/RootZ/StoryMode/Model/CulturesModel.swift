@@ -12,8 +12,10 @@ struct CulturesModel : Identifiable {
     let name : String
     let flag : String
     let chapters : [Chapters]
-    let primaryColor : String
-    let secondaryColor : String
+    let backgroundColor : String
+    let buttonColor : String
+    let accentColor : String
+    let accent2Color : String
     let isUnlock : Bool
     var progressbar : Double
 }

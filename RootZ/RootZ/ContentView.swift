@@ -14,8 +14,10 @@ struct ContentView: View {
             name: "Berbère",
             flag: "Berber_flag",
             chapters: [],
-            primaryColor: "",
-            secondaryColor: "",
+            backgroundColor: "FondAfrique",
+            buttonColor: "ButtonAfrique",
+            accentColor: "CouleurAccent",
+            accent2Color: "CouleurAccent2",
             isUnlock: true,
             progressbar: 0.6)
        )
