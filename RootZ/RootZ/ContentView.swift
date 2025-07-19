@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+<<<<<<< HEAD
         CultureCard(
             culture: CulturesModel(
                 name: "Berbère",
@@ -25,6 +26,9 @@ struct ContentView: View {
                 keywords: ["berbere", "tamazight"]
             )
         )
+=======
+
+>>>>>>> 7a6dfd0 (new : AppViewModel, culture change ok)
     }
 }
 

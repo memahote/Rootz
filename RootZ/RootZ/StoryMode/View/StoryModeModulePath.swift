@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct ModulePathView: View {
+struct StoryModeModulePath: View {
     let modules: [Module]
     let onSelect: (Int) -> Void
 
@@ -42,18 +42,8 @@ struct ModulePathView: View {
 
 }
 
-struct StoryModeModulePath: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-//#Preview {
-//    StoryModeModulePath()
-//}
-
 #Preview {
-    ModulePathView(
+    StoryModeModulePath(
         modules: ChapterData.berbereChapters[0].modules,
         onSelect: { index in
             print("Module \(index) sélectionné")

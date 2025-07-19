@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct StoryModeHeaderView: View {
+    @Bindable var viewModel: AppViewModel
     
     var body: some View {
         VStack {
@@ -15,9 +16,9 @@ struct StoryModeHeaderView: View {
             HStack (alignment: .bottom){
                 
                 NavigationLink {
-                    CultureChoice()
+                    CultureChoice(viewModel: viewModel)
                 } label: {
-                    Image(.berberFlag)
+                    Image(viewModel.selectedCulture.flag)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 45, height: 45)
@@ -48,7 +49,7 @@ struct StoryModeHeaderView: View {
                         .font(.custom("Baloo2", size: 32))
                         .foregroundStyle(.white)
                     
-                    Text("Les symbols de ma culture")
+                    Text("Les symboles de ma culture")
                         .font(.custom("Baloo2", size: 16))
                         .foregroundStyle(.white)
                 }
@@ -56,7 +57,7 @@ struct StoryModeHeaderView: View {
                 .background(
                     RoundedRectangle(cornerRadius: 10)
                         .frame(width: 350, height: 85)
-                        .foregroundStyle(.buttonAfrique)
+                        .foregroundStyle(Color(viewModel.selectedCulture.buttonColor))
                     
                 )
             }
@@ -69,5 +70,17 @@ struct StoryModeHeaderView: View {
 }
 
 #Preview {
-    StoryModeHeaderView()
+    StoryModeHeaderView(viewModel: AppViewModel(
+        selectedCulture: CulturesModel(
+            name: "Berbère",
+            flag: "Berber_flag",
+            chapters: ChapterData.berbereChapters,
+            backgroundColor: "FondAfrique",
+            buttonColor: "ButtonAfrique",
+            accentColor: "CouleurAccent",
+            accent2Color: "CouleurAccent2",
+            isUnlock: true,
+            progressbar: 0.6
+        )
+    ))
 }

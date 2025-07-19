@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct CultureCard: View {
+    @Environment(\.dismiss) private var dismiss
+    @Bindable var viewModel: AppViewModel
     let culture : CulturesModel
     
     var body: some View {
         Button {
-            
+            viewModel.selectedCulture = culture
+            dismiss()
         } label: {
             VStack {
                 Image(culture.flag)
@@ -36,7 +39,17 @@ struct CultureCard: View {
 }
 
 #Preview {
-    CultureCard(
+    CultureCard(viewModel: (AppViewModel(selectedCulture: CulturesModel(
+        name: "Berbère",
+        flag: "Berber_flag",
+        chapters: ChapterData.berbereChapters,
+        backgroundColor: "FondAfrique",
+        buttonColor: "ButtonAfrique",
+        accentColor: "CouleurAccent",
+        accent2Color: "CouleurAccent2",
+        isUnlock: true,
+        progressbar: 0.6
+    ))),
         culture: CulturesModel(
             name: "Berbère",
             flag: "Berber_flag",

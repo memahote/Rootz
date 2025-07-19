@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CultureChoice: View {
+    @Bindable var viewModel: AppViewModel
+    
     let cultures = CultureData.allCultures
     
     let columns = [
@@ -20,7 +22,7 @@ struct CultureChoice: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 20) {
                 ForEach(cultures) { cultures in
-                    CultureCard(culture: cultures)
+                    CultureCard(viewModel: viewModel, culture: cultures)
                 }
                 
             }
@@ -30,5 +32,15 @@ struct CultureChoice: View {
 }
 
 #Preview {
-    CultureChoice()
+    CultureChoice(viewModel: (AppViewModel(selectedCulture: CulturesModel(
+        name: "Berbère",
+        flag: "Berber_flag",
+        chapters: ChapterData.berbereChapters,
+        backgroundColor: "FondAfrique",
+        buttonColor: "ButtonAfrique",
+        accentColor: "CouleurAccent",
+        accent2Color: "CouleurAccent2",
+        isUnlock: true,
+        progressbar: 0.6
+    ))))
 }
