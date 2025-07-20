@@ -12,68 +12,52 @@ struct QuestView: View {
         ZStack{
             Color.fondAfrique.ignoresSafeArea()
             
-            VStack(){
-                //           MARK: - Top part
+            VStack {
+                
+//               MARK: - FIRST PART
                 VStack{
-                    //               MARK: - First block
                     HStack{
-                        Text("Juillet")
-                            .bold()
-                            .background(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color.fondAfrique)
-                                    .frame(width: 70, height: 35)
-                            )
+//                        MARK: - MONTH
+                        MonthOfQuests()
                         
                         Spacer()
                         
-                        Circle()
-                            .fill(Color.fondAfrique)
-                            .frame(width: 120, height: 120)
-                            .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
-                        
+//                        MARK: - CIRCLE COSMETIC REWARD
+                        CircleCosmeticReward()
                     }.padding(.horizontal)
+//                MARK: - TIME LEFT
                     
-                    //                MARK: - Text time
-                    HStack(alignment: .firstTextBaseline){
+                    HStack {
                         Image(systemName: "timer")
                         Text("8 jours")
-                    }.padding(.bottom)
-                    
-                    //                ProgressBar Quests
-                    VStack{
-                        HStack{
-                            Text("Finir les quêtes du mois")
-                            Text("6/12")
-                        }
-                        
-                        ProgressView(value: 6, total: 12)
-                            .frame(width: 315)
-                    }
+                        Spacer()
+                    }.padding()
+                        .frame(width: 331, height: 65)
+                        .bold()
+//                        MARK: - QUEST ACCOMPLISHED
+
+                    QuestAccomplished()
                     
                 }.background(
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color.couleurAccent).ignoresSafeArea()
-                        .frame(width: 402, height: 300)
+                        .frame(width: 402, height: 330)
                 )
-                Spacer()
-//
-                    VStack{
-                        Text("Quêtes du jour")
-                        Text("Quête 1")
-                        ProgressView(value: 0, total: 2)
-                            .frame(width: 315)
-                        
-                        Text("Quête 2")
-                        ProgressView(value: 2, total: 2)
-                            .frame(width: 315)
-                        
-                        Text("Quête 3")
-                        ProgressView(value: 2, total: 4)
-                            .frame(width: 315)
-                    }
-                Spacer()
                 
+//                MARK: - SECOND PART
+                VStack{
+                    HStack {
+                        Text("Quêtes du jour")
+                        Spacer()
+                    }.frame(width: 331)
+                        .padding()
+                        .bold()
+                    
+//                    MARK: - LIST OF QUESTS
+                    ScrollView{
+                        ListQuests(quests: quests)
+                    }
+                }
             }
         }
     }
