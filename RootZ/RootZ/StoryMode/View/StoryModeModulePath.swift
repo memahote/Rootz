@@ -26,13 +26,11 @@ struct StoryModeModulePath: View {
                     .offset(x: sinOffset(for: index))
                 }
                 
-                Spacer().frame(height: 100)
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 40)
         }
-        .frame(maxWidth: .infinity)
-        .scrollIndicators(.hidden)
+        
     }
     
     func sinOffset(for index: Int) -> CGFloat {

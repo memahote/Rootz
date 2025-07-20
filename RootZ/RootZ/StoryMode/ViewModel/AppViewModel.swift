@@ -10,9 +10,19 @@ import Foundation
 
 @Observable
 class AppViewModel {
-    var selectedCulture : CulturesModel
     
-    init(selectedCulture: CulturesModel) {
-        self.selectedCulture = selectedCulture
+    var selectedCulture : CulturesModel
+    var storyModeViewModel: StoryModeViewModel
+    
+    init() {
+        let defaultCulture = CultureData.defaultCulture
+        self.selectedCulture = defaultCulture
+        self.storyModeViewModel = StoryModeViewModel(chapters: defaultCulture.chapters, currentChapterIndex: 0, currentModule: 0)
     }
+    
+    func updateCulture(to culture: CulturesModel) {
+        self.selectedCulture = culture
+        self.storyModeViewModel = StoryModeViewModel(chapters: culture.chapters, currentChapterIndex: 0, currentModule: 0)
+    }
+
 }

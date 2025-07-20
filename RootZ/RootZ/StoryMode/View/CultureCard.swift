@@ -14,7 +14,7 @@ struct CultureCard: View {
     
     var body: some View {
         Button {
-            viewModel.selectedCulture = culture
+            viewModel.updateCulture(to: culture)
             dismiss()
         } label: {
             VStack {
@@ -39,17 +39,7 @@ struct CultureCard: View {
 }
 
 #Preview {
-    CultureCard(viewModel: (AppViewModel(selectedCulture: CulturesModel(
-        name: "Berbère",
-        flag: "Berber_flag",
-        chapters: ChapterData.berbereChapters,
-        backgroundColor: "FondAfrique",
-        buttonColor: "ButtonAfrique",
-        accentColor: "CouleurAccent",
-        accent2Color: "CouleurAccent2",
-        isUnlock: true,
-        progressbar: 0.6
-    ))),
+    CultureCard(viewModel: AppViewModel(),
         culture: CulturesModel(
             name: "Berbère",
             flag: "Berber_flag",

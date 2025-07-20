@@ -9,6 +9,18 @@ import Foundation
 
 struct CultureData {
     
+    static let defaultCulture = CulturesModel(
+            name: "Berbère",
+            flag: "Berber_flag",
+            chapters: ChapterData.berbereChapters,
+            backgroundColor: "FondAfrique",
+            buttonColor: "ButtonAfrique",
+            accentColor: "CouleurAccent",
+            accent2Color: "CouleurAccent2",
+            isUnlock: true,
+            progressbar: 0.6
+        )
+    
     static let allCultures : [CulturesModel] = [
         CulturesModel(
                     name: "Berbère",
@@ -42,7 +54,7 @@ struct CultureData {
         CulturesModel(
                     name: "Réunion",
                     flag: "Reunion_flag",
-                    chapters: ChapterData.berbereChapters,
+                    chapters: ChapterData.reunionChapters,
                     backgroundColor: "BubbleBackground",
                     buttonColor: "ButtonBlue",
                     accentColor: "BackgroundBlue",

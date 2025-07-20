@@ -8,22 +8,12 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @State private var viewModel = AppViewModel(selectedCulture:CulturesModel(
-        name: "Berbère",
-        flag: "Berber_flag",
-        chapters: ChapterData.berbereChapters,
-        backgroundColor: "FondAfrique",
-        buttonColor: "ButtonAfrique",
-        accentColor: "CouleurAccent",
-        accent2Color: "CouleurAccent2",
-        isUnlock: true,
-        progressbar: 0.6
-    ) )
-    
+    @State private var viewModel = AppViewModel()
+
     var body: some View {
         TabView {
             NavigationStack{
-                storymode(viewModel: viewModel)
+                storymode(appViewModel: viewModel)
             }
             .tabItem {
                 Label("Histoire", systemImage: "book.fill")
@@ -35,3 +25,6 @@ struct MainTabView: View {
 #Preview {
     MainTabView()
 }
+
+
+

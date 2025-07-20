@@ -45,11 +45,11 @@ struct StoryModeHeaderView: View {
             } label: {
                 
                 VStack{
-                    Text("Chapitre 1")
+                    Text("Chapitre \(viewModel.storyModeViewModel.currentChapterIndex + 1)")
                         .font(.custom("Baloo2", size: 32))
                         .foregroundStyle(.white)
                     
-                    Text("Les symboles de ma culture")
+                    Text(viewModel.storyModeViewModel.currentChapter.title)
                         .font(.custom("Baloo2", size: 16))
                         .foregroundStyle(.white)
                 }
@@ -70,17 +70,5 @@ struct StoryModeHeaderView: View {
 }
 
 #Preview {
-    StoryModeHeaderView(viewModel: AppViewModel(
-        selectedCulture: CulturesModel(
-            name: "Berbère",
-            flag: "Berber_flag",
-            chapters: ChapterData.berbereChapters,
-            backgroundColor: "FondAfrique",
-            buttonColor: "ButtonAfrique",
-            accentColor: "CouleurAccent",
-            accent2Color: "CouleurAccent2",
-            isUnlock: true,
-            progressbar: 0.6
-        )
-    ))
+    StoryModeHeaderView(viewModel: AppViewModel())
 }

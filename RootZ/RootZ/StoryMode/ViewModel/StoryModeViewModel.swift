@@ -17,10 +17,11 @@ class StoryModeViewModel {
     }
     
     init(chapters: [Chapters], currentChapterIndex: Int, currentModule: Int) {
+        print("✅ StoryModeViewModel initialisé avec \(chapters.count) chapitres, \(chapters[0].title)")
         self.chapters = chapters
         self.currentChapterIndex = currentChapterIndex
         self.currentModule = currentModule
     }
     
-    
+    //methode change chapitre, changer de module
 }

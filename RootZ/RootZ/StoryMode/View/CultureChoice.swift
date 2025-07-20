@@ -19,28 +19,22 @@ struct CultureChoice: View {
     ]
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(cultures) { cultures in
-                    CultureCard(viewModel: viewModel, culture: cultures)
+        ZStack {
+            Color(viewModel.selectedCulture.backgroundColor)
+                .ignoresSafeArea()
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(cultures) { cultures in
+                        CultureCard(viewModel: viewModel, culture: cultures)
+                    }
+                    
                 }
-                
             }
+            .padding()
         }
-        .padding()
     }
 }
 
 #Preview {
-    CultureChoice(viewModel: (AppViewModel(selectedCulture: CulturesModel(
-        name: "Berbère",
-        flag: "Berber_flag",
-        chapters: ChapterData.berbereChapters,
-        backgroundColor: "FondAfrique",
-        buttonColor: "ButtonAfrique",
-        accentColor: "CouleurAccent",
-        accent2Color: "CouleurAccent2",
-        isUnlock: true,
-        progressbar: 0.6
-    ))))
+    CultureChoice(viewModel: (AppViewModel()))
 }
