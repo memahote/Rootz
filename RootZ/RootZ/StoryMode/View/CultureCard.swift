@@ -43,6 +43,7 @@ struct CultureCard: View {
         culture: CulturesModel(
             name: "Berbère",
             flag: "Berber_flag",
+            mascott: "Lion1",
             chapters: [],
             backgroundColor: "FondAfrique",
             buttonColor: "ButtonAfrique",

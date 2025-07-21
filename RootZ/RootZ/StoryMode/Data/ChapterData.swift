@@ -82,7 +82,7 @@ struct ChapterData {
     
     static let reunionChapters: [Chapters] = [
         Chapters(
-            title: "Les Symboles de ma culture",
+            title: " ma culture",
             description: "Connaître les symboles emblématiques de son héritage",
             isUnlocked: true,
             modules: [
