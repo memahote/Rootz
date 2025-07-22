@@ -12,63 +12,13 @@ struct Step {
     let title: String
 }
 
-struct ContinueButton: View {
-    let title: String
-    let action: () -> Void
-
-    var body: some View {
-        Button(action: action) {
-            Text(title)
-                .foregroundColor(.white)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.buttonDefault)
-                .cornerRadius(12)
-        }
-        .padding(.horizontal)
-        .padding(.vertical, 20)
-    }
+struct Culture {
+    let id: String         // ex: "berbere"
+    let name: String       // ex: "Culture Berbère"
+    let mainDrapeau: String // ex: "drapeau_amazigh"
+    let relatedDrapeaux: [String] // ex: ["drapeau_kabyle", "drapeau_touareg"]
 }
 
-struct PreviousButton: View {
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            Image(systemName: "chevron.left")
-                .foregroundColor(.brown)
-                .font(.title2)
-        }
-        .padding(.leading)
-        .padding(.top)
-        .frame(maxWidth: .infinity, alignment: .leading)
-    }
-}
-
-struct OnBoardingButton: View {
-    let title: String
-    let isSelected: Bool
-    let action: () -> Void
-
-    var body: some View {
-        Button(action: action) {
-            Text(title)
-                .font(.system(size: 16, weight: .medium))
-                .foregroundColor(.black)
-                .frame(width: 268, height: 42)
-                .background(
-                    isSelected
-                    ? (Color.buttonValidate)
-                    : Color.white // par défaut
-                )
-                .cornerRadius(13)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 13)
-                        .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-                )
-        }
-    }
-}
 
 // Modèle de région et pays
 struct Region: Identifiable {
