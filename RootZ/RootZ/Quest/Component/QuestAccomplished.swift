@@ -12,10 +12,10 @@ struct QuestAccomplished: View {
         VStack{
             HStack{
                 Text("Finir les quêtes du mois")
-                Text("6/12")
+                Text("6/25")
             }.bold()
             
-            ProgressView(value: 6, total: 12)
+            ProgressView(value: 6, total: 25)
                 .frame(width: 48, height: 50)
                 .tint(.green)
                 .scaleEffect(6.0)

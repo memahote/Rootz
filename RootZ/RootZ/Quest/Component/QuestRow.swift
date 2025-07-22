@@ -12,7 +12,7 @@ struct QuestRow: View {
     var body: some View {
         Text(quest.name)
             .bold()
-        ProgressView(value: 1, total: 2)
+        ProgressView(value: quest.value, total: quest.numberOfQuest)
             .frame(width: 48, height: 50)
             .tint(.green)
             .scaleEffect(6.0)
@@ -21,5 +21,5 @@ struct QuestRow: View {
 }
 
 #Preview {
-    QuestRow(quest: quests[0])
+//    QuestRow(quest: quest)
 }

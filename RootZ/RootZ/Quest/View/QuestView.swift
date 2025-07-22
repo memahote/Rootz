@@ -17,6 +17,7 @@ struct QuestView: View {
 //               MARK: - FIRST PART
                 VStack{
                     HStack{
+                        
 //                        MARK: - MONTH
                         MonthOfQuests()
                         
@@ -27,15 +28,9 @@ struct QuestView: View {
                     }.padding(.horizontal)
 //                MARK: - TIME LEFT
                     
-                    HStack {
-                        Image(systemName: "timer")
-                        Text("8 jours")
-                        Spacer()
-                    }.padding()
-                        .frame(width: 331, height: 65)
-                        .bold()
+                    TimeLeftQuest()
+                    
 //                        MARK: - QUEST ACCOMPLISHED
-
                     QuestAccomplished()
                     
                 }.background(

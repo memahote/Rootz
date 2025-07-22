@@ -10,7 +10,8 @@ import SwiftUI
 struct MonthOfQuests: View {
     var body: some View {
         HStack{
-            Text("Juillet")
+            Text(Date(), format: .dateTime.month(.wide))
+                .environment(\.locale, .init(identifier: "fr_FR"))
                 .bold()
                 .background(
                     RoundedRectangle(cornerRadius: 10)
