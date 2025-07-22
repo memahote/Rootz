@@ -8,11 +8,22 @@
 import SwiftUI
 
 struct ChapterSummary: View {
+    @Bindable var viewModel: AppViewModel
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Color(viewModel.selectedCulture.backgroundColor)
+                .ignoresSafeArea()
+            ScrollView {
+                ForEach(viewModel.selectedCulture.chapters) { chapter in
+                    SummaryCard(viewModel: viewModel)
+                }
+            }
+            .scrollIndicators(.hidden)
+        }
     }
 }
 
 #Preview {
-    ChapterSummary()
+    ChapterSummary(viewModel: AppViewModel())
 }
