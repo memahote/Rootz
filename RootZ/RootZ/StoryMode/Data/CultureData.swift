@@ -19,7 +19,10 @@ struct CultureData {
             accentColor: "CouleurAccent",
             accent2Color: "CouleurAccent2",
             isUnlock: true,
-            progressbar: 0.6
+            progressbar: 0.6,
+            associatedCountries: ["maroc", "algérie", "tunisie"],
+               associatedRegions: ["afrique"],
+               keywords: ["berbere", "tamazight"]
         )
     
     static let allCultures : [CulturesModel] = [
@@ -38,10 +41,10 @@ struct CultureData {
                        associatedRegions: ["afrique"],
                        keywords: ["berbere", "tamazight"]
                 ),
-<<<<<<< HEAD
      CulturesModel(
             name: "Réunion",
             flag: "Reunion_flag",
+            mascott: "Lion1",
             chapters: ChapterData.berbereChapters,
             backgroundColor: "BubbleBackground",
             buttonColor: "ButtonBlue",
@@ -52,7 +55,7 @@ struct CultureData {
             associatedCountries: ["réunion", "la réunion"],
             associatedRegions: ["afrique"],
             keywords: ["créole", "réunionnais"]
-=======
+            ),
         CulturesModel(
                     name: "Réunion",
                     flag: "Reunion_flag",
@@ -63,8 +66,10 @@ struct CultureData {
                     accentColor: "BackgroundBlue",
                     accent2Color: "CouleurAccent2",
                     isUnlock: true,
-                    progressbar: 0.1
->>>>>>> 7a6dfd0 (new : AppViewModel, culture change ok)
+                    progressbar: 0.1,
+                    associatedCountries: ["maroc", "algérie", "tunisie"],
+                       associatedRegions: ["afrique"],
+                       keywords: ["berbere", "tamazight"]
                 ),
         
         CulturesModel(
@@ -76,15 +81,12 @@ struct CultureData {
                     buttonColor: "ButtonAfrique",
                     accentColor: "CouleurAccent",
                     accent2Color: "CouleurAccent2",
-<<<<<<< HEAD
                     isUnlock: true,
                     progressbar: 0.6,
                     associatedCountries: ["maroc", "algérie", "tunisie"],
                        associatedRegions: ["afrique"],
                        keywords: ["berbere", "tamazight"]
-=======
-                    isUnlock: false,
-                    progressbar: 0.6
+
                 ),
         CulturesModel(
                     name: "Quechua",
@@ -96,7 +98,10 @@ struct CultureData {
                     accentColor: "CouleurAccent",
                     accent2Color: "CouleurAccent2",
                     isUnlock: false,
-                    progressbar: 0.6
+                    progressbar: 0.6,
+                    associatedCountries: ["maroc", "algérie", "tunisie"],
+                       associatedRegions: ["afrique"],
+                       keywords: ["berbere", "tamazight"]
                 ),
         CulturesModel(
                     name: "Tamoule",
@@ -108,7 +113,10 @@ struct CultureData {
                     accentColor: "CouleurAccent",
                     accent2Color: "CouleurAccent2",
                     isUnlock: false,
-                    progressbar: 0.6
+                    progressbar: 0.6,
+                    associatedCountries: ["maroc", "algérie", "tunisie"],
+                       associatedRegions: ["afrique"],
+                       keywords: ["berbere", "tamazight"]
                 ),
         CulturesModel(
                     name: "Inuit",
@@ -120,7 +128,10 @@ struct CultureData {
                     accentColor: "CouleurAccent",
                     accent2Color: "CouleurAccent2",
                     isUnlock: false,
-                    progressbar: 0.6
+                    progressbar: 0.6,
+                    associatedCountries: ["maroc", "algérie", "tunisie"],
+                       associatedRegions: ["afrique"],
+                       keywords: ["berbere", "tamazight"]
                 ),
         CulturesModel(
                     name: "Roumanie",
@@ -132,7 +143,10 @@ struct CultureData {
                     accentColor: "CouleurAccent",
                     accent2Color: "CouleurAccent2",
                     isUnlock: false,
-                    progressbar: 0.6
+                    progressbar: 0.6,
+                    associatedCountries: ["maroc", "algérie", "tunisie"],
+                       associatedRegions: ["afrique"],
+                       keywords: ["berbere", "tamazight"]
                 ),
         CulturesModel(
                     name: "Maori",
@@ -144,7 +158,10 @@ struct CultureData {
                     accentColor: "CouleurAccent",
                     accent2Color: "CouleurAccent2",
                     isUnlock: false,
-                    progressbar: 0.6
+                    progressbar: 0.6,
+                    associatedCountries: ["maroc", "algérie", "tunisie"],
+                       associatedRegions: ["afrique"],
+                       keywords: ["berbere", "tamazight"]
                 ),
         CulturesModel(
                     name: "Celtique",
@@ -156,8 +173,10 @@ struct CultureData {
                     accentColor: "CouleurAccent",
                     accent2Color: "CouleurAccent2",
                     isUnlock: false,
-                    progressbar: 0.6
->>>>>>> 7a6dfd0 (new : AppViewModel, culture change ok)
+                    progressbar: 0.6,
+                    associatedCountries: ["maroc", "algérie", "tunisie"],
+                       associatedRegions: ["afrique"],
+                       keywords: ["berbere", "tamazight"]
                 )
         
     ]
