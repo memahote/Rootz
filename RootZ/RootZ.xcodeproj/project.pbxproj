@@ -30,7 +30,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		8C28E8A52E2A7F7300FAA079 /* Exceptions for "RootZ" folder in "RootZ" target */ = {
+		B8FD54D42E2A7DF200536427 /* Exceptions for "RootZ" folder in "RootZ" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -43,7 +43,7 @@
 		B8FD53812E28F79D00536427 /* RootZ */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				8C28E8A52E2A7F7300FAA079 /* Exceptions for "RootZ" folder in "RootZ" target */,
+				B8FD54D42E2A7DF200536427 /* Exceptions for "RootZ" folder in "RootZ" target */,
 			);
 			path = RootZ;
 			sourceTree = "<group>";

@@ -9,13 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+       CultureCard(
+        culture: CulturesModel(
+            name: "Berbère",
+            flag: "Berber_flag",
+            chapters: [],
+            backgroundColor: "FondAfrique",
+            buttonColor: "ButtonAfrique",
+            accentColor: "CouleurAccent",
+            accent2Color: "CouleurAccent2",
+            isUnlock: true,
+            progressbar: 0.6)
+       )
     }
 }
 
