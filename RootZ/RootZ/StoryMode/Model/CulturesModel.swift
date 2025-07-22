@@ -18,4 +18,8 @@ struct CulturesModel : Identifiable {
     let accent2Color : String
     let isUnlock : Bool
     var progressbar : Double
+    
+    let associatedCountries: [String]
+    let associatedRegions: [String]
+    let keywords: [String]
 }

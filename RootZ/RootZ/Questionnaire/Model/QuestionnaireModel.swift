@@ -12,13 +12,6 @@ struct Step {
     let title: String
 }
 
-struct Culture {
-    let id: String         // ex: "berbere"
-    let name: String       // ex: "Culture Berbère"
-    let mainDrapeau: String // ex: "drapeau_amazigh"
-    let relatedDrapeaux: [String] // ex: ["drapeau_kabyle", "drapeau_touareg"]
-}
-
 
 // Modèle de région et pays
 struct Region: Identifiable {

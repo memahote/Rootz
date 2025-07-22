@@ -46,6 +46,11 @@ struct CultureCard: View {
             accentColor: "CouleurAccent",
             accent2Color: "CouleurAccent2",
             isUnlock: true,
-            progressbar: 0.6)
+            progressbar: 0.6,
+            associatedCountries: ["maroc", "algérie", "tunisie"],
+            associatedRegions: ["afrique"],
+            keywords: ["berbere", "tamazight"]
+        )
     )
 }
+

@@ -83,7 +83,10 @@ struct OnboardingStepView2: View {
                   .frame(width: 235, height: 220)
                   .clipped()
               )
-            TextField("pays ou régions", text: $viewModel.country)
+            TextField("pays ou régions", text: Binding(
+                get: { viewModel.parentOriginCountry ?? "" },
+                set: { viewModel.parentOriginCountry = $0 }
+            ))
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal)
                 .padding(.vertical, 20)
@@ -161,6 +164,7 @@ struct OnboardingStepView3: View {
     
 struct OnboardingStepView4: View {
         @ObservedObject var viewModel: OnboardingViewModel
+
         
         var body: some View {
             
@@ -188,10 +192,15 @@ struct OnboardingStepView4: View {
                       .frame(width: 290, height: 230)
                       .clipped()
                   )
-                TextField("Langues maternelles, régionales ou transmises par l'apprentissage", text: $viewModel.country)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal)
-                    .padding(.vertical, 20)
+                TextField(
+                    "Langues maternelles, régionales ou transmises par l'apprentissage",
+                    text: $viewModel.familyLanguages
+                )
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding(.horizontal)
+                .padding(.vertical, 20)
+                .frame(width: 268, height: 42)
+
                 
                 Spacer()
                 
