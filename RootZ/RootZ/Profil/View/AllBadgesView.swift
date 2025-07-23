@@ -15,7 +15,6 @@ struct AllBadgesView: View {
         GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible()),
-
     ]
 
     var body: some View {
@@ -23,17 +22,32 @@ struct AllBadgesView: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 12) {
                     ForEach(badges) { badge in
-                        VStack {
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(badge.color)
-                                .frame(width: 61, height: 58)
-                                .overlay(
-                                    Text(badge.emoji)
-                                        .font(.largeTitle)
-                                )
+                        VStack(spacing: 4) {
+                            ZStack {
+                                // Bordure extérieure (plus foncée)
+                                Image(systemName: "hexagon.fill")
+                                    .resizable()
+                                    .aspectRatio(1, contentMode: .fit)
+                                    .frame(width: 64, height: 64)
+                                    .foregroundColor(badge.color.darker())
+
+                                //  Intérieur coloré normal
+                                Image(systemName: "hexagon.fill")
+                                    .resizable()
+                                    .aspectRatio(1, contentMode: .fit)
+                                    .frame(width: 58, height: 58)
+                                    .foregroundColor(badge.color)
+
+                                Text(badge.emoji)
+                                    .font(.largeTitle)
+                            }
+
                             Text(badge.title)
-                                .font(.caption)
+                                .font(.caption2)
                                 .multilineTextAlignment(.center)
+                                .lineLimit(2)
+                                .frame(maxWidth: 58)
+                                .frame(height: 32) 
                         }
                     }
                 }

@@ -22,17 +22,31 @@ struct RewardView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 6) {
                 ForEach(viewModel.badges.prefix(8)) { badge in
-                    VStack {
-                        RoundedRectangle(cornerRadius: 12)
-                            .fill(badge.color)
-                            .frame(width: 61, height: 58)
-                            .overlay(
-                                Text(badge.emoji)
-                                    .font(.largeTitle)
-                            )
+                    VStack(spacing: 4) {
+                        ZStack {
+                            // Bordure extérieure (plus foncée)
+                            Image(systemName: "hexagon.fill")
+                                .resizable()
+                                .aspectRatio(1, contentMode: .fit)
+                                .frame(width: 64, height: 64)
+                                .foregroundColor(badge.color.darker())
+
+                            // Intérieur coloré normal
+                            Image(systemName: "hexagon.fill")
+                                .resizable()
+                                .aspectRatio(1, contentMode: .fit)
+                                .frame(width: 58, height: 58)
+                                .foregroundColor(badge.color)
+
+                            Text(badge.emoji)
+                                .font(.largeTitle)
+                        }
+
                         Text(badge.title)
-                            .font(.caption)
+                            .font(.caption2)
                             .multilineTextAlignment(.center)
+                            .lineLimit(2)
+                            .frame(maxWidth: 80) 
                     }
                 }
             }
@@ -51,5 +65,11 @@ struct RewardView: View {
         .sheet(isPresented: $showAllBadges) {
             AllBadgesView(badges: viewModel.badges)
         }
+    }
+}
+
+extension Color {
+    func darker(by amount: Double = 0.2) -> Color {
+        return self.opacity(1.0 - amount)
     }
 }
