@@ -40,8 +40,9 @@ struct StoryModeHeaderView: View {
             }
             .padding()
             
-            Button {
-                
+            
+            NavigationLink {
+                ChapterSummary(viewModel: viewModel)
             } label: {
                 
                 VStack{

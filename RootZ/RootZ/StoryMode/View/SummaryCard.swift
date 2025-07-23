@@ -53,6 +53,11 @@ struct SummaryCard: View {
                 
                 VStack{
                     Text(viewModel.storyModeViewModel.currentChapter.title)
+                        .foregroundStyle(.white)
+                    
+//                    ProgressView(value: viewM)
+                    
+                    //Foreach -> qui tourne sur tout les chapite et pour chaque chapitre donner la valeur a la progressbarView 
                 }
                 .padding()
                 

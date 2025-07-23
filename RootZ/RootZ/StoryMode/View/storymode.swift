@@ -14,7 +14,7 @@ struct storymode: View {
         ZStack {
             Color(appViewModel.selectedCulture.backgroundColor)
                 .ignoresSafeArea()
-            
+
             VStack {
                 StoryModeHeaderView(viewModel : appViewModel)
 
