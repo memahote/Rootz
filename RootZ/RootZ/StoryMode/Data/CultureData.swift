@@ -38,43 +38,28 @@ struct CultureData {
                     isUnlock: true,
                     progressbar: 0.6,
                     associatedCountries: ["maroc", "algérie", "tunisie"],
-                       associatedRegions: ["afrique"],
-                       keywords: ["berbere", "tamazight"]
+                    associatedRegions: ["afrique"],
+                    keywords: ["berbere", "tamazight","arabe","marocain","algérien"]
                 ),
-     CulturesModel(
-            name: "Réunion",
-            flag: "Reunion_flag",
-            mascott: "Lion1",
-            chapters: ChapterData.berbereChapters,
-            backgroundColor: "BubbleBackground",
-            buttonColor: "ButtonBlue",
-            accentColor: "BackgroundBlue",
-            accent2Color: "CouleurAccent2",
-            isUnlock: false,
-            progressbar: 0.0,
-            associatedCountries: ["réunion", "la réunion"],
-            associatedRegions: ["afrique"],
-            keywords: ["créole", "réunionnais"]
-            ),
         CulturesModel(
                     name: "Réunion",
                     flag: "Reunion_flag",
-                    mascott: "Cameleon1",
-                    chapters: ChapterData.reunionChapters,
+                    mascott: "Lion1",
+                    chapters: ChapterData.berbereChapters,
                     backgroundColor: "BubbleBackground",
                     buttonColor: "ButtonBlue",
                     accentColor: "BackgroundBlue",
                     accent2Color: "CouleurAccent2",
-                    isUnlock: true,
-                    progressbar: 0.1,
-                    associatedCountries: ["maroc", "algérie", "tunisie"],
-                       associatedRegions: ["afrique"],
-                       keywords: ["berbere", "tamazight"]
+                    isUnlock: false,
+                    progressbar: 0.0,
+                    associatedCountries: ["réunion", "la réunion", "île de la Réunion",],
+                    associatedRegions: ["afrique","Océan Indien"],
+                    keywords: ["créole", "réunionnais"]
                 ),
         
         CulturesModel(
                     name: "Japon",
-                    flag: "Flag_of_Japan",
+                    flag: "Japon_flag",
                     mascott: "Lion1",
                     chapters: ChapterData.berbereChapters,
                     backgroundColor: "FondAfrique",
@@ -83,14 +68,14 @@ struct CultureData {
                     accent2Color: "CouleurAccent2",
                     isUnlock: true,
                     progressbar: 0.6,
-                    associatedCountries: ["maroc", "algérie", "tunisie"],
-                       associatedRegions: ["afrique"],
-                       keywords: ["berbere", "tamazight"]
+                    associatedCountries: ["japon"],
+                    associatedRegions: ["asie"],
+                    keywords: ["shinto", "samurai", "japonais"]
 
                 ),
         CulturesModel(
                     name: "Quechua",
-                    flag: "Flag_of_Peru",
+                    flag: "Peru_flag",
                     mascott: "Lion1",
                     chapters: ChapterData.berbereChapters,
                     backgroundColor: "FondAfrique",
@@ -99,13 +84,13 @@ struct CultureData {
                     accent2Color: "CouleurAccent2",
                     isUnlock: false,
                     progressbar: 0.6,
-                    associatedCountries: ["maroc", "algérie", "tunisie"],
-                       associatedRegions: ["afrique"],
-                       keywords: ["berbere", "tamazight"]
+                    associatedCountries: ["pérou", "perou", "bolivie", "équateur", "equateur"],
+                    associatedRegions: ["amérique", "amerique"],
+                    keywords: ["quechua", "inca", "andine"]
                 ),
         CulturesModel(
                     name: "Tamoule",
-                    flag: "Flag_of_India",
+                    flag: "India_flag",
                     mascott: "Lion1",
                     chapters: ChapterData.berbereChapters,
                     backgroundColor: "FondAfrique",
@@ -114,13 +99,13 @@ struct CultureData {
                     accent2Color: "CouleurAccent2",
                     isUnlock: false,
                     progressbar: 0.6,
-                    associatedCountries: ["maroc", "algérie", "tunisie"],
-                       associatedRegions: ["afrique"],
-                       keywords: ["berbere", "tamazight"]
+                    associatedCountries: ["inde", "sri lanka", "malaisie"],
+                    associatedRegions: ["asie"],
+                    keywords: ["tamoul", "tamil", "hindou"]
                 ),
         CulturesModel(
                     name: "Inuit",
-                    flag: "Flag_of_Greenland",
+                    flag: "Greenland_flag",
                     mascott: "Lion1",
                     chapters: ChapterData.berbereChapters,
                     backgroundColor: "FondAfrique",
@@ -129,13 +114,13 @@ struct CultureData {
                     accent2Color: "CouleurAccent2",
                     isUnlock: false,
                     progressbar: 0.6,
-                    associatedCountries: ["maroc", "algérie", "tunisie"],
-                       associatedRegions: ["afrique"],
-                       keywords: ["berbere", "tamazight"]
+                    associatedCountries: ["canada", "groenland", "alaska"],
+                    associatedRegions: ["amérique", "amerique", "arctique"],
+                    keywords: ["inuit", "eskimo", "arctique"]
                 ),
         CulturesModel(
                     name: "Roumanie",
-                    flag: "Flag_of_Romania",
+                    flag: "Romania_flag",
                     mascott: "Lion1",
                     chapters: ChapterData.berbereChapters,
                     backgroundColor: "FondAfrique",
@@ -144,13 +129,13 @@ struct CultureData {
                     accent2Color: "CouleurAccent2",
                     isUnlock: false,
                     progressbar: 0.6,
-                    associatedCountries: ["maroc", "algérie", "tunisie"],
-                       associatedRegions: ["afrique"],
-                       keywords: ["berbere", "tamazight"]
+                    associatedCountries: ["roumanie"],
+                    associatedRegions: ["europe"],
+                    keywords: ["roumain", "balkan", "carpates"]
                 ),
         CulturesModel(
                     name: "Maori",
-                    flag: "Flag_of_New_Zealand",
+                    flag: "New_Zealand_flag",
                     mascott: "Lion1",
                     chapters: ChapterData.berbereChapters,
                     backgroundColor: "FondAfrique",
@@ -159,13 +144,13 @@ struct CultureData {
                     accent2Color: "CouleurAccent2",
                     isUnlock: false,
                     progressbar: 0.6,
-                    associatedCountries: ["maroc", "algérie", "tunisie"],
-                       associatedRegions: ["afrique"],
-                       keywords: ["berbere", "tamazight"]
+                    associatedCountries: ["nouvelle-zélande", "nouvelle zelande", "new zealand"],
+                    associatedRegions: ["océanie", "oceanie"],
+                    keywords: ["maori", "aotearoa", "haka"]
                 ),
         CulturesModel(
                     name: "Celtique",
-                    flag: "Flag_of_Ireland",
+                    flag: "Ireland_flag",
                     mascott: "Lion1",
                     chapters: ChapterData.berbereChapters,
                     backgroundColor: "FondAfrique",
@@ -174,9 +159,9 @@ struct CultureData {
                     accent2Color: "CouleurAccent2",
                     isUnlock: false,
                     progressbar: 0.6,
-                    associatedCountries: ["maroc", "algérie", "tunisie"],
-                       associatedRegions: ["afrique"],
-                       keywords: ["berbere", "tamazight"]
+                    associatedCountries: ["irlande", "ecosse", "bretagne", "pays de galles"],
+                    associatedRegions: ["europe"],
+                    keywords: ["celtique", "gaélique", "druidique", "celte"]
                 )
         
     ]

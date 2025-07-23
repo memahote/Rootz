@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import Foundation
 
-class OnboardingViewModel: ObservableObject {
+class OnboardingViewModel: ObservableObject
+{
     @Published var currentStep: Int = 1
     @Published var city: String = ""
     @Published var country: String = ""
@@ -31,6 +33,8 @@ class OnboardingViewModel: ObservableObject {
 
     // Étape 6 - Préférences culturelles
     @Published var culturalExplorationPreference: String?
+    
+    @Published var forcedCulture: CulturesModel? = nil
 
 
 
@@ -58,26 +62,85 @@ class OnboardingViewModel: ObservableObject {
 }
 
 extension OnboardingViewModel {
+  
+
+    func finalCultureImageName() -> String {
+        return forcedCulture?.flag ?? detectedCultureImageName()
+    }
+
     func detectedCultureImageName() -> String {
-        let userInputs = [
-            birthCountry.lowercased(),
-            parentOriginCountry?.lowercased() ?? "",
-            selectedRegion?.lowercased() ?? "",
-            culturalExplorationPreference?.lowercased() ?? "",
-            familyLanguages.lowercased()
+        let inputs = [
+            birthCountry.normalized,
+            parentOriginCountry?.normalized ?? "",
+            selectedRegion?.normalized ?? "",
+            culturalExplorationPreference?.normalized ?? "",
+            familyLanguages.normalized
         ]
 
-        for culture in CultureData.allCultures {
-            let matchCountry = culture.associatedCountries.contains(where: { userInputs.contains($0) })
-            let matchRegion = culture.associatedRegions.contains(where: { userInputs.contains($0) })
-            let matchKeyword = culture.keywords.contains(where: { userInputs.contains($0) })
+        var bestMatch: (culture: CulturesModel, score: Int)? = nil
 
-            if matchCountry || matchRegion || matchKeyword {
-                return culture.flag
+        for culture in CultureData.allCultures {
+            let countries = culture.associatedCountries.map { $0.normalized }
+            let regions = culture.associatedRegions.map { $0.normalized }
+            let keywords = culture.keywords.map { $0.normalized }
+
+            var score = 0
+            for input in inputs {
+                if countries.contains(input) { score += 3 }
+                if regions.contains(input) { score += 2 }
+                if keywords.contains(input) { score += 1 }
+            }
+
+            if let currentBest = bestMatch {
+                if score > currentBest.score {
+                    bestMatch = (culture, score)
+                }
+            } else if score > 0 {
+                bestMatch = (culture, score)
             }
         }
 
-        return "drapeau_inconnu"
+        // Si aucune correspondance, retourne la 1ère culture par défaut (par ex. Afrique du Nord)
+        if let match = bestMatch {
+            return match.culture.flag
+        } else {
+            return CultureData.allCultures.first?.flag ?? "drapeau_inconnu"
+        }
+    }
+
+
+    
+    func suggestedCultures(max: Int = 4) -> [CulturesModel] {
+        let inputs = [
+            birthCountry.normalized,
+            parentOriginCountry?.normalized ?? "",
+            selectedRegion?.normalized ?? "",
+            culturalExplorationPreference?.normalized ?? "",
+            familyLanguages.normalized
+        ]
+
+        var scoredCultures: [(culture: CulturesModel, score: Int)] = []
+
+        for culture in CultureData.allCultures {
+            let countries = culture.associatedCountries.map { $0.normalized }
+            let regions = culture.associatedRegions.map { $0.normalized }
+            let keywords = culture.keywords.map { $0.normalized }
+
+            var score = 0
+            for input in inputs {
+                if countries.contains(input) { score += 3 }
+                if regions.contains(input) { score += 2 }
+                if keywords.contains(input) { score += 1 }
+            }
+
+            if score > 0 {
+                scoredCultures.append((culture, score))
+            }
+        }
+
+        let sorted = scoredCultures.sorted { $0.score > $1.score }
+        return Array(sorted.map { $0.culture }.prefix(max))
     }
 }
+
 

@@ -8,23 +8,53 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = OnboardingViewModel()
     var body: some View {
-//        CultureCard(
-//            culture: CulturesModel(
-//                name: "Berbère",
-//                flag: "Berber_flag",
-//                chapters: [],
-//                backgroundColor: "FondAfrique",
-//                buttonColor: "ButtonAfrique",
-//                accentColor: "CouleurAccent",
-//                accent2Color: "CouleurAccent2",
-//                isUnlock: true,
-//                progressbar: 0.6,
-//                associatedCountries: ["maroc", "algérie", "tunisie"],
-//                associatedRegions: ["afrique"],
-//                keywords: ["berbere", "tamazight"]
-//            )
-//        )
+        ZStack {
+            Color(.backgroundDefault)
+            .ignoresSafeArea()
+            
+            VStack {
+      
+                if viewModel.currentStep <= 6 {
+                    ProgressView(value: viewModel.progress)
+                        .progressViewStyle(LinearProgressViewStyle(tint: .green))
+                        .padding(.horizontal)
+                        .padding(.top)
+                        .animation(.easeInOut, value: viewModel.progress)
+                }
+
+                
+                Spacer()
+                
+                switch viewModel.currentStep {
+                case 1:
+                    OnboardingStepView(viewModel: viewModel)
+                case 2:
+                    OnboardingStepView2(viewModel: viewModel)
+                case 3:
+                    OnboardingStepView3(viewModel: viewModel)
+                case 4:
+                    OnboardingStepView4(viewModel: viewModel)
+                case 5:
+                    OnboardingStepView5(viewModel: viewModel)
+                case 6:
+                    OnboardingStepView6(viewModel: viewModel)
+                case 7:
+                    OnboardingCongratsView(viewModel: viewModel)
+                case 8:
+                    CulturalProfileResultView(viewModel: viewModel)
+
+                
+                default:
+                    Text("Étape non définie")
+                }
+                
+                Spacer()
+            }
+        }
+        
+    
     }
 }
 
