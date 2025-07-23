@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct storymode: View {
+    @Bindable var appViewModel: AppViewModel
+    
     var body: some View {
         ZStack {
-            Color.fondAfrique
+            Color(appViewModel.selectedCulture.backgroundColor)
                 .ignoresSafeArea()
-            
-            VStack {
-                StoryModeHeaderView()
 
-                ModulePathView(
-                    modules: ChapterData.berbereChapters[0].modules,
+            VStack {
+                StoryModeHeaderView(viewModel : appViewModel)
+
+                StoryModeModulePath(
+                    modules: appViewModel.storyModeViewModel.currentChapter.modules,
                     onSelect: { index in
                         print("Module \(index) sélectionné")
                     }
@@ -30,6 +32,6 @@ struct storymode: View {
 
 #Preview {
     NavigationStack{
-        storymode()
+        storymode(appViewModel: (AppViewModel()))
     }
 }

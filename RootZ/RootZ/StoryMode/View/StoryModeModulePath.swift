@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct ModulePathView: View {
+struct StoryModeModulePath: View {
     let modules: [Module]
     let onSelect: (Int) -> Void
 
@@ -26,13 +26,11 @@ struct ModulePathView: View {
                     .offset(x: sinOffset(for: index))
                 }
                 
-                Spacer().frame(height: 100)
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 40)
         }
-        .frame(maxWidth: .infinity)
-        .scrollIndicators(.hidden)
+        
     }
     
     func sinOffset(for index: Int) -> CGFloat {
@@ -42,18 +40,8 @@ struct ModulePathView: View {
 
 }
 
-struct StoryModeModulePath: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-//#Preview {
-//    StoryModeModulePath()
-//}
-
 #Preview {
-    ModulePathView(
+    StoryModeModulePath(
         modules: ChapterData.berbereChapters[0].modules,
         onSelect: { index in
             print("Module \(index) sélectionné")

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct StoryModeHeaderView: View {
+    @Bindable var viewModel: AppViewModel
     
     var body: some View {
         VStack {
@@ -15,9 +16,9 @@ struct StoryModeHeaderView: View {
             HStack (alignment: .bottom){
                 
                 NavigationLink {
-                    CultureChoice()
+                    CultureChoice(viewModel: viewModel)
                 } label: {
-                    Image(.berberFlag)
+                    Image(viewModel.selectedCulture.flag)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 45, height: 45)
@@ -39,16 +40,17 @@ struct StoryModeHeaderView: View {
             }
             .padding()
             
-            Button {
-                
+            
+            NavigationLink {
+                ChapterSummary(viewModel: viewModel)
             } label: {
                 
                 VStack{
-                    Text("Chapitre 1")
+                    Text("Chapitre \(viewModel.storyModeViewModel.currentChapterIndex + 1)")
                         .font(.custom("Baloo2", size: 32))
                         .foregroundStyle(.white)
                     
-                    Text("Les symbols de ma culture")
+                    Text(viewModel.storyModeViewModel.currentChapter.title)
                         .font(.custom("Baloo2", size: 16))
                         .foregroundStyle(.white)
                 }
@@ -56,7 +58,7 @@ struct StoryModeHeaderView: View {
                 .background(
                     RoundedRectangle(cornerRadius: 10)
                         .frame(width: 350, height: 85)
-                        .foregroundStyle(.buttonAfrique)
+                        .foregroundStyle(Color(viewModel.selectedCulture.buttonColor))
                     
                 )
             }
@@ -69,5 +71,5 @@ struct StoryModeHeaderView: View {
 }
 
 #Preview {
-    StoryModeHeaderView()
+    StoryModeHeaderView(viewModel: AppViewModel())
 }
