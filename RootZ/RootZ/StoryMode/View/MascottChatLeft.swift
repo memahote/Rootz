@@ -29,7 +29,7 @@ struct MascottChatLeft: View {
                     
                 )
                 .frame(maxWidth: 300, alignment: .leading)
-                .offset(x: 70)
+                .offset(x: 50)
             
             Image(mascott)
                 .resizable()

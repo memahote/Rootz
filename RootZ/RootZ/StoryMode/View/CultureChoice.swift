@@ -19,9 +19,7 @@ struct CultureChoice: View {
     ]
     
     var body: some View {
-        ZStack {
-            Color(viewModel.selectedCulture.backgroundColor)
-                .ignoresSafeArea()
+        VStack {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(cultures) { cultures in
@@ -32,6 +30,9 @@ struct CultureChoice: View {
             }
             .padding()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background( Color(viewModel.selectedCulture.backgroundColor)
+            .ignoresSafeArea())
     }
 }
 
