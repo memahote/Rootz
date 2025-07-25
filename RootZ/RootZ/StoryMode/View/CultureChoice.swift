@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CultureChoice: View {
+    @Bindable var viewModel: AppViewModel
+    
     let cultures = CultureData.allCultures
     
     let columns = [
@@ -17,18 +19,23 @@ struct CultureChoice: View {
     ]
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(cultures) { cultures in
-                    CultureCard(culture: cultures)
+        VStack {
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(cultures) { cultures in
+                        CultureCard(viewModel: viewModel, culture: cultures)
+                    }
+                    
                 }
-                
             }
+            .padding()
         }
-        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background( Color(viewModel.selectedCulture.backgroundColor)
+            .ignoresSafeArea())
     }
 }
 
 #Preview {
-    CultureChoice()
+    CultureChoice(viewModel: (AppViewModel()))
 }

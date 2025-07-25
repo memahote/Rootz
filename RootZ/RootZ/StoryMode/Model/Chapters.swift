@@ -9,8 +9,10 @@ import Foundation
 
 struct Chapters : Identifiable {
     let id = UUID()
+    let nbChap : Int
     let title : String
     let description : String
     let isUnlocked : Bool
+    let progression : Double
     let modules : [Module]
 }

@@ -8,18 +8,24 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @State private var viewModel = AppViewModel()
+
     var body: some View {
         TabView {
             NavigationStack{
-                storymode()
+                storymode(appViewModel: viewModel)
             }
             .tabItem {
                 Label("Histoire", systemImage: "book.fill")
             }
         }
+        .ignoresSafeArea()
     }
 }
 
 #Preview {
     MainTabView()
 }
+
+
+
