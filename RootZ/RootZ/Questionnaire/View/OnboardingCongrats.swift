@@ -13,9 +13,14 @@ struct OnboardingCongratsView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("Bravo 🎉")
-                .font(.largeTitle)
-                .fontWeight(.bold)
+            Text("Bravo !")
+              .font(
+                Font.custom("Baloo 2", size: 36)
+                  .weight(.medium)
+              )
+              .multilineTextAlignment(.center)
+              .foregroundColor(.black)
+              .frame(width: 350, height: 42, alignment: .top)
 
             Text("Tu as complété ton profil culturel !")
                 .font(.headline)
@@ -23,16 +28,26 @@ struct OnboardingCongratsView: View {
                 .padding(.horizontal)
 
             // GIF d'animation
-            Image(.planete7Gif)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 250, height: 250)
-
+            ZStack {
+                          Image(.planete7Gif)
+                              .resizable()
+                              .scaledToFit()
+                              .frame(width: 400, height: 250)
+                          
+                          // Animation de confetti au-dessus
+                          LottieView(name: "Confetti", loopMode: .playOnce)
+                              .frame(width: 400, height: 350)
+                              .allowsHitTesting(false) // Évite d'intercepter les interactions
+                      }
 
             Text("Clique sur Suivant pour découvrir ce que cache ton profil culturel…")
-                .font(.subheadline)
-                .multilineTextAlignment(.center)
-                .padding()
+              .font(
+                Font.custom("Nunito", size: 25)
+                  .weight(.light)
+              )
+              .multilineTextAlignment(.center)
+              .foregroundColor(.black)
+            
 
             ContinueButton(title: "Suivant") {
                 viewModel.currentStep = 8 // Assure-toi que case 7 = CulturalProfileResultView

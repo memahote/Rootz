@@ -12,7 +12,7 @@ struct SwiftUIView: View {
     
     var body: some View {
         ZStack {
-            Color(.fondAfrique).ignoresSafeArea()
+            //Color(.fondAfrique).ignoresSafeArea()
 
                     ForEach(0..<30, id: \.self) { index in
                         Image(systemName:symbols[index % symbols.count])

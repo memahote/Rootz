@@ -11,7 +11,7 @@ struct ContentView: View {
     @StateObject private var viewModel = OnboardingViewModel()
     var body: some View {
         ZStack {
-            Color(.backgroundDefault)
+           Color(.backgroundDefault)
             .ignoresSafeArea()
             
             VStack {

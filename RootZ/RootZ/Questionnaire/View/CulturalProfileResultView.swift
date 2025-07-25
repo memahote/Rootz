@@ -16,23 +16,24 @@ struct CulturalProfileResultView: View {
     var body: some View {
        NavigationView {
            VStack {
-               if !hasOpenedChest {
-                   GIFView(gifName:"coffre")
-                       .frame(width: 250, height: 250)
-                       .onAppear {
-                           DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                               hasOpenedChest = true
-                           }
-                       }
-               } else {
-                   Image(viewModel.detectedCultureImageName())
-                       .resizable()
-                       .scaledToFit()
-                       .frame(width: 200, height: 120)
+              
+                   ZStack{
+                       LottieView(name: "Reward", loopMode: .playOnce)
+                           .frame(width: 400, height: 350)
+                           .allowsHitTesting(false)
+                       Image(viewModel.detectedCultureImageName())
+                           .resizable()
+                           .scaledToFit()
+                           .frame(width: 200, height: 120)
+                      
+                   }
+                   
 
                    Text("Est-ce que cette culture te correspond ?")
-                       .font(.headline)
-                       .multilineTextAlignment(.center)
+                       .font(
+                       Font.custom("Baloo 2", size: 25)
+                       .weight(.medium)
+                       )                   .multilineTextAlignment(.center)
                        .padding()
 
                    HStack(spacing: 30) {
@@ -68,7 +69,6 @@ struct CulturalProfileResultView: View {
         }
       
     }
-}
 
 struct CulturalProfileResultView_Previews: PreviewProvider {
     static var previews: some View {

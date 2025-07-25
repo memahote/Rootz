@@ -157,6 +157,7 @@ struct OnboardingStepView3: View {
                 selectedOption = "Pas du tout"
             }
             Spacer()
+            
             ContinueButton(title: "Continue") {
                 viewModel.selectedCultureMatchLevel = selectedOption
                 viewModel.nextStep()

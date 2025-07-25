@@ -10,7 +10,7 @@ import SwiftUI
 struct QuestView: View {
     var body: some View {
         ZStack{
-            Color.fondAfrique.ignoresSafeArea()
+            //Color.fondAfrique.ignoresSafeArea()
             
             VStack {
                 
@@ -35,7 +35,7 @@ struct QuestView: View {
                     
                 }.background(
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.couleurAccent).ignoresSafeArea()
+                        //.fill(Color.couleurAccent).ignoresSafeArea()
                         .frame(width: 402, height: 330)
                 )
                 
