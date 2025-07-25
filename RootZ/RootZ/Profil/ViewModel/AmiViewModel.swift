@@ -7,8 +7,9 @@
 
 import Foundation
 
-class AmisViewModel: ObservableObject {
-    @Published var amis: [String] = []
+@Observable
+class AmisViewModel {
+     var amis: [String] = []
 
     func ajouterAmi(nom: String) {
         guard !nom.isEmpty else { return }

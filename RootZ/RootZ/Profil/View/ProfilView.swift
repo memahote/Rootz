@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ProfilView: View {
-    @StateObject private var viewModel = ProfilViewModel()
-    @StateObject private var amisViewModel = AmisViewModel()
+    @State private var viewModel = ProfilViewModel()
+    @State private var amisViewModel = AmisViewModel()
 
     @State private var showPersonnalisation = false
     @State private var showAjouterAmi = false
@@ -28,7 +28,7 @@ struct ProfilView: View {
                     origins: viewModel.user.origins
                 )
 
-                // Actions (amis + partage)
+                // Actions amis + partage
                 ProfilActionView(
                     onPartagerProfil: {
                         // Quand on appuie sur le bouton Partager
@@ -60,7 +60,9 @@ struct ProfilView: View {
             }
             .frame(maxWidth: .infinity, alignment: .topLeading)
             .padding(.horizontal)
+
         }
+        .background(Color("FondAfrique"))
 
         // Modales
      
