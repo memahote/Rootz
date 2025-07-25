@@ -28,6 +28,7 @@ struct SummaryCard: View {
                             topTrailingRadius: 20
                         )
                     )
+                
                 if !isCollapsed {
                     if index % 2 != 0 {
                         MascottChatRight(

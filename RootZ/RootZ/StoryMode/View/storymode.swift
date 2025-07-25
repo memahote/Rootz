@@ -14,12 +14,7 @@ struct storymode: View {
         VStack {
             StoryModeHeaderView(viewModel : appViewModel)
             
-            StoryModeModulePath(
-                modules: appViewModel.storyModeViewModel.currentChapter.modules,
-                onSelect: { index in
-                    print("Module \(index) sélectionné")
-                }
-            )
+            StoryModeModulePath(viewModel: appViewModel)
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

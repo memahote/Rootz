@@ -22,32 +22,32 @@ struct ChapterData {
                     title: "Le Drapeau",
                     icon: "flag.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique"),
+                    color: "ButtonAfrique"),
                 Module(
                     title: "Le Drapeau",
-                    icon: "flag.fill",
+                    icon: "star.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique"),
+                    color: "ButtonAfrique"),
                 Module(
                     title: "Le Drapeau",
-                    icon: "flag.fill",
+                    icon: "staroflife.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique"),
+                    color: "ButtonAfrique"),
                 Module(
                     title: "Le Drapeau",
-                    icon: "flag.fill",
+                    icon: "cloud.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique"),
+                    color: "ButtonAfrique"),
                 Module(
                     title: "Le Drapeau",
-                    icon: "flag.fill",
+                    icon: "moon.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique"),
+                    color: "ButtonAfrique"),
                 Module(
                     title: "Le Drapeau",
-                    icon: "flag.fill",
+                    icon: "drop.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique")
+                    color: "ButtonAfrique")
                 
         
             ]
@@ -63,22 +63,22 @@ struct ChapterData {
                     title: "Le Drapeau",
                     icon: "flag.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique"),
+                    color: "ButtonAfrique"),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique"),
+                    color: "ButtonAfrique"),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique"),
+                    color: "ButtonAfrique"),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique")
+                    color: "ButtonAfrique")
                 
         
             ]),
@@ -93,22 +93,22 @@ struct ChapterData {
                     title: "Le Drapeau",
                     icon: "flag.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique"),
+                    color: "ButtonAfrique"),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique"),
+                    color: "ButtonAfrique"),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique"),
+                    color: "ButtonAfrique"),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique")
+                    color: "ButtonAfrique")
                 
         
             ])
@@ -127,22 +127,22 @@ struct ChapterData {
                     title: "Le Drapeau",
                     icon: "flag.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique"),
+                    color: "ButtonBlue"),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique"),
+                    color: "ButtonBlue"),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique"),
+                    color: "ButtonBlue"),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique"),
+                    color: "ButtonBlue"),
                 
         
             ]),
@@ -157,22 +157,22 @@ struct ChapterData {
                     title: "Le Drapeau",
                     icon: "flag.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique"),
+                    color: "ButtonBlue"),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique"),
+                    color: "ButtonBlue"),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique"),
+                    color: "ButtonBlue"),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
                     isUnlocked: true,
-                    color: "boutonAfrique")
+                    color: "ButtonBlue")
                 
         
             ])
