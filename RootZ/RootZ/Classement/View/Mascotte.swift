@@ -1,14 +1,15 @@
 //
-//  Joueur.swift
+//  Mascotte.swift
 //  RootZ
 //
 //  Created by Mounir on 23/07/2025.
 //
+
 import Foundation
 
-struct Joueur: Identifiable {
+struct Mascotte: Identifiable {
     let id = UUID()
-    let rang: Int
-    let nom: String
+    let imageName: String
     let score: Int
+    let position: Int
 }
