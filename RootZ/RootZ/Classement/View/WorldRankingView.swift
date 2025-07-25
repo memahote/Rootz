@@ -5,27 +5,11 @@
 //  Created by Mounir on 23/07/2025.
 //
 
-import SwiftUI
+import Foundation
 
-struct WorldRankingView: View {
-//    @State private var selectedPage = 0
-    var body: some View {
+enum ClassementType: String, CaseIterable, Identifiable {
+    case ami = "Ami"
+    case monde = "Monde"
 
-            VStack {
-                PickerView()
-                HeaderViewRanking()
-                PodiumView()
-                ClassementListeView()
-                    .padding(.vertical)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color("FondAfrique").ignoresSafeArea())
-                
-            
-    }
-    
-}
-
-#Preview {
-    WorldRankingView()
+    var id: Self { self }
 }

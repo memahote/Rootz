@@ -10,11 +10,10 @@ struct UserModel {
     var name: String
     var origins: [String]
     var creationDate: Date
+    var mascotte: String
+    var score: Int
 }
 
-struct Badge: Identifiable, Hashable {
-    let id = UUID()
-    let name: String
-    let emoji: String
-}
+
+
 

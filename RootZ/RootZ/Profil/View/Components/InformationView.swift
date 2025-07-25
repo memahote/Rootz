@@ -25,7 +25,6 @@ struct InformationView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 44, height: 44)
-                        .shadow(radius: 10)
                 }
             }
         }

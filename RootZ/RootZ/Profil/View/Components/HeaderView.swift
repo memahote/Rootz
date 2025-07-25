@@ -14,7 +14,6 @@ struct HeaderView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 200, height: 200)
-                .shadow(radius: 10)
         }
         .frame(maxWidth: .infinity)
         .background(Color("CouleurAccent"))

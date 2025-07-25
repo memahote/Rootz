@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+@Observable
+class UserViewModel{
+     var user: User
+
+    init() {
+        self.user = User(nom: "Mounir", pseudo: "Mounir76", mascotte: "Lion", score: 2580)
+    }
+}

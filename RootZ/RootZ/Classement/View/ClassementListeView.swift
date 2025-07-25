@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ClassementListeView: View {
-    @StateObject private var viewModel = ClassementViewModel()
-    
+    let joueurs: [Joueur]
+
     var body: some View {
-        VStack(spacing: 12) {
-            ForEach(viewModel.joueurs) { joueur in
+        VStack {
+            ForEach(joueurs) { joueur in
                 HStack {
                     Text("\(joueur.rang). \(joueur.nom)")
                         .font(.system(size: 20, weight: .bold))
@@ -21,7 +21,7 @@ struct ClassementListeView: View {
                         .font(.system(size: 20, weight: .bold))
                 }
                 .padding()
-                .background(Color(red: 253/255, green: 218/255, blue: 184/255)) // #FDDAB8
+                .background(Color("FondAfrique"))
                 .cornerRadius(6)
             }
         }
@@ -30,7 +30,9 @@ struct ClassementListeView: View {
     }
 }
 
-
 #Preview {
-    ClassementListeView()
+    ClassementListeView(joueurs: [
+        Joueur(rang: 1, nom: "Exemple", score: 1500),
+        Joueur(rang: 2, nom: "Test", score: 1400)
+    ])
 }

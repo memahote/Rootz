@@ -5,77 +5,102 @@
 //  Created by Mounir on 23/07/2025.
 //
 
-// View/PodiumView.swift
+// Vue du podium
+
 
 import SwiftUI
 
 struct PodiumView: View {
-    @StateObject private var viewModel = PodiumViewModel()
-
+    let mascottes: [Mascotte]
+    
     var body: some View {
-        HStack(alignment: .bottom, spacing: 16) {
-            ForEach([2, 1, 3], id: \.self) { position in
-                if let mascotte = viewModel.mascottes.first(where: { $0.position == position }) {
-                    VStack {
-                        if mascotte.imageName == "Cameleon1"{
+        ZStack {
+            
+            Color("CouleurAccent").ignoresSafeArea()
+            
+            HStack(alignment: .bottom, spacing: 24) {
+                ForEach([2, 1, 3], id: \.self) { position in
+                    if let mascotte = mascottes.first(where: { $0.position == position }) {
+                        VStack(spacing: 0) {
+                            // Mascotte au-dessus du podium
                             Image(mascotte.imageName)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 60)
-
-                        } else {
-                            Image(mascotte.imageName)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 80)
+                                .frame(width: 70, height: 70)
+                                .padding(.bottom, 4)
+                            
+                            // Podium
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(LinearGradient(
+                                    gradient: Gradient(colors: [couleurDégradéHaut(position), couleurDégradéBas(position)]),
+                                    startPoint: .top,
+                                    endPoint: .bottom)
+                                )
+                                .frame(width: largeurDuPodium(pour: position),
+                                       height: hauteurDuPodium(pour: position))
+                                .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 4)
+                                .overlay(
+                                    VStack(spacing: 4) {
+                                        Text("\(position)")
+                                            .font(.headline)
+                                            .bold()
+                                        Text("\(mascotte.score)")
+                                            .font(.custom("Quicksand", size: 16))
+                                            .bold()
+                                    }
+                                        .foregroundColor(.white)
+                                        .padding(.top, 8),
+                                    alignment: .top
+                                )
                         }
-                        
-
-                        Rectangle()
-                            .fill(couleurDuPodium(pour: mascotte.position))
-                            .frame(width: 80, height: hauteurDuPodium(pour: mascotte.position))
-                            .overlay(
-                                VStack(spacing: 4) {
-                                    Text("\(mascotte.position)")
-                                        .font(.title)
-                                        .bold()
-                                    Text("\(mascotte.score)")
-                                        .font(.custom("Quicksand", size: 18))
-                                        .bold()
-                                }
-                                .foregroundColor(.white)
-                            )
-                        
                     }
                 }
             }
+            .padding(.horizontal)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom) // tout collé en bas
         }
-    
-        .frame(maxWidth: .infinity)
-        .background(Color("CouleurAccent"))
-        
     }
     
-
-    private func couleurDuPodium(pour position: Int) -> Color {
+    private func couleurDégradéHaut(_ position: Int) -> Color {
         switch position {
-        case 1: return .yellow
-        case 2: return .gray
-        case 3: return .brown
+        case 1: return Color.yellow.opacity(0.9)
+        case 2: return Color.gray.opacity(0.8)
+        case 3: return Color.brown.opacity(0.8)
         default: return .clear
         }
     }
-
+    
+    private func couleurDégradéBas(_ position: Int) -> Color {
+        switch position {
+        case 1: return Color.orange
+        case 2: return Color.gray.opacity(0.5)
+        case 3: return Color(red: 139/255, green: 69/255, blue: 19/255)
+        default: return .clear
+        }
+    }
+    
     private func hauteurDuPodium(pour position: Int) -> CGFloat {
         switch position {
-        case 1: return 160
-        case 2: return 120
+        case 1: return 250
+        case 2: return 170
+        case 3: return 120
+        default: return 0
+        }
+    }
+    
+    private func largeurDuPodium(pour position: Int) -> CGFloat {
+        switch position {
+        case 1: return 100
+        case 2: return 100
         case 3: return 100
         default: return 0
         }
     }
 }
-
 #Preview {
-    PodiumView()
+    PodiumView(mascottes: [
+        Mascotte(imageName: "Planete1", score: 1900, position: 2),
+        Mascotte(imageName: "Lion1", score: 2200, position: 1),
+        Mascotte(imageName: "Cameleon1", score: 1789, position: 3)
+    ])
 }
