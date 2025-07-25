@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct RootZApp: App {
+    @State private var isLogged = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if isLogged {
+                MainTabView()
+            } else {
+                Loginview()
+                    .edgesIgnoringSafeArea(.all)
+            }
+            
         }
     }
 }

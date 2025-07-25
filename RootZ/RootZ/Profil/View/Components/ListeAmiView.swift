@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ListeAmisView: View {
-    @ObservedObject var viewModel: AmisViewModel
+    @State var viewModel: AmisViewModel
     @Environment(\.dismiss) var dismiss
     @State private var nomNouveauAmi: String = ""
     @State private var animate = false

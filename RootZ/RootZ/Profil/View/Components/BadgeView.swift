@@ -29,7 +29,7 @@ struct BadgeView: View {
                 .minimumScaleFactor(0.8)
         }
         .frame(minWidth: 140, maxWidth: .infinity, minHeight: 80)
-        .background(Color("CouleurAccent").opacity(0.1))
+        .background(Color("BackgroundDefault"))
         .cornerRadius(20)
     }
 }
