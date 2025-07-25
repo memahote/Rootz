@@ -42,8 +42,11 @@ struct OnboardingStepView: View {
                 
                 Spacer()
                 ContinueButton(title: "Continue") {
+                    viewModel.birthCity = viewModel.city
+                    viewModel.birthCountry = viewModel.country
                     viewModel.nextStep()
                 }
+
                 .padding(.bottom)
               
             }
@@ -154,9 +157,12 @@ struct OnboardingStepView3: View {
                 selectedOption = "Pas du tout"
             }
             Spacer()
+            
             ContinueButton(title: "Continue") {
+                viewModel.selectedCultureMatchLevel = selectedOption
                 viewModel.nextStep()
             }
+
             .padding(.bottom)
         }
     }
@@ -320,8 +326,10 @@ struct OnboardingStepView6: View {
         
             Spacer()
             ContinueButton(title: "Continue") {
+                viewModel.culturalExplorationPreference = selectedOption
                 viewModel.nextStep()
             }
+
         }
     }
 }

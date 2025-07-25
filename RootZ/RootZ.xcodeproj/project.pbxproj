@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F29483A22E33D1F200ABB32F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F20864192E324FC300288AEE /* Lottie */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		B8FD538D2E28F7A000536427 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -30,9 +34,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		F26673F12E2A302300D1EF6D /* Exceptions for "RootZ" folder in "RootZ" target */ = {
+		F294863C2E33DCA600ABB32F /* Exceptions for "RootZ" folder in "RootZ" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Animation/Json/Confetti.json,
+				Animation/Json/Reward.json,
 				Info.plist,
 			);
 			target = B8FD537E2E28F79D00536427 /* RootZ */;
@@ -43,7 +49,7 @@
 		B8FD53812E28F79D00536427 /* RootZ */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				F26673F12E2A302300D1EF6D /* Exceptions for "RootZ" folder in "RootZ" target */,
+				F294863C2E33DCA600ABB32F /* Exceptions for "RootZ" folder in "RootZ" target */,
 			);
 			path = RootZ;
 			sourceTree = "<group>";
@@ -61,13 +67,6 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B8FD537C2E28F79D00536427 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B8FD53892E28F7A000536427 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -82,6 +81,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F2C580682E33CF3300BB5C4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F29483A22E33D1F200ABB32F /* Lottie in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -91,6 +98,7 @@
 				B8FD53812E28F79D00536427 /* RootZ */,
 				B8FD538F2E28F7A000536427 /* RootZTests */,
 				B8FD53992E28F7A000536427 /* RootZUITests */,
+				F2C580672E33CE6700BB5C4D /* Frameworks */,
 				B8FD53802E28F79D00536427 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,6 +113,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		F2C580672E33CE6700BB5C4D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -113,8 +128,8 @@
 			buildConfigurationList = B8FD53A02E28F7A000536427 /* Build configuration list for PBXNativeTarget "RootZ" */;
 			buildPhases = (
 				B8FD537B2E28F79D00536427 /* Sources */,
-				B8FD537C2E28F79D00536427 /* Frameworks */,
-				B8FD537D2E28F79D00536427 /* Resources */,
+				F2C580682E33CF3300BB5C4D /* Frameworks */,
+				F294863B2E33DCA600ABB32F /* Resources */,
 			);
 			buildRules = (
 			);
@@ -125,6 +140,8 @@
 			);
 			name = RootZ;
 			packageProductDependencies = (
+				F20864192E324FC300288AEE /* Lottie */,
+				F208641B2E324FC300288AEE /* Lottie-Dynamic */,
 			);
 			productName = RootZ;
 			productReference = B8FD537F2E28F79D00536427 /* RootZ.app */;
@@ -208,6 +225,9 @@
 			);
 			mainGroup = B8FD53762E28F79D00536427;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F20864182E324FC300288AEE /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B8FD53802E28F79D00536427 /* Products */;
 			projectDirPath = "";
@@ -221,13 +241,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B8FD537D2E28F79D00536427 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B8FD538A2E28F7A000536427 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -236,6 +249,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B8FD53942E28F7A000536427 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F294863B2E33DCA600ABB32F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -411,7 +431,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/RootZ/Info.plist";
+				INFOPLIST_FILE = RootZ/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -440,7 +460,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/RootZ/Info.plist";
+				INFOPLIST_FILE = RootZ/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -567,6 +587,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F20864182E324FC300288AEE /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F20864192E324FC300288AEE /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F20864182E324FC300288AEE /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		F208641B2E324FC300288AEE /* Lottie-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F20864182E324FC300288AEE /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = "Lottie-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B8FD53772E28F79D00536427 /* Project object */;
 }

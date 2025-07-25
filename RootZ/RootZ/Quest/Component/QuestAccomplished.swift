@@ -23,7 +23,7 @@ struct QuestAccomplished: View {
         .frame(width: 331, height: 108)
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color.fondAfrique).ignoresSafeArea()
+                //.fill(Color.fondAfrique).ignoresSafeArea()
                 
         ).overlay(
             RoundedRectangle(cornerRadius: 10)
