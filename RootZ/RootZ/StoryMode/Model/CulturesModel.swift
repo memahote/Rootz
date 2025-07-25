@@ -11,6 +11,7 @@ struct CulturesModel : Identifiable {
     let id = UUID()
     let name : String
     let flag : String
+    let mascott : String
     let chapters : [Chapters]
     let backgroundColor : String
     let buttonColor : String

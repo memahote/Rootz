@@ -26,7 +26,7 @@ struct ProfilActionsView: View {
                     .foregroundColor(.white)
                     .padding(.vertical, 10)
                     .frame(maxWidth: .infinity)
-                    .background(Color("ButtonDefault"))
+                    .background(Color("BackgroundDefault"))
                     .cornerRadius(12)
                 }
 
