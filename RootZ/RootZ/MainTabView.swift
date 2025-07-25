@@ -19,6 +19,7 @@ struct MainTabView: View {
                 Label("Histoire", systemImage: "book.fill")
             }
         }
+        .ignoresSafeArea()
     }
 }
 
