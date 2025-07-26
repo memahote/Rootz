@@ -15,6 +15,7 @@ struct StoryModeModulePath: View {
             VStack(spacing: 80) {
             
                 ForEach(Array(viewModel.storyModeViewModel.currentChapter.modules.enumerated()), id: \.offset) { index, module in
+                    
                     if (index + 1) % 6 == 0 {
                         ZStack {
                             
