@@ -7,19 +7,17 @@
 
 import SwiftUI
 
-//Importer viewodel pour recup les couleur lier au culture et les attribue au module + les image/icon qui represente chaque module
-
-
 struct StoryModeModulePath: View {
     @Bindable var viewModel: AppViewModel
     
     var body: some View {
         ScrollView {
             VStack(spacing: 80) {
+            
                 ForEach(Array(viewModel.storyModeViewModel.currentChapter.modules.enumerated()), id: \.offset) { index, module in
                     if (index + 1) % 6 == 0 {
                         ZStack {
-
+                            
                             StorymodeButton(moduleColor: module.color, imageName: module.icon)
                                 .offset(x: sinOffset(for: index))
                             Image(viewModel.selectedCulture.mascott)
@@ -53,7 +51,7 @@ struct StoryModeModulePath: View {
         }
     }
     
-    // Fonction pour appliquer un décalage sinusoïdal
+  
     func sinOffset(for index: Int) -> CGFloat {
         let amplitude: CGFloat = 100
         return CGFloat(sin(Double(index) * .pi / 4)) * amplitude
