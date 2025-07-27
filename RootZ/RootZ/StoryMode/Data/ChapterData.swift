@@ -28,7 +28,7 @@ struct ChapterData {
                             title: "Introduction",
                             content: "Le drapeau est un symbole fort de l'identité culturelle. Il reflète l'histoire, les valeurs et les espoirs d'un peuple.",
                             mascott: "Lion1",
-                            image: "drapeau_intro"
+                            image: "Berber_flag"
                         ),
                         ModulePage(
                             title: "Les Couleurs",

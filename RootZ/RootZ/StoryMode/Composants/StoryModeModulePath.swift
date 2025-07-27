@@ -20,7 +20,7 @@ struct StoryModeModulePath: View {
                     if (index + 1) % 6 == 0 {
                         ZStack {
                             
-                            StorymodeButton(module: module)
+                            StorymodeButton(module: module, culture: viewModel.selectedCulture)
                                 .offset(x: sinOffset(for: index))
                             Image(viewModel.selectedCulture.mascott)
                                 .resizable()
@@ -37,12 +37,12 @@ struct StoryModeModulePath: View {
                                 .frame(width: 100)
                                 .offset(x: sinOffset(for: index) * -1)
                             
-                            StorymodeButton(module: module)
+                            StorymodeButton(module: module, culture: viewModel.selectedCulture)
                                 .offset(x: sinOffset(for: index))
                         }
                     } else {
                     
-                        StorymodeButton(module: module)
+                        StorymodeButton(module: module, culture: viewModel.selectedCulture)
                             .offset(x: sinOffset(for: index))
                     }
                 }

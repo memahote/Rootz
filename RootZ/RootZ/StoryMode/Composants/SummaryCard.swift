@@ -45,8 +45,6 @@ struct SummaryCard: View {
                 
             }
             
-            //Transformer ca en bouton qui change le currentchapter et update le storymode
-            //quand progress == 1 la partie du haut se raccourci
             Button {
                 viewModel.storyModeViewModel.currentChapterIndex = index - 1
                 dismiss()

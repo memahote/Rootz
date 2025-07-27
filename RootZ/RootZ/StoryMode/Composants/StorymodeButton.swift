@@ -11,6 +11,7 @@ struct StorymodeButton: View {
     @State var showPopover : Bool = false
     @State var showModuleView : Bool = false
     let module: Module
+    let culture : CulturesModel
     
     var body: some View {
         Button(action: {
@@ -47,7 +48,7 @@ struct StorymodeButton: View {
                     .foregroundColor(.green)
                 
                 Button(action: {
-                   showModuleView = true
+                    showModuleView = true
                 }) {
                     Text("Commencer")
                         .fontWeight(.semibold)
@@ -58,7 +59,7 @@ struct StorymodeButton: View {
                         .cornerRadius(12)
                 }
                 .fullScreenCover(isPresented: $showModuleView) {
-                    ModuleView(module: module, showModuleView: $showModuleView)
+                    ModuleView(module: module, culture: culture, showModuleView: $showModuleView)
                 }
             }
             .presentationCompactAdaptation(.popover)
@@ -89,6 +90,21 @@ struct StorymodeButton: View {
                 mascott: "Lion2",
                 image: "drapeau_couleurs"
             )]
-    
-    ))
+        
+    ),
+                    culture:  CulturesModel(
+                        name: "Berbère",
+                        flag: "Berber_flag",
+                        mascott: "Lion1",
+                        chapters: ChapterData.berbereChapters,
+                        backgroundColor: "FondAfrique",
+                        buttonColor: "ButtonAfrique",
+                        accentColor: "CouleurAccent",
+                        accent2Color: "CouleurAccent2",
+                        isUnlock: true,
+                        progressbar: 0.6,
+                        associatedCountries: ["maroc", "algérie", "tunisie"],
+                        associatedRegions: ["afrique"],
+                        keywords: ["berbere", "tamazight","arabe","marocain","algérien"]
+                    ))
 }
