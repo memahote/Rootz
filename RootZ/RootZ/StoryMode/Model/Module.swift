@@ -13,4 +13,5 @@ struct Module : Identifiable {
     let icon : String
     let isUnlocked : Bool
     let color : String
+    let modulesPages : [ModulePage]
 }

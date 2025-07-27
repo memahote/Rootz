@@ -22,14 +22,7 @@ class AppViewModel {
     
     func updateCulture(to culture: CulturesModel) {
         self.selectedCulture = culture
-        print("Culture : \(culture)")
         self.storyModeViewModel = StoryModeViewModel(chapters: culture.chapters, currentChapterIndex: 0, currentModule: 0)
-        
-        
-        for (i, m) in storyModeViewModel.currentChapter.modules.enumerated() {
-                print("Module \(i): color = \(m.color)")
-            }
-        print("je suis la")
     }
 
 }

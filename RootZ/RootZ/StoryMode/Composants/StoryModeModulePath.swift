@@ -16,10 +16,11 @@ struct StoryModeModulePath: View {
             
                 ForEach(Array(viewModel.storyModeViewModel.currentChapter.modules.enumerated()), id: \.offset) { index, module in
                     
+    
                     if (index + 1) % 6 == 0 {
                         ZStack {
                             
-                            StorymodeButton(moduleColor: module.color, imageName: module.icon)
+                            StorymodeButton(module: module)
                                 .offset(x: sinOffset(for: index))
                             Image(viewModel.selectedCulture.mascott)
                                 .resizable()
@@ -36,12 +37,12 @@ struct StoryModeModulePath: View {
                                 .frame(width: 100)
                                 .offset(x: sinOffset(for: index) * -1)
                             
-                            StorymodeButton(moduleColor: module.color, imageName: module.icon)
+                            StorymodeButton(module: module)
                                 .offset(x: sinOffset(for: index))
                         }
                     } else {
                     
-                        StorymodeButton(moduleColor: module.color, imageName: module.icon)
+                        StorymodeButton(module: module)
                             .offset(x: sinOffset(for: index))
                     }
                 }
