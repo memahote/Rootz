@@ -31,6 +31,6 @@ class RankingWordlist: ObservableObject {
     @Published var podiumAmi: [Mascotte] = [
         Mascotte(imageName: "Planete1", score: 1900, position: 2),
         Mascotte(imageName: "Lion1", score: 2200, position: 1),
-        Mascotte(imageName: "Cameleon1", score: 1789, position: 3)
+        Mascotte(imageName: "Cameleon1", score: 1890, position: 3)
     ]
 }
