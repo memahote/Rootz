@@ -27,21 +27,6 @@ struct CultureData {
     
     static let allCultures : [CulturesModel] = [
         CulturesModel(
-            name: "Berbère",
-            flag: "Berber_flag",
-            mascott: "Lion1",
-            chapters: ChapterData.berbereChapters,
-            backgroundColor: "FondAfrique",
-            buttonColor: "ButtonAfrique",
-            accentColor: "CouleurAccent",
-            accent2Color: "CouleurAccent2",
-            isUnlock: true,
-            progressbar: 0.6,
-            associatedCountries: ["maroc", "algérie", "tunisie"],
-            associatedRegions: ["afrique"],
-            keywords: ["berbere", "tamazight"]
-        ),
-        CulturesModel(
 
                     name: "Berbère",
                     flag: "Berber_flag",
@@ -66,7 +51,7 @@ struct CultureData {
                     buttonColor: "ButtonBlue",
                     accentColor: "BackgroundBlue",
                     accent2Color: "CouleurAccent2",
-                    isUnlock: false,
+                    isUnlock: true,
                     progressbar: 0.0,
                     associatedCountries: ["réunion", "la réunion", "île de la Réunion",],
                     associatedRegions: ["afrique","Océan Indien"],
