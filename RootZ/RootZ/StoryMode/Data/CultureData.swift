@@ -45,8 +45,8 @@ struct CultureData {
         CulturesModel(
                     name: "Réunion",
                     flag: "Reunion_flag",
-                    mascott: "Lion1",
-                    chapters: ChapterData.berbereChapters,
+                    mascott: "Cameleon1",
+                    chapters: ChapterData.reunionChapters,
                     backgroundColor: "BubbleBackground",
                     buttonColor: "ButtonBlue",
                     accentColor: "BackgroundBlue",

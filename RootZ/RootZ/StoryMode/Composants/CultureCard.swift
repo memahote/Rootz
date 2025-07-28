@@ -8,15 +8,11 @@
 import SwiftUI
 
 struct CultureCard: View {
-    @Environment(\.dismiss) private var dismiss
-    @Bindable var viewModel: AppViewModel
-    let culture : CulturesModel
+    let culture: CulturesModel
+    let onSelect: () -> Void
     
     var body: some View {
-        Button {
-            viewModel.updateCulture(to: culture)
-            dismiss()
-        } label: {
+        Button(action: onSelect) {
             VStack {
                 Image(culture.flag)
                     .resizable()
@@ -28,33 +24,22 @@ struct CultureCard: View {
                     .font(.custom("Quicksand", size: 18))
                     .foregroundStyle(.black)
                 
-                culture.isUnlock ?Text("\(Int(culture.progressbar * 100))%").font(.custom("Quicksand", size: 12)) .foregroundStyle(.black) : Text("")
-                
+                if culture.isUnlock {
+                    Text("\(Int(culture.progressbar * 100))%")
+                        .font(.custom("Quicksand", size: 12))
+                        .foregroundStyle(.black)
+                }
             }
         }
-        
-        
-        
     }
 }
 
+
 #Preview {
-    CultureCard(viewModel: AppViewModel(),
-        culture: CulturesModel(
-            name: "Berbère",
-            flag: "Berber_flag",
-            mascott: "Lion1",
-            chapters: [],
-            backgroundColor: "FondAfrique",
-            buttonColor: "ButtonAfrique",
-            accentColor: "CouleurAccent",
-            accent2Color: "CouleurAccent2",
-            isUnlock: true,
-            progressbar: 0.6,
-            associatedCountries: ["maroc", "algérie", "tunisie"],
-            associatedRegions: ["afrique"],
-            keywords: ["berbere", "tamazight"]
-        )
+    CultureCard(
+        culture: CultureData.defaultCulture,
+        onSelect: {}
     )
 }
+
 

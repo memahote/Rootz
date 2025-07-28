@@ -17,12 +17,12 @@ class AppViewModel {
     init() {
         let defaultCulture = CultureData.defaultCulture
         self.selectedCulture = defaultCulture
-        self.storyModeViewModel = StoryModeViewModel(chapters: defaultCulture.chapters, currentChapterIndex: 0, currentModule: 0)
+        self.storyModeViewModel = StoryModeViewModel(chapters: defaultCulture.chapters)
     }
     
     func updateCulture(to culture: CulturesModel) {
         self.selectedCulture = culture
-        self.storyModeViewModel = StoryModeViewModel(chapters: culture.chapters, currentChapterIndex: 0, currentModule: 0)
+        self.storyModeViewModel = StoryModeViewModel(chapters: culture.chapters)
     }
 
 }
