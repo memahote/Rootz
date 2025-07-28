@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProfilActionView: View {
+    @Bindable var AppViewModel: AppViewModel
     let onPartagerProfil: () -> Void
     @Binding var showAjouterAmi: Bool
     @Binding var showListeAmis: Bool
@@ -27,7 +28,7 @@ struct ProfilActionView: View {
                     .foregroundColor(.white)
                     .padding(.vertical, 10)
                     .frame(maxWidth: .infinity)
-                    .background(Color("ButtonDefault"))
+                    .background(Color(AppViewModel.selectedCulture.buttonColor))
                     .cornerRadius(12)
                 }
                 

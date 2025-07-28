@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PrincipalView: View {
     @State private var selectedType: ClassementType = .monde
-    @StateObject private var viewModel = RankingWordlist()
+    @EnvironmentObject  var viewModel: RankingWordlist
     @State private var selectedTab: Tab = .ranking  // Onglet actif
 
     var body: some View {
@@ -49,4 +49,5 @@ struct PrincipalView: View {
 }
 #Preview {
     PrincipalView()
+        .environmentObject(RankingWordlist())
 }

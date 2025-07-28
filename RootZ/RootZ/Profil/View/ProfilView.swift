@@ -8,46 +8,47 @@
 import SwiftUI
 
 struct ProfilView: View {
-    @StateObject private var viewModel = ProfilViewModel()
-    @State private var amisViewModel = AmisViewModel()
-    let appViewModel: AppViewModel
-
+    @EnvironmentObject  var profilViewModel:  ProfilViewModel
+    @EnvironmentObject  var amisViewModel: AmisViewModel
+    @Bindable   var appViewModel: AppViewModel
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             ScrollView {
                 VStack {
                     HeaderView()
-
+                    
                     VStack(alignment: .leading, spacing: 16) {
                         // Nom + origines
                         InformationView(
-                            name: viewModel.user.name,
-                            origins: viewModel.user.origins
+                            name: profilViewModel.user.name,
+                            origins: profilViewModel.user.origins
                         )
-
+                        
                         // Boutons partager, ajouter ami, liste amis
                         ProfilActionView(
-                            onPartagerProfil: { },
-                            showAjouterAmi: $viewModel.showAjouterAmi,
-                            showListeAmis: $viewModel.showListeAmis
+                            AppViewModel: appViewModel, onPartagerProfil: { },
+                            showAjouterAmi: $profilViewModel.showAjouterAmi,
+                            showListeAmis: $profilViewModel.showListeAmis
                         )
                         // Badges activité et XP
                         HStack(spacing: 16) {
-                            BadgeView(emoji: "🔥", value: "\(viewModel.nbJoursActivite)", label: "Jours d’activité")
-                            BadgeView(emoji: "⚡️", value: "\(viewModel.nbXP)", label: "XP gagnés")
+                            BadgeView(emoji: "🔥", value: "\(profilViewModel.nbJoursActivite)", label: "Jours d’activité")
+                            BadgeView(emoji: "⚡️", value: "\(profilViewModel.nbXP)", label: "XP gagnés")
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.horizontal)
-
+                        
                         // Récompenses
                         RewardView()
                             .padding(.vertical)
-
+                        
                         // Bouton personnalisation
-                        ButtonCustomiserProfil {
-                            viewModel.showPersonnalisation = true
-                        }
+                        ButtonCustomiserProfil(onCustomiserProfil: {
+                            profilViewModel.showPersonnalisation = true
 
+                        }, appViewModel: appViewModel)
+                        
                         Spacer().frame(height: 40)
                     }
                     .frame(maxWidth: .infinity, alignment: .topLeading)
@@ -56,29 +57,25 @@ struct ProfilView: View {
                 }
                 .padding(.bottom, 80) // pour ne pas que le scroll cache sous la tab bar
             }
-
-            // Tab bar personnalisée
-            CustomTabBar(
-                selectedTab: $viewModel.selectedTab,
-                tabColor: appViewModel.selectedCulture.buttonColor,
-                tabAccentColor: appViewModel.selectedCulture.backgroundColor
-            )
+            
         }
         .background(
             Color(appViewModel.selectedCulture.backgroundColor)
                 .ignoresSafeArea()
         )
-
+        
         // Feuilles modales
-        .sheet(isPresented: $viewModel.showListeAmis) {
+        .sheet(isPresented: $profilViewModel.showListeAmis) {
             ListeAmisView(viewModel: amisViewModel)
         }
         
-        .sheet(isPresented: $viewModel.showPersonnalisation) {
+        .sheet(isPresented: $profilViewModel.showPersonnalisation) {
             Text("Personnalisation ici")
         }
     }
 }
 #Preview {
-    ProfilView(appViewModel: AppViewModel()) // ✅ Instance ici
+    ProfilView(appViewModel: AppViewModel())
+        .environmentObject(ProfilViewModel())
+        .environmentObject(AmisViewModel())
 }

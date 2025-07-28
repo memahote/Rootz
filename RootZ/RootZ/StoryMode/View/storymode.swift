@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StoryMode: View {
+struct storymode: View {
     @Bindable var appViewModel: AppViewModel
     
     var body: some View {
@@ -26,6 +26,6 @@ struct StoryMode: View {
 
 #Preview {
     NavigationStack{
-        StoryMode(appViewModel: (AppViewModel()))
+        storymode(appViewModel: (AppViewModel()))
     }
 }

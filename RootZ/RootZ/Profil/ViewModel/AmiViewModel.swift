@@ -8,7 +8,7 @@
 import Foundation
 
 @Observable
-class AmisViewModel {
+class AmisViewModel : ObservableObject {
      var amis: [String] = []
 
     func ajouterAmi(nom: String) {

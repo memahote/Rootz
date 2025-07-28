@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ButtonCustomiserProfil: View {
     let onCustomiserProfil: () -> Void
+    @Bindable var appViewModel: AppViewModel
 
     var body: some View {
         Button(action: {
@@ -21,7 +22,7 @@ struct ButtonCustomiserProfil: View {
             .foregroundColor(.white)
             .padding(.vertical, 10)
             .frame(maxWidth: .infinity)
-            .background(Color("ButtonDefault"))
+            .background(Color(appViewModel.selectedCulture.buttonColor))
             .cornerRadius(12)
         }
     }
