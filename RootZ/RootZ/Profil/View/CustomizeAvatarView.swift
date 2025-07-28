@@ -8,62 +8,68 @@
 import SwiftUI
 
 struct CustomizeAvatarView: View {
+    @Bindable var appViewModel: AppViewModel
     @State var selectedCategory: ECosmeticCategory = .tete
+    @State private var selectedCosmeticID: UUID? = nil
     
     var body: some View {
-        //        ZStack(alignment: .top){
-        
-        //            MARK: - BANNER
-        HStack(alignment: .center){
-            Spacer()
-            Image("Lion1")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 200, height: 200)
-                .shadow(radius: 10)
-            Spacer()
-        }.background(
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.fondAfrique).ignoresSafeArea()
-                .frame(width: 402, height: 400)
-        )
-        
-        Spacer()
-        
-        HStack(spacing: 94){
-            ForEach(ECosmeticCategory.allCases, id: \.self){ category in
-                Button(category.rawValue){
-                    selectedCategory = category
-                }.background(RoundedRectangle(cornerRadius: 10)
-                    .fill(selectedCategory == category ? Color.buttonAfrique : Color.buttonValidate)
-                    .frame(width: 112, height: 32)
-                ).foregroundStyle(.white)
-            }
-        }.padding(.top, 130)
-        
             
-            //                    MARK: - FIRST BUTTON
-//            Button(action: {
-//                isSelected = 1
-//            }, label: {
-//                Text("Tête")
-//                    .foregroundStyle(.white)
-//            }).background(RoundedRectangle(cornerRadius: 10)
-//                .fill(isSelected == 1 ? Color.buttonAfrique : Color.buttonValidate)
-//                .frame(width: 112, height: 32)
-//            )
+//            MARK: - BANNER
+        VStack{
+                HStack(alignment: .center){
+                    Spacer()
+                    Image("Lion1")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 200)
+                        .shadow(radius: 10)
+                    Spacer()
+                }
+        }.padding()
+        .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color(appViewModel.selectedCulture.accentColor))
+                    .ignoresSafeArea()
+                    .frame(height: 400)
+            )
+//        MARK: - FIN BANNER
+        
+//       MARK: - DÉBUT CATEGORY
+        ZStack{
+            Color.fondAfrique.ignoresSafeArea()
             
-            //        MARK: - GRID (COSMETICS)
+            HStack(spacing: 16){
+                ForEach(ECosmeticCategory.allCases, id: \.self){ category in
+                    Button(category.rawValue){
+                        selectedCategory = category
+                        
+                    }.frame(width: 112, height: 32)
+                        .background(RoundedRectangle(cornerRadius: 10)
+                            .fill(selectedCategory == category ? Color(appViewModel.selectedCulture.buttonColor) : Color.buttonValidate)
+                                    
+                        ).foregroundStyle(.white)
+                }
+            }.padding(.vertical, 4)
+            
+        }.frame(height: 60).padding(.top, 65)
+            .frame(maxWidth: .infinity)
+        
+//            MARK: - FIN CATEGORY
+        
+//        MARK: - GRID (COSMETICS)
             ScrollView{
-                CosmeticGrid(category: selectedCategory, cosmetics: cosmetics)
-            }
-            
-            //        }
+                CosmeticGrid(
+                    category: selectedCategory,
+                    cosmetics: cosmetics,
+                    selectedCosmeticID: $selectedCosmeticID 
+                )
+                    .padding(.bottom, 100)
+            }.padding(.top, 20)
+//            MARK: - FIN GRID
         }
-    }
-
+}
 
 
 #Preview {
-    CustomizeAvatarView()
+    CustomizeAvatarView(appViewModel: (AppViewModel()))
 }

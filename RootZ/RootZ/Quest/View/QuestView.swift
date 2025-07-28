@@ -8,36 +8,41 @@
 import SwiftUI
 
 struct QuestView: View {
+    @Bindable var appViewModel: AppViewModel
+
     var body: some View {
+        
         ZStack{
-            //Color.fondAfrique.ignoresSafeArea()
+            Color(appViewModel.selectedCulture.backgroundColor).ignoresSafeArea()
             
-            VStack {
+            ScrollView {
                 
 //               MARK: - FIRST PART
                 VStack{
+
                     HStack{
                         
 //                        MARK: - MONTH
-                        MonthOfQuests()
+                        MonthOfQuests(appViewModel: (AppViewModel())).background(Color(appViewModel.selectedCulture.accentColor))
                         
                         Spacer()
                         
 //                        MARK: - CIRCLE COSMETIC REWARD
-                        CircleCosmeticReward()
+                        CircleCosmeticReward(appViewModel: (AppViewModel()))
                     }.padding(.horizontal)
 //                MARK: - TIME LEFT
                     
                     TimeLeftQuest()
                     
 //                        MARK: - QUEST ACCOMPLISHED
-                    QuestAccomplished()
+                    QuestAccomplished(appViewModel: (AppViewModel()))
                     
                 }.background(
                     RoundedRectangle(cornerRadius: 10)
-                        //.fill(Color.couleurAccent).ignoresSafeArea()
+                        .fill(Color(appViewModel.selectedCulture.accentColor)).ignoresSafeArea()
                         .frame(width: 402, height: 330)
                 )
+//                MARK: - END FIRST PART
                 
 //                MARK: - SECOND PART
                 VStack{
@@ -50,14 +55,18 @@ struct QuestView: View {
                     
 //                    MARK: - LIST OF QUESTS
                     ScrollView{
-                        ListQuests(quests: quests)
-                    }
+                        ListQuests(appViewModel: (AppViewModel()), quests: quests)
+                    }.background(Color(appViewModel.selectedCulture.accentColor))
                 }
+                .padding(.bottom, 150)
+//                MARK: - END SECOND PART
             }
         }
     }
 }
 
 #Preview {
-    QuestView()
+    NavigationStack{
+        QuestView(appViewModel: (AppViewModel()))
+    }
 }

@@ -10,20 +10,26 @@ import SwiftUI
 struct CosmeticGrid: View {
     let category: ECosmeticCategory
     let cosmetics: [Cosmetic]
+    @Binding var selectedCosmeticID: UUID?
+    
     var body: some View {
-        let filtered = cosmetics.filter { $0.category == category }
+        let filtered = cosmetics.filter { $0.category == category }.sorted{
+            $0.isUnlocked && !$1.isUnlocked
+        }
         
         LazyVGrid(
             columns: [
-                GridItem(.fixed(120)),
-                GridItem(.fixed(120)),
-                GridItem(.fixed(120))
+                GridItem(.fixed(116)),
+                GridItem(.fixed(116)),
+                GridItem(.fixed(116))
             ],
-            alignment: .leading,
-            spacing: 12
+            alignment: .center,
+            spacing: 28
         ) {
             ForEach(filtered) { cosmetic in
-                CosmeticCard()
+                CosmeticCard(appViewModel: (AppViewModel()), cosmetic: cosmetic,
+                             onSelect: {selectedCosmeticID = cosmetic.id}, isSelected: cosmetic.id == selectedCosmeticID)
+                
             }
         }.padding()
     }
@@ -33,5 +39,9 @@ struct CosmeticGrid: View {
 
 
 #Preview {
-    CosmeticGrid(category: .haut, cosmetics: cosmetics)
+    CosmeticGrid(
+        category: .tete,
+        cosmetics: cosmetics,
+        selectedCosmeticID: .constant(nil)
+    )
 }

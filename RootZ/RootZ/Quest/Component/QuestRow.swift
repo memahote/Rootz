@@ -19,7 +19,3 @@ struct QuestRow: View {
             .padding(.bottom)
     }
 }
-
-#Preview {
-//    QuestRow(quest: quest)
-}

@@ -8,18 +8,52 @@
 import SwiftUI
 
 struct CosmeticCard: View {
+    @Bindable var appViewModel: AppViewModel
+    
+    var cosmetic: Cosmetic
+    var onSelect: () -> Void
+    var isSelected = false
+    @State var showLockedAlert = false
     var body: some View {
         
         // Si le booléen du cosmetic est vrai affiche la card sans cadenas
-        // Si le booléen du cosmetic est faux affiche la card avec cadenas
+        Button(action: {
+            if cosmetic.isUnlocked {
+                onSelect()
+                print("Cosmétique sélectionné : \(cosmetic.name)")
+            } else {
+                showLockedAlert = true
+            }
+        }) {
+            ZStack{
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(cosmetic.isUnlocked ? (isSelected ? Color(appViewModel.selectedCulture.buttonColor) : Color(appViewModel.selectedCulture.backgroundColor)) : Color.gray.opacity(0.4))
+                    .frame(width: 116, height: 116)
+                
+                Image(cosmetic.image)
+                
+                if !cosmetic.isUnlocked{
+                    Image("cadenas1")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30, height: 30)
+                        .offset(y: -60)
+                }
+            }
+        }.alert("Cosmétique verrouillé", isPresented: $showLockedAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("Ce cosmétique n’est pas encore débloqué.")
+        }
         
-        RoundedRectangle(cornerRadius: 10)
-            .fill(Color.blue)
-            .frame(width: 100, height: 100)
-            .padding()
     }
+    
 }
-
 #Preview {
-    CosmeticCard()
+    CosmeticCard(
+        appViewModel: (AppViewModel()),
+        cosmetic: cosmetics[0],
+        onSelect: {},
+        isSelected: true
+    )
 }
