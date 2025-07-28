@@ -27,7 +27,7 @@ struct CosmeticCard: View {
         }) {
             ZStack{
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(cosmetic.isUnlocked ? (isSelected ? Color(appViewModel.selectedCulture.buttonColor) : Color(appViewModel.selectedCulture.backgroundColor)) : Color.gray.opacity(0.4))
+                    .fill(cosmetic.isUnlocked ? (isSelected ? Color(appViewModel.selectedCulture.buttonColor) : Color(appViewModel.selectedCulture.accentColor).opacity(0.5)) : Color.gray.opacity(0.5))
                     .frame(width: 116, height: 116)
                 
                 Image(cosmetic.image)
