@@ -29,7 +29,7 @@ struct LottieView: UIViewRepresentable {
 
 struct LottieBootCamp: View {
     var body: some View {
-        LottieView(name: "Confetti") // nom de ton JSON
+        LottieView(name: "Confetti")
             .frame(width: 400, height: 400)
     }
 }

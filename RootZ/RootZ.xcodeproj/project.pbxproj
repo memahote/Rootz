@@ -37,8 +37,6 @@
 		F294863C2E33DCA600ABB32F /* Exceptions for "RootZ" folder in "RootZ" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Animation/Json/Confetti.json,
-				Animation/Json/Reward.json,
 				Info.plist,
 			);
 			target = B8FD537E2E28F79D00536427 /* RootZ */;
