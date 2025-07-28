@@ -16,31 +16,32 @@ struct MainTabView: View {
     @State private var selectedTab: Tab = .story
 
     var body: some View {
-        ZStack {
-            Group {
-                switch selectedTab {
-                case .story:
-                    NavigationStack {
-                        storymode(appViewModel: viewModel)
-                    }
-                case .quest:
-                    NavigationStack {
-                        QuestView()
-                    }
-                case .ranking:
-                    NavigationStack {
-                        PrincipalView()
-                    }
-                case .profil:
-                    NavigationStack {
-                     ProfilView()
-                    }
+        ZStack(alignment: .bottom) {
+            
+            switch selectedTab {
+            case .story:
+                NavigationStack {
+                    StoryMode(appViewModel: viewModel)
+                }
+            case .quest:
+                NavigationStack {
+                    QuestView()
+                }
+            case .ranking:
+                NavigationStack {
+                    PrincipalView()
+                }
+            case .profil:
+                NavigationStack {
+                    ProfilView(appViewModel: viewModel)
                 }
             }
-            
 
-            CustomTabBar(selectedTab: $selectedTab, tabColor: viewModel.selectedCulture.buttonColor, tabAccentColor: viewModel.selectedCulture.backgroundColor)
-           
+            CustomTabBar(
+                selectedTab: $selectedTab,
+                tabColor: viewModel.selectedCulture.buttonColor,
+                tabAccentColor: viewModel.selectedCulture.backgroundColor
+            )
         }
     }
 }
@@ -48,6 +49,3 @@ struct MainTabView: View {
 #Preview {
     MainTabView()
 }
-
-
-

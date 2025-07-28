@@ -64,7 +64,7 @@ struct RewardView: View {
         .background(Color("BackgroundDefault"))
         .cornerRadius(10)
         .scrollIndicators(.hidden)
-        .navigationTitle("Mes Badges")
+        .navigationTitle("")
         .sheet(isPresented: $showAllBadges) {
             AllBadgesView(badges: viewModel.badges)
         }
