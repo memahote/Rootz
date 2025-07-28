@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum ModuleType: String {
+    case content
+    case quiz
+}
+
 struct Module : Identifiable {
     let id = UUID()
     let title : String
@@ -14,4 +19,6 @@ struct Module : Identifiable {
     let isUnlocked : Bool
     let color : String
     let modulesPages : [ModulePage]
+    let type: ModuleType
+    let quiz: [QuizQuestion]?
 }

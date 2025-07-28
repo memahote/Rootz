@@ -13,7 +13,20 @@ struct ModuleView: View {
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
-        VStack(spacing: 20) {
+        VStack() {
+            HStack{
+                Spacer()
+                
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "xmark")
+                        .foregroundStyle(.redButton)
+                        .font(.title)
+                }
+                .padding(.trailing, 25)
+
+            }
             VStack {
                 ProgressView(value: viewModel.progress)
                     .progressViewStyle(LinearProgressViewStyle(tint: Color(culture.accent2Color)))
@@ -41,6 +54,8 @@ struct ModuleView: View {
                     }
 
                     Spacer()
+                        .padding(.top)
+                    
 
                     MascottChatLeft(
                         mascott: viewModel.currentPage.mascott,
@@ -49,9 +64,10 @@ struct ModuleView: View {
                     )
                 }
                 .padding()
+                
             }
+            .scrollIndicators(.hidden)
 
-            // Next button
             Button(action: {
                 if viewModel.isLastPage {
                     dismiss()
@@ -109,7 +125,7 @@ struct ModuleView: View {
                         mascott: "Lion1",
                         image: "Berber_flag"
                     )
-                ]
+                ], type: .content, quiz: nil
             )
         )
     )

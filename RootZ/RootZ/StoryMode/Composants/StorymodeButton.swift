@@ -27,7 +27,7 @@ struct StorymodeButton: View {
                         Circle().stroke(Color.white, lineWidth: 2)
                     )
                 
-                Image(systemName: module.icon)
+                Image(systemName: module.type == .quiz ? "questionmark.circle.fill" : module.icon)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 30, height: 30)
@@ -59,9 +59,14 @@ struct StorymodeButton: View {
                         .cornerRadius(12)
                 }
                 .fullScreenCover(isPresented: $showModuleView) {
-                    ModuleView(culture: culture)
-                        .environmentObject(ModuleViewModel(module: module))
+                    if module.type == .quiz {
+                        QuizQuestionView(culture: culture)
+                            .environmentObject(QuizViewModel(questions: module.quiz ?? []))
+                    } else {
+                        ModuleView(culture: culture)
+                            .environmentObject(ModuleViewModel(module: module))
                     }
+                }
                 
             }
             .presentationCompactAdaptation(.popover)
@@ -91,7 +96,7 @@ struct StorymodeButton: View {
                 content: "Chaque couleur du drapeau a une signification. Le rouge symbolise la force, le vert l'espoir, et le jaune la richesse de la terre.",
                 mascott: "Lion2",
                 image: "drapeau_couleurs"
-            )]
+            )], type: .content, quiz: nil
         
     ),
                     culture:  CulturesModel(

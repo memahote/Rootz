@@ -26,7 +26,7 @@ struct ChapterData {
                     modulesPages: [
                         ModulePage(
                             title: "Introduction",
-                            content: "Le drapeau est un symbole fort de l'identité culturelle. Il reflète l'histoire, les valeurs et les espoirs d'un peuple.",
+                            content: "Ce drapeau ne représente pas un pays, mais un peuple. Il est le symbole d'une culture millénaire partagée à travers l'Afrique du Nord. Prêt à en découvrir le sens ?",
                             mascott: "Lion1",
                             image: "Berber_flag"
                         ),
@@ -34,13 +34,13 @@ struct ChapterData {
                             title: "Les Couleurs",
                             content: "Chaque couleur du drapeau a une signification. Le rouge symbolise la force, le vert l'espoir, et le jaune la richesse de la terre.",
                             mascott: "Lion2",
-                            image: "drapeau_couleurs"
+                            image: "berber_color"
                         ),
                         ModulePage(
-                            title: "Les Symboles",
-                            content: "Le symbole central représente la liberté et la résilience. Il puise ses racines dans l'héritage ancestral de la région.",
+                            title: "Le Symbole",
+                            content: "Au centre, la lettre Yaz de l’alphabet Tifinagh, qui est l’alphabet berbère symbolise l’homme libre.",
                             mascott: "Lion3",
-                            image: "symbole_central"
+                            image: "Yaz_Letter"
                         ),
                         ModulePage(
                             title: "À Retenir",
@@ -48,7 +48,9 @@ struct ChapterData {
                             mascott: "Lion1",
                             image: nil
                         )
-                    ]
+                    ],
+                    type: .content,
+                    quiz: nil
                 ),
                 Module(
                     title: "Les Emblèmes",
@@ -80,12 +82,46 @@ struct ChapterData {
                             mascott: "Lion2",
                             image: nil
                         )
-                    ]
+                    ],
+                    type: .content,
+                    quiz: nil
                 ),
+                Module(
+                        title: "Quiz Intermédiaire",
+                        icon: "questionmark.circle.fill",
+                        isUnlocked: true,
+                        color: "ButtonAfrique",
+                        modulesPages: [
+                            ModulePage(
+                                title: "Petit Quiz !",
+                                content: "Quel symbole protège du mauvais œil ?",
+                                mascott: "Lion2",
+                                image: nil
+                            )
+                        ],
+                        type: .quiz,
+                        quiz: [
+                            QuizQuestion(
+                                question: "Quel symbole protège du mauvais œil ?",
+                                answers: ["Le lion", "La khamsa", "Le drapeau", "Le tambour"],
+                                correctAnswerIndex: 1
+                            ),
+                            QuizQuestion(
+                                question: "Que représente la lettre Yaz ?",
+                                answers: ["L’amour", "La liberté", "Le désert", "La richesse"],
+                                correctAnswerIndex: 1
+                            ),
+                            QuizQuestion(
+                                question: "De quelle couleur est la richesse de la terre ?",
+                                answers: ["Rouge", "Vert", "Jaune", "Bleu"],
+                                correctAnswerIndex: 2
+                            )
+                        ]
+                    ),
                 Module(
                     title: "Les Proverbes",
                     icon: "staroflife.fill",
-                    isUnlocked: true,
+                    isUnlocked: false,
                     color: "ButtonAfrique",
                     modulesPages: [
                         ModulePage(
@@ -106,12 +142,14 @@ struct ChapterData {
                             mascott: "Lion2",
                             image: "village_anciens"
                         )
-                    ]
+                    ],
+                    type: .content,
+                    quiz: nil
                 ),
                 Module(
                     title: "Les Célèbrations",
                     icon: "cloud.fill",
-                    isUnlocked: true,
+                    isUnlocked: false,
                     color: "ButtonAfrique",
                     modulesPages: [
                         ModulePage(
@@ -132,12 +170,14 @@ struct ChapterData {
                             mascott: "Lion3",
                             image: "danse_traditionnelle"
                         )
-                    ]
+                    ],
+                    type: .content,
+                    quiz: nil
                 ),
                 Module(
                     title: "Le Drapeau",
                     icon: "moon.fill",
-                    isUnlocked: true,
+                    isUnlocked: false,
                     color: "ButtonAfrique",
                     modulesPages: [
                         ModulePage(
@@ -152,7 +192,9 @@ struct ChapterData {
                             mascott: "Lion2",
                             image: "badge_reward"
                         )
-                    ]
+                    ],
+                    type: .content,
+                    quiz: nil
                 )
                 
                 
@@ -189,7 +231,9 @@ struct ChapterData {
                             mascott: "Lion3",
                             image: nil
                         )
-                    ]
+                    ],
+                    type: .content,
+                    quiz: nil
                 ),
                 Module(
                     title: "Le Drapeau",
@@ -215,7 +259,9 @@ struct ChapterData {
                             mascott: "Lion3",
                             image: "accueil_maison"
                         )
-                    ]
+                    ],
+                    type: .content,
+                    quiz: nil
                 ),
                 Module(
                     title: "Le Drapeau",
@@ -241,7 +287,9 @@ struct ChapterData {
                             mascott: "Lion2",
                             image: nil
                         )
-                    ]
+                    ],
+                    type: .content,
+                    quiz: nil
                 ),
                 Module(
                     title: "Le Drapeau",
@@ -267,341 +315,367 @@ struct ChapterData {
                             mascott: "Lion3",
                             image: nil
                         )
-                    ]
+                    ],
+                    type: .content,
+                    quiz: nil
                 )
                 
                 
             ]),
-                Chapters(
-                    nbChap: 3,
-                    title: "Les Rituels du quotidien",
-                    description: "Apprendre les gestes, habitudes et coutumes",
-                    isUnlocked: false,
-                    progression: 0,
-                    modules: [
-                        Module(
-                            title: "Le Drapeau",
-                            icon: "flag.fill",
-                            isUnlocked: true,
-                            color: "ButtonAfrique",
-                            modulesPages: [
-                                ModulePage(
-                                    title: "Origines Géographiques",
-                                    content: "Découvre les territoires d’où viennent tes ancêtres et les chemins qu’ils ont empruntés.",
-                                    mascott: "Lion3",
-                                    image: "carte_origine"
-                                ),
-                                ModulePage(
-                                    title: "Les Premières Traces",
-                                    content: "Traditions orales et objets anciens aident à retracer les premières communautés locales.",
-                                    mascott: "Lion2",
-                                    image: "vestige_ancien"
-                                )
-                            ]
-),
-                        Module(
-                            title: "Le Drapeau",
-                            icon: "flag.fill",
-                            isUnlocked: true,
-                            color: "ButtonAfrique",
-                            modulesPages: [
-                                ModulePage(
-                                    title: "Déplacements Historiques",
-                                    content: "Guerres, échanges commerciaux ou climats ont poussé les ancêtres à migrer ou à s’adapter.",
-                                    mascott: "Lion1",
-                                    image: "migration"
-                                ),
-                                ModulePage(
-                                    title: "Influences Culturelles",
-                                    content: "Les rencontres avec d'autres peuples ont façonné la langue, la cuisine et les coutumes.",
-                                    mascott: "Lion2",
-                                    image: "influence_culturelle"
-                                )
-                            ]
-),
-                        Module(
-                            title: "Le Drapeau",
-                            icon: "flag.fill",
-                            isUnlocked: true,
-                            color: "ButtonAfrique",
-                            modulesPages: [
-                                ModulePage(
-                                    title: "Moments de Résistance",
-                                    content: "Certaines générations ont résisté à l’oppression pour préserver leur liberté et leur culture.",
-                                    mascott: "Lion3",
-                                    image: "resistance"
-                                ),
-                                ModulePage(
-                                    title: "Héros Locaux",
-                                    content: "Découvre des figures historiques ou anonymes qui ont marqué la mémoire collective.",
-                                    mascott: "Lion1",
-                                    image: "heros_anciens"
-                                )
-                            ]
-),
-                        Module(
-                            title: "Le Drapeau",
-                            icon: "flag.fill",
-                            isUnlocked: true,
-                            color: "ButtonAfrique",
-                            modulesPages: [
-                                ModulePage(
-                                    title: "Contes et Mythes",
-                                    content: "Des récits transmis à l’oral expliquent les origines du monde, des montagnes ou des animaux sacrés.",
-                                    mascott: "Lion2",
-                                    image: "legende_populaire"
-                                ),
-                                ModulePage(
-                                    title: "Valeurs Transmises",
-                                    content: "Les légendes servent à enseigner le courage, l’hospitalité ou la prudence aux enfants.",
-                                    mascott: "Lion1",
-                                    image: nil
-                                )
-                            ]
-)
-        
-        
-                    ])
+        Chapters(
+            nbChap: 3,
+            title: "Les Rituels du quotidien",
+            description: "Apprendre les gestes, habitudes et coutumes",
+            isUnlocked: false,
+            progression: 0,
+            modules: [
+                Module(
+                    title: "Le Drapeau",
+                    icon: "flag.fill",
+                    isUnlocked: true,
+                    color: "ButtonAfrique",
+                    modulesPages: [
+                        ModulePage(
+                            title: "Origines Géographiques",
+                            content: "Découvre les territoires d’où viennent tes ancêtres et les chemins qu’ils ont empruntés.",
+                            mascott: "Lion3",
+                            image: "carte_origine"
+                        ),
+                        ModulePage(
+                            title: "Les Premières Traces",
+                            content: "Traditions orales et objets anciens aident à retracer les premières communautés locales.",
+                            mascott: "Lion2",
+                            image: "vestige_ancien"
+                        )
+                    ],
+                    type: .content,
+                    quiz: nil
+                ),
+                Module(
+                    title: "Le Drapeau",
+                    icon: "flag.fill",
+                    isUnlocked: true,
+                    color: "ButtonAfrique",
+                    modulesPages: [
+                        ModulePage(
+                            title: "Déplacements Historiques",
+                            content: "Guerres, échanges commerciaux ou climats ont poussé les ancêtres à migrer ou à s’adapter.",
+                            mascott: "Lion1",
+                            image: "migration"
+                        ),
+                        ModulePage(
+                            title: "Influences Culturelles",
+                            content: "Les rencontres avec d'autres peuples ont façonné la langue, la cuisine et les coutumes.",
+                            mascott: "Lion2",
+                            image: "influence_culturelle"
+                        )
+                    ],
+                    type: .content,
+                    quiz: nil
+                ),
+                Module(
+                    title: "Le Drapeau",
+                    icon: "flag.fill",
+                    isUnlocked: true,
+                    color: "ButtonAfrique",
+                    modulesPages: [
+                        ModulePage(
+                            title: "Moments de Résistance",
+                            content: "Certaines générations ont résisté à l’oppression pour préserver leur liberté et leur culture.",
+                            mascott: "Lion3",
+                            image: "resistance"
+                        ),
+                        ModulePage(
+                            title: "Héros Locaux",
+                            content: "Découvre des figures historiques ou anonymes qui ont marqué la mémoire collective.",
+                            mascott: "Lion1",
+                            image: "heros_anciens"
+                        )
+                    ],
+                    type: .content,
+                    quiz: nil
+                ),
+                Module(
+                    title: "Le Drapeau",
+                    icon: "flag.fill",
+                    isUnlocked: true,
+                    color: "ButtonAfrique",
+                    modulesPages: [
+                        ModulePage(
+                            title: "Contes et Mythes",
+                            content: "Des récits transmis à l’oral expliquent les origines du monde, des montagnes ou des animaux sacrés.",
+                            mascott: "Lion2",
+                            image: "legende_populaire"
+                        ),
+                        ModulePage(
+                            title: "Valeurs Transmises",
+                            content: "Les légendes servent à enseigner le courage, l’hospitalité ou la prudence aux enfants.",
+                            mascott: "Lion1",
+                            image: nil
+                        )
+                    ],
+                    type: .content,
+                    quiz: nil
+                )
+                
+                
+            ])
         
     ]
     
-        static let reunionChapters: [Chapters] = [
-            Chapters(
-                nbChap: 1,
-                title: " ma culture",
-                description: "Connaître les symboles emblématiques de son héritage",
-                isUnlocked: true,
-                progression: 0,
-                modules: [
-                    Module(
-                        title: "Le Drapeau",
-                        icon: "flag.fill",
-                        isUnlocked: true,
-                        color: "ButtonBlue",
-                        modulesPages: [
-                            ModulePage(
-                                title: "Introduction",
-                                content: "Le drapeau est un marqueur d’identité culturelle à La Réunion. Il peut représenter les valeurs de plusieurs communautés.",
-                                mascott: "Cameleon1",
-                                image: "reunion_drapeau_intro"
-                            ),
-                            ModulePage(
-                                title: "Les Couleurs",
-                                content: "Les couleurs symbolisent la nature, la terre volcanique, et la diversité réunionnaise.",
-                                mascott: "Cameleon2",
-                                image: "reunion_couleurs"
-                            ),
-                            ModulePage(
-                                title: "Les Symboles",
-                                content: "Certains emblèmes comme le Piton de la Fournaise ou les étoiles peuvent être utilisés symboliquement.",
-                                mascott: "Cameleon3",
-                                image: "reunion_symboles"
-                            ),
-                            ModulePage(
-                                title: "À Retenir",
-                                content: "Le drapeau représente bien plus que des couleurs : il incarne un lien profond avec l’île.",
-                                mascott: "Cameleon1",
-                                image: nil
-                            )
-                        ]
-),
-                    Module(
-                        title: "Le Drapeau",
-                        icon: "flag.fill",
-                        isUnlocked: true,
-                        color: "ButtonBlue",
-                        modulesPages: [
-                            ModulePage(
-                                title: "Les Objets Emblématiques",
-                                content: "La marmite créole, le rouleur, ou les instruments comme le kayamb sont des symboles forts.",
-                                mascott: "Cameleon2",
-                                image: "reunion_emblemes"
-                            ),
-                            ModulePage(
-                                title: "Symboles Spirituels",
-                                content: "Des éléments comme la tôle ondulée ou les madras ont une place dans l’imaginaire collectif.",
-                                mascott: "Cameleon3",
-                                image: "reunion_spirituel"
-                            ),
-                            ModulePage(
-                                title: "Couleurs & Tissus",
-                                content: "Les tissus colorés portés lors des kabars ou célébrations expriment la joie et l’histoire.",
-                                mascott: "Cameleon1",
-                                image: nil
-                            )
-                        ]
-),
-                    Module(
-                        title: "Le Drapeau",
-                        icon: "flag.fill",
-                        isUnlocked: true,
-                        color: "ButtonBlue",
-                        modulesPages: [
-                            ModulePage(
-                                title: "Rôle des Proverbes",
-                                content: "À La Réunion, les proverbes en créole sont transmis oralement pour éduquer et faire réfléchir.",
-                                mascott: "Cameleon3",
-                                image: nil
-                            ),
-                            ModulePage(
-                                title: "Exemples Célèbres",
-                                content: "« Ti pa ti pa, nou ariv » : avec patience, on atteint son but.",
-                                mascott: "Cameleon1",
-                                image: nil
-                            ),
-                            ModulePage(
-                                title: "Moments de Transmission",
-                                content: "Ils sont souvent dits par les aînés lors des repas, des contes ou de moments de partage.",
-                                mascott: "Cameleon2",
-                                image: "reunion_proverbes"
-                            )
-                        ]
-),
-                    Module(
-                        title: "Le Drapeau",
-                        icon: "flag.fill",
-                        isUnlocked: true,
-                        color: "ButtonBlue",
-                        modulesPages: [
-                            ModulePage(
-                                title: "Les Grands Moments",
-                                content: "Les kabars, Dipavali, fête du Cavadee ou fête des Lanternes sont des moments forts de l’année.",
-                                mascott: "Cameleon1",
-                                image: "reunion_fete"
-                            ),
-                            ModulePage(
-                                title: "Musiques & Danses",
-                                content: "Le maloya et le séga rythment les fêtes et rendent hommage aux ancêtres.",
-                                mascott: "Cameleon2",
-                                image: "reunion_danse"
-                            ),
-                            ModulePage(
-                                title: "Rituels Spécifiques",
-                                content: "Encens, offrandes, chants ou processions donnent du sens aux festivités.",
-                                mascott: "Cameleon3",
-                                image: nil
-                            )
-                        ]
-),
-    
-    
-                ]),
-            Chapters(
-                nbChap: 2,
-                title: "Les Rituels du quotidien",
-                description: "Apprendre les gestes, habitudes et coutumes",
-                isUnlocked: true,
-                progression: 0,
-                modules: [
-                    Module(
-                        title: "Le Drapeau",
-                        icon: "flag.fill",
-                        isUnlocked: true,
-                        color: "ButtonBlue",
-                        modulesPages: [
-                            ModulePage(
-                                title: "Se Saluer à La Réunion",
-                                content: "On se salue avec un sourire, un ti bonjour et parfois un bisou selon les liens familiaux.",
-                                mascott: "Cameleon3",
-                                image: "reunion_salutation"
-                            ),
-                            ModulePage(
-                                title: "Respect Intergénérationnel",
-                                content: "Dire bonjour aux anciens est une règle de base du vivre ensemble.",
-                                mascott: "Cameleon1",
-                                image: nil
-                            ),
-                            ModulePage(
-                                title: "Les Gestes du Quotidien",
-                                content: "Regarder dans les yeux, parler doucement, offrir de l’aide : des gestes simples mais puissants.",
-                                mascott: "Cameleon2",
-                                image: "reunion_gestes"
-                            )
-                        ]
-),
-                    Module(
-                        title: "Le Drapeau",
-                        icon: "flag.fill",
-                        isUnlocked: true,
-                        color: "ButtonBlue",
-                        modulesPages: [
-                            ModulePage(
-                                title: "La Maison Réunionnaise",
-                                content: "On accueille toujours avec le cœur, souvent en offrant à boire ou manger.",
-                                mascott: "Cameleon2",
-                                image: "reunion_accueil"
-                            ),
-                            ModulePage(
-                                title: "Offrir un Ti Thé ou un Jus",
-                                content: "Un thé chaud à la vanille ou un jus de fruits frais fait partie du rituel d’accueil.",
-                                mascott: "Cameleon3",
-                                image: "reunion_the"
-                            ),
-                            ModulePage(
-                                title: "Cohabitation & Chaleur Humaine",
-                                content: "L’accueil dépasse la parole : il est dans les gestes, le regard, la posture.",
-                                mascott: "Cameleon1",
-                                image: nil
-                            )
-                        ]
-),
-                    Module(
-                        title: "Le Drapeau",
-                        icon: "flag.fill",
-                        isUnlocked: true,
-                        color: "ButtonBlue",
-                        modulesPages: [
-                            ModulePage(
-                                title: "Tenues Réunionnaises",
-                                content: "Les femmes portent parfois la robe fleurie traditionnelle, les hommes une chemise madras.",
-                                mascott: "Cameleon1",
-                                image: "reunion_tenue"
-                            ),
-                            ModulePage(
-                                title: "Occasions Spéciales",
-                                content: "Fêtes religieuses, kabars ou cérémonies sont des moments pour honorer les habits traditionnels.",
-                                mascott: "Cameleon3",
-                                image: "reunion_ceremonie"
-                            ),
-                            ModulePage(
-                                title: "Histoire et Origines",
-                                content: "Ces tenues trouvent leurs racines dans l’esclavage, l’engagisme et les échanges culturels.",
-                                mascott: "Cameleon2",
-                                image: nil
-                            )
-                        ]
-),
-                    Module(
-                        title: "Le Drapeau",
-                        icon: "flag.fill",
-                        isUnlocked: true,
-                        color: "ButtonBlue",
-                        modulesPages: [
-                            ModulePage(
-                                title: "Manger Ensemble",
-                                content: "À La Réunion, partager un cari ou un rougail est un geste d’amour et de fraternité.",
-                                mascott: "Cameleon2",
-                                image: "reunion_repas"
-                            ),
-                            ModulePage(
-                                title: "Les Plats Typiques",
-                                content: "Rougail saucisse, massalé cabri, riz zembrocal… des plats pleins de mémoire et de goût.",
-                                mascott: "Cameleon1",
-                                image: "reunion_plats"
-                            ),
-                            ModulePage(
-                                title: "Respect à Table",
-                                content: "On laisse les anciens se servir, on remercie le cuisinier, et on ne gaspille pas.",
-                                mascott: "Cameleon3",
-                                image: nil
-                            )
-                        ]
-)
-    
-    
-                ])
-    
-        ]
+    static let reunionChapters: [Chapters] = [
+        Chapters(
+            nbChap: 1,
+            title: " ma culture",
+            description: "Connaître les symboles emblématiques de son héritage",
+            isUnlocked: true,
+            progression: 0,
+            modules: [
+                Module(
+                    title: "Le Drapeau",
+                    icon: "flag.fill",
+                    isUnlocked: true,
+                    color: "ButtonBlue",
+                    modulesPages: [
+                        ModulePage(
+                            title: "Introduction",
+                            content: "Le drapeau est un marqueur d’identité culturelle à La Réunion. Il peut représenter les valeurs de plusieurs communautés.",
+                            mascott: "Cameleon1",
+                            image: "reunion_drapeau_intro"
+                        ),
+                        ModulePage(
+                            title: "Les Couleurs",
+                            content: "Les couleurs symbolisent la nature, la terre volcanique, et la diversité réunionnaise.",
+                            mascott: "Cameleon2",
+                            image: "reunion_couleurs"
+                        ),
+                        ModulePage(
+                            title: "Les Symboles",
+                            content: "Certains emblèmes comme le Piton de la Fournaise ou les étoiles peuvent être utilisés symboliquement.",
+                            mascott: "Cameleon3",
+                            image: "reunion_symboles"
+                        ),
+                        ModulePage(
+                            title: "À Retenir",
+                            content: "Le drapeau représente bien plus que des couleurs : il incarne un lien profond avec l’île.",
+                            mascott: "Cameleon1",
+                            image: nil
+                        )
+                    ],
+                    type: .content,
+                    quiz: nil
+                ),
+                Module(
+                    title: "Le Drapeau",
+                    icon: "flag.fill",
+                    isUnlocked: true,
+                    color: "ButtonBlue",
+                    modulesPages: [
+                        ModulePage(
+                            title: "Les Objets Emblématiques",
+                            content: "La marmite créole, le rouleur, ou les instruments comme le kayamb sont des symboles forts.",
+                            mascott: "Cameleon2",
+                            image: "reunion_emblemes"
+                        ),
+                        ModulePage(
+                            title: "Symboles Spirituels",
+                            content: "Des éléments comme la tôle ondulée ou les madras ont une place dans l’imaginaire collectif.",
+                            mascott: "Cameleon3",
+                            image: "reunion_spirituel"
+                        ),
+                        ModulePage(
+                            title: "Couleurs & Tissus",
+                            content: "Les tissus colorés portés lors des kabars ou célébrations expriment la joie et l’histoire.",
+                            mascott: "Cameleon1",
+                            image: nil
+                        )
+                    ],
+                    type: .content,
+                    quiz: nil
+                ),
+                Module(
+                    title: "Le Drapeau",
+                    icon: "flag.fill",
+                    isUnlocked: true,
+                    color: "ButtonBlue",
+                    modulesPages: [
+                        ModulePage(
+                            title: "Rôle des Proverbes",
+                            content: "À La Réunion, les proverbes en créole sont transmis oralement pour éduquer et faire réfléchir.",
+                            mascott: "Cameleon3",
+                            image: nil
+                        ),
+                        ModulePage(
+                            title: "Exemples Célèbres",
+                            content: "« Ti pa ti pa, nou ariv » : avec patience, on atteint son but.",
+                            mascott: "Cameleon1",
+                            image: nil
+                        ),
+                        ModulePage(
+                            title: "Moments de Transmission",
+                            content: "Ils sont souvent dits par les aînés lors des repas, des contes ou de moments de partage.",
+                            mascott: "Cameleon2",
+                            image: "reunion_proverbes"
+                        )
+                    ],
+                    type: .content,
+                    quiz: nil
+                ),
+                Module(
+                    title: "Le Drapeau",
+                    icon: "flag.fill",
+                    isUnlocked: true,
+                    color: "ButtonBlue",
+                    modulesPages: [
+                        ModulePage(
+                            title: "Les Grands Moments",
+                            content: "Les kabars, Dipavali, fête du Cavadee ou fête des Lanternes sont des moments forts de l’année.",
+                            mascott: "Cameleon1",
+                            image: "reunion_fete"
+                        ),
+                        ModulePage(
+                            title: "Musiques & Danses",
+                            content: "Le maloya et le séga rythment les fêtes et rendent hommage aux ancêtres.",
+                            mascott: "Cameleon2",
+                            image: "reunion_danse"
+                        ),
+                        ModulePage(
+                            title: "Rituels Spécifiques",
+                            content: "Encens, offrandes, chants ou processions donnent du sens aux festivités.",
+                            mascott: "Cameleon3",
+                            image: nil
+                        )
+                    ],
+                    type: .content,
+                    quiz: nil
+                ),
+                
+                
+            ]),
+        Chapters(
+            nbChap: 2,
+            title: "Les Rituels du quotidien",
+            description: "Apprendre les gestes, habitudes et coutumes",
+            isUnlocked: true,
+            progression: 0,
+            modules: [
+                Module(
+                    title: "Le Drapeau",
+                    icon: "flag.fill",
+                    isUnlocked: true,
+                    color: "ButtonBlue",
+                    modulesPages: [
+                        ModulePage(
+                            title: "Se Saluer à La Réunion",
+                            content: "On se salue avec un sourire, un ti bonjour et parfois un bisou selon les liens familiaux.",
+                            mascott: "Cameleon3",
+                            image: "reunion_salutation"
+                        ),
+                        ModulePage(
+                            title: "Respect Intergénérationnel",
+                            content: "Dire bonjour aux anciens est une règle de base du vivre ensemble.",
+                            mascott: "Cameleon1",
+                            image: nil
+                        ),
+                        ModulePage(
+                            title: "Les Gestes du Quotidien",
+                            content: "Regarder dans les yeux, parler doucement, offrir de l’aide : des gestes simples mais puissants.",
+                            mascott: "Cameleon2",
+                            image: "reunion_gestes"
+                        )
+                    ],
+                    type: .content,
+                    quiz: nil
+                ),
+                Module(
+                    title: "Le Drapeau",
+                    icon: "flag.fill",
+                    isUnlocked: true,
+                    color: "ButtonBlue",
+                    modulesPages: [
+                        ModulePage(
+                            title: "La Maison Réunionnaise",
+                            content: "On accueille toujours avec le cœur, souvent en offrant à boire ou manger.",
+                            mascott: "Cameleon2",
+                            image: "reunion_accueil"
+                        ),
+                        ModulePage(
+                            title: "Offrir un Ti Thé ou un Jus",
+                            content: "Un thé chaud à la vanille ou un jus de fruits frais fait partie du rituel d’accueil.",
+                            mascott: "Cameleon3",
+                            image: "reunion_the"
+                        ),
+                        ModulePage(
+                            title: "Cohabitation & Chaleur Humaine",
+                            content: "L’accueil dépasse la parole : il est dans les gestes, le regard, la posture.",
+                            mascott: "Cameleon1",
+                            image: nil
+                        )
+                    ],
+                    type: .content,
+                    quiz: nil
+                ),
+                Module(
+                    title: "Le Drapeau",
+                    icon: "flag.fill",
+                    isUnlocked: true,
+                    color: "ButtonBlue",
+                    modulesPages: [
+                        ModulePage(
+                            title: "Tenues Réunionnaises",
+                            content: "Les femmes portent parfois la robe fleurie traditionnelle, les hommes une chemise madras.",
+                            mascott: "Cameleon1",
+                            image: "reunion_tenue"
+                        ),
+                        ModulePage(
+                            title: "Occasions Spéciales",
+                            content: "Fêtes religieuses, kabars ou cérémonies sont des moments pour honorer les habits traditionnels.",
+                            mascott: "Cameleon3",
+                            image: "reunion_ceremonie"
+                        ),
+                        ModulePage(
+                            title: "Histoire et Origines",
+                            content: "Ces tenues trouvent leurs racines dans l’esclavage, l’engagisme et les échanges culturels.",
+                            mascott: "Cameleon2",
+                            image: nil
+                        )
+                    ],
+                    type: .content,
+                    quiz: nil
+                ),
+                Module(
+                    title: "Le Drapeau",
+                    icon: "flag.fill",
+                    isUnlocked: true,
+                    color: "ButtonBlue",
+                    modulesPages: [
+                        ModulePage(
+                            title: "Manger Ensemble",
+                            content: "À La Réunion, partager un cari ou un rougail est un geste d’amour et de fraternité.",
+                            mascott: "Cameleon2",
+                            image: "reunion_repas"
+                        ),
+                        ModulePage(
+                            title: "Les Plats Typiques",
+                            content: "Rougail saucisse, massalé cabri, riz zembrocal… des plats pleins de mémoire et de goût.",
+                            mascott: "Cameleon1",
+                            image: "reunion_plats"
+                        ),
+                        ModulePage(
+                            title: "Respect à Table",
+                            content: "On laisse les anciens se servir, on remercie le cuisinier, et on ne gaspille pas.",
+                            mascott: "Cameleon3",
+                            image: nil
+                        )
+                    ],
+                    type: .content,
+                    quiz: nil
+                )
+                
+                
+            ])
+        
+    ]
     
     
 }

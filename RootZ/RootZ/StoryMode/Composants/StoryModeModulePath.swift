@@ -17,8 +17,15 @@ struct StoryModeModulePath: View {
                 ForEach(Array(modules.enumerated()), id: \.offset) { index, module in
                     if (index + 1) % 6 == 0 {
                         ZStack {
-                            StorymodeButton(module: module, culture: culture)
-                                .offset(x: sinOffset(for: index))
+                            if module.isUnlocked {
+                                StorymodeButton(module: module, culture: culture)
+                                    .offset(x: sinOffset(for: index))
+                            } else {
+                                StorymodeButton(module: module, culture: culture)
+                                    .offset(x: sinOffset(for: index))
+                                    .opacity(0.5)
+                                    .disabled(true)
+                            }
 
                             Image(culture.mascott)
                                 .resizable()
@@ -35,12 +42,27 @@ struct StoryModeModulePath: View {
                                 .frame(width: 100)
                                 .offset(x: sinOffset(for: index) * -1)
 
-                            StorymodeButton(module: module, culture: culture)
-                                .offset(x: sinOffset(for: index))
+                            if module.isUnlocked {
+                                StorymodeButton(module: module, culture: culture)
+                                    .offset(x: sinOffset(for: index))
+                            } else {
+                                StorymodeButton(module: module, culture: culture)
+                                    .offset(x: sinOffset(for: index))
+                                    .opacity(0.5)
+                                    .disabled(true)
+                            }
+                                
                         }
                     } else {
-                        StorymodeButton(module: module, culture: culture)
-                            .offset(x: sinOffset(for: index))
+                        if module.isUnlocked {
+                            StorymodeButton(module: module, culture: culture)
+                                .offset(x: sinOffset(for: index))
+                        } else {
+                            StorymodeButton(module: module, culture: culture)
+                                .offset(x: sinOffset(for: index))
+                                .opacity(0.5)
+                                .disabled(true)
+                        }
                     }
                 }
             }
@@ -65,4 +87,3 @@ struct StoryModeModulePath: View {
         culture: CultureData.defaultCulture
     )
 }
-
