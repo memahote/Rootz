@@ -16,14 +16,14 @@ struct OnboardingCongratsView: View {
         VStack {
             Spacer(minLength: 40)
 
-            // ✅ Titre sans frame fixe
+  
             Text("Bravo !\n Tu as complété ton profil.")
                 .font(.custom("Baloo 2", size: 30).weight(.medium))
                 .multilineTextAlignment(.center)
                 .foregroundColor(.black)
                 .padding(.horizontal)
             
-            // ✅ Animations centrées dans un bloc
+            // Animations centrées dans un bloc
             ZStack {
                 LottieView(name: "PlaneteWin", loopMode: .playOnce)
                     .frame(width: 300, height: 300)
@@ -34,7 +34,7 @@ struct OnboardingCongratsView: View {
                     .allowsHitTesting(false)
             }
 
-            // ✅ Texte explicatif collé aux animations
+          
             Text("Clique sur Suivant pour découvrir ce que cache ton profil culturel…")
                 .font(.custom("Nunito", size: 24).weight(.light))
                 .multilineTextAlignment(.center)

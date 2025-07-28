@@ -5,7 +5,6 @@
 //  Created by Apprenant156 on 28/07/2025.
 //
 import SwiftUI
-
 struct MascotteUnlockedView: View {
     @ObservedObject var viewModel: OnboardingViewModel
     @State private var navigateToMascotteAlert = false
@@ -62,6 +61,7 @@ struct MascotteUnlockedView: View {
         }
     }
 }
+
 
 struct MascotteUnlockedView_Previews: PreviewProvider {
     static var previews: some View {

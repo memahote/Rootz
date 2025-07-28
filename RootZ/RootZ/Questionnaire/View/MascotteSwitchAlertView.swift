@@ -54,3 +54,9 @@ struct MascotteSwitchAlertView: View {
         
     }
 }
+struct MascotteSwitchAlertView_Previews: PreviewProvider {
+    static var previews: some View {
+        MascotteSwitchAlertView(viewModel: OnboardingViewModel())
+            .previewDevice("iPhone 15 Pro")
+    }
+}
