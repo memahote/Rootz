@@ -35,6 +35,10 @@ class OnboardingViewModel: ObservableObject
     @Published var culturalExplorationPreference: String?
     
     @Published var forcedCulture: CulturesModel? = nil
+    
+    @AppStorage("hasCompletedOnboarding") var hasCompletedOnboarding: Bool = false
+    //pour éviter d'avoir le bouton retour au loginview 
+
 
 
 
@@ -141,6 +145,17 @@ extension OnboardingViewModel {
         let sorted = scoredCultures.sorted { $0.score > $1.score }
         return Array(sorted.map { $0.culture }.prefix(max))
     }
+    
+    func selectedCulture() -> CulturesModel? {
+        return forcedCulture ?? CultureData.allCultures.first(where: { $0.flag == detectedCultureImageName() })
+    }
+    
+    func finalCulture() -> CulturesModel? {
+        return forcedCulture ?? CultureData.allCultures.first(where: {
+            $0.flag == detectedCultureImageName()
+        })
+    }
+
 }
 
 
