@@ -33,7 +33,7 @@ struct MainTabView: View {
                     }
                 case .profil:
                     NavigationStack {
-                        
+                     ProfilView()
                     }
                 }
             }
