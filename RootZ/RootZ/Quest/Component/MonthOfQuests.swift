@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MonthOfQuests: View {
+    @Bindable var appViewModel: AppViewModel
     var body: some View {
         HStack{
             Text(Date(), format: .dateTime.month(.wide))
@@ -15,7 +16,7 @@ struct MonthOfQuests: View {
                 .bold()
                 .background(
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.fondAfrique)
+                        .fill(Color(appViewModel.selectedCulture.backgroundColor))
                         .frame(width: 70, height: 35)
                 )
         }.padding(.leading, 36)
@@ -23,5 +24,5 @@ struct MonthOfQuests: View {
 }
 
 #Preview {
-    MonthOfQuests()
+    MonthOfQuests(appViewModel: (AppViewModel()))
 }
