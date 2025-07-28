@@ -14,7 +14,7 @@ enum Tab {
 struct MainTabView: View {
     @State private var viewModel = AppViewModel()
     @State private var selectedTab: Tab = .story
-
+    
     var body: some View {
         ZStack {
             Group {
@@ -30,17 +30,22 @@ struct MainTabView: View {
                 case .ranking:
                     NavigationStack {
                         PrincipalView()
+                    .environmentObject(RankingWordlist())
                     }
                 case .profil:
                     NavigationStack {
-                        
+                        ProfilView(appViewModel: viewModel)
+                            .environmentObject(ProfilViewModel())
+                            .environmentObject(AmisViewModel())
                     }
                 }
             }
             
-
-            CustomTabBar(selectedTab: $selectedTab, tabColor: viewModel.selectedCulture.buttonColor, tabAccentColor: viewModel.selectedCulture.backgroundColor)
-           
+            CustomTabBar(
+                selectedTab: $selectedTab,
+                tabColor: viewModel.selectedCulture.buttonColor,
+                tabAccentColor: viewModel.selectedCulture.backgroundColor
+            )
         }
     }
 }

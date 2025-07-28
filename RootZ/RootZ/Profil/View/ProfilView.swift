@@ -8,73 +8,74 @@
 import SwiftUI
 
 struct ProfilView: View {
-    @State private var viewModel = ProfilViewModel()
-    @State private var amisViewModel = AmisViewModel()
-
-    @State private var showPersonnalisation = false
-    @State private var showAjouterAmi = false
-    @State private var showListeAmis = false
-    @State private var showShareSheet = false
-    @State private var itemsToShare: [Any] = []
-
+    @EnvironmentObject  var profilViewModel:  ProfilViewModel
+    @EnvironmentObject  var amisViewModel: AmisViewModel
+    @Bindable   var appViewModel: AppViewModel
+    
     var body: some View {
-        VStack {
-            HeaderView()
+        ZStack(alignment: .bottom) {
+            ScrollView {
+                VStack {
+                    HeaderView()
+                    
+                    VStack(alignment: .leading, spacing: 16) {
+                        // Nom + origines
+                        InformationView(
+                            name: profilViewModel.user.name,
+                            origins: profilViewModel.user.origins
+                        )
+                        
+                        // Boutons partager, ajouter ami, liste amis
+                        ProfilActionView(
+                            AppViewModel: appViewModel, onPartagerProfil: { },
+                            showAjouterAmi: $profilViewModel.showAjouterAmi,
+                            showListeAmis: $profilViewModel.showListeAmis
+                        )
+                        // Badges activité et XP
+                        HStack(spacing: 16) {
+                            BadgeView(emoji: "🔥", value: "\(profilViewModel.nbJoursActivite)", label: "Jours d’activité")
+                            BadgeView(emoji: "⚡️", value: "\(profilViewModel.nbXP)", label: "XP gagnés")
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.horizontal)
+                        
+                        // Récompenses
+                        RewardView()
+                            .padding(.vertical)
+                        
+                        // Bouton personnalisation
+                        ButtonCustomiserProfil(onCustomiserProfil: {
+                            profilViewModel.showPersonnalisation = true
 
-            VStack(alignment: .leading, spacing: 16) {
-                // Infos utilisateur
-                InformationView(
-                    name: viewModel.user.name,
-                    origins: viewModel.user.origins
-                )
-
-                // Actions amis + partage
-                ProfilActionView(
-                    onPartagerProfil: {
-                        // Quand on appuie sur le bouton Partager
-                        itemsToShare = ["Voici mon profil Rootz : \(viewModel.user.name)"]
-                        showShareSheet = true
-                    },
-                    showAjouterAmi: $showAjouterAmi,
-                    showListeAmis: $showListeAmis
-                )
-
-                // Stats
-                HStack(spacing: 16) {
-                    BadgeView(emoji: "🔥", value: "\(viewModel.nbJoursActivite)", label: "Jours d’activité")
-                    BadgeView(emoji: "⚡️", value: "\(viewModel.nbXP)", label: "XP gagnés")
+                        }, appViewModel: appViewModel)
+                        
+                        Spacer().frame(height: 40)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .topLeading)
+                    .padding(.horizontal)
+                    
                 }
-                .frame(maxWidth: .infinity)
-                .padding(.horizontal)
-
-                // Badges
-                RewardView()
-                    .padding(.vertical)
-
-                // Bouton personnalisation
-                ButtonCustomiserProfil {
-                    showPersonnalisation = true
-                }
-
-                Spacer()
+                .padding(.bottom, 80) // pour ne pas que le scroll cache sous la tab bar
             }
-            .frame(maxWidth: .infinity, alignment: .topLeading)
-            .padding(.horizontal)
-
+            
         }
-        .background(Color("FondAfrique"))
-
-        // Modales
-     
-        .sheet(isPresented: $showListeAmis) {
+        .background(
+            Color(appViewModel.selectedCulture.backgroundColor)
+                .ignoresSafeArea()
+        )
+        
+        // Feuilles modales
+        .sheet(isPresented: $profilViewModel.showListeAmis) {
             ListeAmisView(viewModel: amisViewModel)
         }
-//        .sheet(isPresented: $showShareSheet) {
-//            ShareSheet(items: itemsToShare)
-//        }
+        
+        .sheet(isPresented: $profilViewModel.showPersonnalisation) {
+            Text("Personnalisation ici")
+        }
     }
 }
-
 #Preview {
-    ProfilView()
+    ProfilView(appViewModel: AppViewModel())
+        .environmentObject(ProfilViewModel())
+        .environmentObject(AmisViewModel())
 }
