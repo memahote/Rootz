@@ -38,7 +38,7 @@ struct OnboardingStepView: View {
                     .frame(width: 268, height: 42)
                     .padding(.vertical, 10)
 
-                Spacer() // pousse le contenu vers le haut
+                Spacer(minLength: 80) // pousse le contenu vers le haut
             }
 
             VStack {
@@ -55,6 +55,7 @@ struct OnboardingStepView: View {
                         EmptyView() // pas de second bouton
                     }
                 )
+                .padding(.bottom, 20)
             }
         }
     }
@@ -63,49 +64,47 @@ struct OnboardingStepView: View {
 
 struct OnboardingStepView2: View {
     @ObservedObject var viewModel: OnboardingViewModel
-    
+
     var body: some View {
-        
-        VStack {
-            PreviousButton() {
-                viewModel.previousStep()
-            }
-            Spacer()
-            
-            Text("D’où viennent tes parents ou grands-parents ?")
-              .font(
-                Font.custom("Baloo 2", size: 30)
-                  .weight(.medium)
-              )
-        
-              .multilineTextAlignment(.center)
-              .foregroundColor(.black)
-             
+        ZStack {
+            Color(.backgroundDefault)
+                .ignoresSafeArea()
            
-            Rectangle()
-              .foregroundColor(.clear)
-              .frame(width: 224, height: 220)
-              .background(
-                Image(.planete3)
-                  .resizable()
-                  .aspectRatio(contentMode: .fill)
-                  .frame(width: 235, height: 220)
-                  .clipped()
-              )
-            TextField("pays ou régions", text: Binding(
-                get: { viewModel.parentOriginCountry ?? "" },
-                set: { viewModel.parentOriginCountry = $0 }
-            ))
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding(.horizontal)
-                .padding(.vertical, 20)
-                .frame(width: 268, height: 42)
+            VStack {
+                PreviousButton {
+                    viewModel.previousStep()
+                }
                 
-            
-            
-            Spacer()
-            
-            VStack(spacing: 20) {
+                Text("D’où viennent tes parents ou grands-parents ?")
+                    .font(Font.custom("Baloo 2", size: 30).weight(.medium))
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.black)
+                    .padding(.horizontal)
+
+                Rectangle()
+                    .foregroundColor(.clear)
+                    .frame(width: 224, height: 220)
+                    .background(
+                        Image(.planete3)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 235, height: 220)
+                            .clipped()
+                    )
+
+                TextField("pays ou régions", text: Binding(
+                    get: { viewModel.parentOriginCountry ?? "" },
+                    set: { viewModel.parentOriginCountry = $0 }
+                ))
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .frame(width: 268, height: 42)
+                .padding(.vertical, 20)
+
+                Spacer(minLength: 80)
+            }
+
+            VStack {
+                Spacer()
                 BottomButtonsArea(
                     primaryButton: {
                         ContinueButton(title: "Continue") {
@@ -122,13 +121,12 @@ struct OnboardingStepView2: View {
                         }
                     }
                 )
-
+                .padding(.bottom, 20)
             }
-
-            
         }
     }
 }
+
 
 struct OnboardingStepView3: View {
     
@@ -165,8 +163,11 @@ struct OnboardingStepView3: View {
             OnBoardingButton(title: "Pas du tout", isSelected: selectedOption == "Pas du tout") {
                 selectedOption = "Pas du tout"
             }
-            Spacer(minLength: 50)
+            Spacer(minLength: 80)
+        }
             
+        VStack{
+            Spacer()
             BottomButtonsArea(
                 primaryButton: {
                     ContinueButton(title: "Continue") {
@@ -179,7 +180,7 @@ struct OnboardingStepView3: View {
                 }
             )
             
-            .padding(.bottom)
+            .padding(.bottom, 20)
         }
     }
 }
@@ -223,9 +224,10 @@ struct OnboardingStepView4: View {
                 .padding(.vertical, 20)
                 .frame(width: 268, height: 42)
 
+            }
                 
-                
-           
+            VStack{
+                Spacer()
                 BottomButtonsArea(
                     primaryButton: {
                         ContinueButton(title: "Continue") {
@@ -236,7 +238,7 @@ struct OnboardingStepView4: View {
                         EmptyView() // pas de second bouton
                     }
                 )
-                
+                .padding(.bottom, 20)
             }
         }
     }
@@ -248,77 +250,85 @@ struct OnboardingStepView5: View {
     @State private var selectedCountry: String? = nil
 
     var body: some View {
-        VStack {
-            PreviousButton {
-                viewModel.previousStep()
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.leading)
-
-            Spacer(minLength: 10)
-
-          
-            Text("Dans quelles régions ou pays ta culture familiale puise-t-elle ses racines ?")
-                .font(Font.custom("Baloo 2", size: 30).weight(.medium))
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-
-            // Carrousel de régions
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 12) {
-                    ForEach(allRegions) { region in
-                        Button(action: {
-                            selectedRegion = region
-                            selectedCountry = nil
-                        }) {
-                            Text(region.name)
-                                .padding(.vertical, 8)
-                                .padding(.horizontal, 16)
-                                .background(
-                                    selectedRegion.id == region.id
-                                        ? Color.brown.opacity(0.8)
-                                        : Color.gray.opacity(0.2)
-                                )
-                                .foregroundColor(.white)
-                                .cornerRadius(12)
-                        }
-                    }
-                }
-                .padding(.horizontal)
-            }
-            .padding(.vertical)
-
-            // Liste scrollable des pays (max 5 visibles)
-            ScrollView(.vertical, showsIndicators: true) {
-                VStack(spacing: 12) {
-                    ForEach(selectedRegion.countries, id: \.self) { country in
-                        OnBoardingButton(title: country, isSelected: selectedCountry == country) {
-                            selectedCountry = country
-                        }
-                    }
-                }
-                .padding(.horizontal)
-            }
-            .frame(height: 5 * 52)
-
-            Spacer()
+        ZStack {
+            Color(.backgroundDefault)
+                .ignoresSafeArea()
             
-            BottomButtonsArea(
-                primaryButton: {
-                    ContinueButton(title: "Continue") {
-                        viewModel.selectedCountry = selectedCountry
-                        viewModel.nextStep()
-                    }
-                },
-                secondaryButton: {
-                    EmptyView() // pas de second bouton
+            VStack {
+                PreviousButton {
+                    viewModel.previousStep()
                 }
-            )
-       
-            .padding(.bottom)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading)
+
+                Spacer(minLength: 10)
+
+                Text("Dans quelles régions ou pays ta culture familiale puise-t-elle ses racines ?")
+                    .font(Font.custom("Baloo 2", size: 30).weight(.medium))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+                    .foregroundColor(.black)
+
+                // Carrousel de régions
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 12) {
+                        ForEach(allRegions) { region in
+                            Button(action: {
+                                selectedRegion = region
+                                selectedCountry = nil
+                            }) {
+                                Text(region.name)
+                                    .padding(.vertical, 8)
+                                    .padding(.horizontal, 16)
+                                    .background(
+                                        selectedRegion.id == region.id
+                                        ? Color.buttonDefault.opacity(0.8)
+                                            : Color.gray.opacity(0.2)
+                                    )
+                                    .foregroundColor(.white)
+                                    .cornerRadius(12)
+                            }
+                        }
+                    }
+                    .padding(.horizontal)
+                }
+                .padding(.vertical)
+
+                // Liste scrollable des pays — sans frame bloquante
+                ScrollView(.vertical, showsIndicators: true) {
+                    VStack(spacing: 12) {
+                        ForEach(selectedRegion.countries, id: \.self) { country in
+                            OnBoardingButton(title: country, isSelected: selectedCountry == country) {
+                                selectedCountry = country
+                            }
+                        }
+                    }
+                    .padding(.horizontal)
+                }
+
+                Spacer(minLength: 100) // Pour laisser de l’espace au bouton
+            }
+
+            // BOUTONS EN BAS FIXÉS
+            VStack {
+                Spacer()
+                BottomButtonsArea(
+                    primaryButton: {
+                        ContinueButton(title: "Continue") {
+                            viewModel.selectedCountry = selectedCountry
+                            viewModel.nextStep()
+                        }
+                    },
+                    secondaryButton: {
+                        EmptyView()
+                    }
+                )
+                .padding(.bottom, 20)
+            }
         }
     }
 }
+
 
 struct OnboardingStepView6: View {
     
@@ -353,9 +363,10 @@ struct OnboardingStepView6: View {
             OnBoardingButton(title: "Autres cultures", isSelected: selectedOption == "Autres cultures") {
                 selectedOption = "Autres cultures"
             }
-        
-            Spacer()
           
+        }
+        VStack {
+            Spacer()
             BottomButtonsArea(
                 primaryButton: {
                     ContinueButton(title: "Continue") {
@@ -367,7 +378,11 @@ struct OnboardingStepView6: View {
                     EmptyView() // pas de second bouton
                 }
             )
+            .padding(.bottom, 20)
         }
+            
+          
+      
     }
 }
 

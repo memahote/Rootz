@@ -42,7 +42,7 @@ struct MascotteSwitchAlertView: View {
                 }
 
                 NavigationLink(
-                    destination: MascotteReadyView(viewModel: viewModel),
+                    destination: CompanionFinalView(viewModel: viewModel),
                     isActive: $navigateToMascotteReady
                 ) {
                     EmptyView()

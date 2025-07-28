@@ -4,7 +4,6 @@
 //
 //  Created by Apprenant156 on 28/07/2025.
 //
-
 import SwiftUI
 
 struct MascotteUnlockedView: View {
@@ -14,16 +13,17 @@ struct MascotteUnlockedView: View {
     var body: some View {
         ZStack {
             Color(.backgroundDefault)
-            .ignoresSafeArea()
-            
+                .ignoresSafeArea()
+
             VStack(spacing: 20) {
+
+                // Mascotte affichée selon la culture
                 if let mascotteName = viewModel.selectedCulture()?.mascott {
-                    Image(mascotteName) //image de la mascott en fonction de la culture choisi
+                    Image(mascotteName)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 200, height: 200)
+                        .frame(width: 200, height: 300)
                 } else {
-                    // image de la planete si aucune mascotte
                     Image(.planete1)
                         .resizable()
                         .scaledToFit()
@@ -34,6 +34,8 @@ struct MascotteUnlockedView: View {
                     .font(.custom("Baloo 2", size: 22))
                     .multilineTextAlignment(.center)
                     .padding()
+
+                Spacer()
 
                 ContinueButton(title: "Continue") {
                     viewModel.nextStep()
@@ -50,7 +52,8 @@ struct MascotteUnlockedView: View {
             }
             .padding()
         }
-       
     }
 }
+
+
 

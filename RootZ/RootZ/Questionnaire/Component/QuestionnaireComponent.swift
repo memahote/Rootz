@@ -12,19 +12,22 @@ struct ContinueButton: View {
     let action: () -> Void
 
     var body: some View {
-        Button(action: action) {
-            Text(title)
-                .font(.custom("QuickSand-VariableFont_wght", size: 24))
-                .foregroundColor(.white)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.buttonDefault)
-                .cornerRadius(12)
+        HStack(alignment: .center, spacing: 10) {
+            Button(action: action) {
+                Text(title)
+                    .font(.custom("QuickSand-VariableFont_wght", size: 24))
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+            }
         }
-        .padding(.horizontal)
-        .padding(.vertical, 20)
+        .padding(.horizontal, 20)
+        .padding(.vertical, 14)
+        .frame(width: 345, alignment: .center)
+        .background(.buttonDefault)
+        .cornerRadius(10)
     }
 }
+
 
 //Bouton Retour
 struct PreviousButton: View {
@@ -33,7 +36,7 @@ struct PreviousButton: View {
     var body: some View {
         Button(action: action) {
             Image(systemName: "chevron.left")
-                .foregroundColor(.brown)
+                .foregroundColor(.buttonDefault)
                 .font(.title2)
         }
         .padding(.leading)

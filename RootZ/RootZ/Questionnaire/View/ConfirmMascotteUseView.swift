@@ -31,7 +31,7 @@ struct ConfirmMascotteUseView: View {
             }
             .buttonStyle(.borderedProminent)
 
-            NavigationLink(destination: MascotteReadyView(viewModel: viewModel), isActive: $showReassurance) {
+            NavigationLink(destination: CompanionFinalView(viewModel: viewModel), isActive: $showReassurance) {
                 EmptyView()
             }
         }
