@@ -20,7 +20,7 @@ class Quest: Identifiable {
         self.numberOfQuest = numberOfQuest
     }
 }
-
+ 
 
 var quests: [[Quest]] = [
     [
