@@ -46,7 +46,8 @@ struct SummaryCard: View {
             }
             
             Button {
-                viewModel.storyModeViewModel.currentChapterIndex = index - 1
+                viewModel.storyModeViewModel.selectChapter(at: index - 1)
+
                 dismiss()
             } label: {
                 VStack(alignment: .leading){

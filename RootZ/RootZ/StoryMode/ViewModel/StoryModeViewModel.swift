@@ -9,18 +9,32 @@ import Foundation
 
 @Observable
 class StoryModeViewModel {
-    var chapters : [Chapters]
-    var currentChapterIndex : Int
-    var currentModule : Int
+    var chapters: [Chapters]
+    var currentChapterIndex: Int = 0
+    var currentModuleIndex: Int = 0
+
     var currentChapter: Chapters {
         chapters[currentChapterIndex]
     }
-    
-    init(chapters: [Chapters], currentChapterIndex: Int, currentModule: Int) {
-        self.chapters = chapters
-        self.currentChapterIndex = currentChapterIndex
-        self.currentModule = currentModule
+
+    var currentModule: Module {
+        currentChapter.modules[currentModuleIndex]
     }
-    
-    //methode change chapitre, changer de module
+
+    init(chapters: [Chapters]) {
+        self.chapters = chapters
+    }
+
+    func selectChapter(at index: Int) {
+        guard chapters.indices.contains(index) else { return }
+        currentChapterIndex = index
+        currentModuleIndex = 0
+    }
+
+    func selectModule(at index: Int) {
+        guard currentChapter.modules.indices.contains(index) else { return }
+        currentModuleIndex = index
+    }
 }
+
+

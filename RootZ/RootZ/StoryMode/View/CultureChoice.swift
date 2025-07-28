@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CultureChoice: View {
     @Bindable var viewModel: AppViewModel
-    
+    @Environment(\.dismiss) private var dismiss
+
     let cultures = CultureData.allCultures
     
     let columns = [
@@ -23,7 +24,14 @@ struct CultureChoice: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(cultures) { cultures in
-                        CultureCard(viewModel: viewModel, culture: cultures)
+                        CultureCard(
+                            culture: cultures,
+                            onSelect: {
+                                viewModel.updateCulture(to: cultures)
+                                dismiss()
+                            }
+                        )
+
                     }
                     
                 }

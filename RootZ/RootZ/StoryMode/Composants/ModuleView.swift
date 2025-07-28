@@ -8,66 +8,62 @@
 import SwiftUI
 
 struct ModuleView: View {
-    let module: Module
+    @EnvironmentObject var viewModel: ModuleViewModel
     let culture: CulturesModel
-    @Binding var showModuleView : Bool
-    @State private var currentIndex = 0
-    
+    @Environment(\.dismiss) private var dismiss
+
     var body: some View {
-        let pages = module.modulesPages
-        let currentPage = pages[currentIndex]
-        let progress = Double(currentIndex + 1) / Double(pages.count)
-        
         VStack(spacing: 20) {
             VStack {
-                ProgressView(value: progress)
+                ProgressView(value: viewModel.progress)
                     .progressViewStyle(LinearProgressViewStyle(tint: Color(culture.accent2Color)))
                     .frame(height: 8)
                     .padding(.horizontal)
                     .cornerRadius(4)
-                
-                Text("\(Int(progress * 100))%")
+
+                Text("\(Int(viewModel.progress * 100))%")
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
             .padding(.top)
-            
+
             ScrollView {
-                
                 VStack(spacing: 20) {
-                    
-                    Text(currentPage.title)
+                    Text(viewModel.currentPage.title)
                         .font(.custom("Baloo2", size: 28))
                         .bold()
-                    
-                    if let image = currentPage.image {
+
+                    if let image = viewModel.currentPage.image {
                         Image(image)
                             .resizable()
                             .scaledToFit()
                             .frame(height: 200)
                     }
-                    
-                    Spacer()
-                    
-                    MascottChatLeft(mascott: currentPage.mascott, message: currentPage.content, messageColor: culture.accentColor)
 
+                    Spacer()
+
+                    MascottChatLeft(
+                        mascott: viewModel.currentPage.mascott,
+                        message: viewModel.currentPage.content,
+                        messageColor: culture.accentColor
+                    )
                 }
                 .padding()
             }
-            
-            
+
+            // Next button
             Button(action: {
-                if currentIndex < pages.count - 1 {
-                    currentIndex += 1
+                if viewModel.isLastPage {
+                    dismiss()
                 } else {
-                    showModuleView = false
+                    viewModel.nextPage()
                 }
             }) {
-                Text(currentIndex < pages.count - 1 ? "Suivant" : "Terminer")
+                Text(viewModel.isLastPage ? "Terminer" : "Suivant")
                     .font(.custom("Quicksand", size: 24))
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color(module.color))
+                    .background(Color(viewModel.module.color))
                     .foregroundColor(.white)
                     .cornerRadius(12)
             }
@@ -77,12 +73,30 @@ struct ModuleView: View {
             Color(culture.backgroundColor)
                 .ignoresSafeArea()
         )
-        
     }
 }
 
+
 #Preview {
     ModuleView(
+        culture: CulturesModel(
+            name: "Berbère",
+            flag: "Berber_flag",
+            mascott: "Lion1",
+            chapters: ChapterData.berbereChapters,
+            backgroundColor: "FondAfrique",
+            buttonColor: "ButtonAfrique",
+            accentColor: "CouleurAccent",
+            accent2Color: "CouleurAccent2",
+            isUnlock: true,
+            progressbar: 0.6,
+            associatedCountries: ["maroc", "algérie", "tunisie"],
+            associatedRegions: ["afrique"],
+            keywords: ["berbere", "tamazight", "arabe", "marocain", "algérien"]
+        )
+    )
+    .environmentObject(
+        ModuleViewModel(
             module: Module(
                 title: "Le Drapeau",
                 icon: "flag.fill",
@@ -96,22 +110,9 @@ struct ModuleView: View {
                         image: "Berber_flag"
                     )
                 ]
-            ),
-            culture:  CulturesModel(
-                name: "Berbère",
-                flag: "Berber_flag",
-                mascott: "Lion1",
-                chapters: ChapterData.berbereChapters,
-                backgroundColor: "FondAfrique",
-                buttonColor: "ButtonAfrique",
-                accentColor: "CouleurAccent",
-                accent2Color: "CouleurAccent2",
-                isUnlock: true,
-                progressbar: 0.6,
-                associatedCountries: ["maroc", "algérie", "tunisie"],
-                associatedRegions: ["afrique"],
-                keywords: ["berbere", "tamazight","arabe","marocain","algérien"]
-            ),
-            showModuleView: .constant(true)
+            )
         )
+    )
 }
+
+

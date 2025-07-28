@@ -59,8 +59,10 @@ struct StorymodeButton: View {
                         .cornerRadius(12)
                 }
                 .fullScreenCover(isPresented: $showModuleView) {
-                    ModuleView(module: module, culture: culture, showModuleView: $showModuleView)
-                }
+                    ModuleView(culture: culture)
+                        .environmentObject(ModuleViewModel(module: module))
+                    }
+                
             }
             .presentationCompactAdaptation(.popover)
             .padding()

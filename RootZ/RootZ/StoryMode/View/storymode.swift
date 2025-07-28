@@ -14,7 +14,11 @@ struct storymode: View {
         VStack {
             StoryModeHeaderView(viewModel : appViewModel)
             
-            StoryModeModulePath(viewModel: appViewModel)
+            StoryModeModulePath(
+                modules: appViewModel.storyModeViewModel.currentChapter.modules,
+                culture: appViewModel.selectedCulture
+            )
+
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
