@@ -12,7 +12,7 @@ struct OnboardingCongratsView: View {
     @ObservedObject var viewModel: OnboardingViewModel
 
     var body: some View {
-        VStack(spacing: 20) {
+        VStack {
             Text("Bravo !")
               .font(
                 Font.custom("Baloo 2", size: 36)
@@ -47,13 +47,26 @@ struct OnboardingCongratsView: View {
               )
               .multilineTextAlignment(.center)
               .foregroundColor(.black)
+            Spacer(minLength: 80)
             
-
-            ContinueButton(title: "Suivant") {
-                viewModel.currentStep = 8 // Assure-toi que case 7 = CulturalProfileResultView
+            VStack {
+                Spacer()
+                BottomButtonsArea(
+                    primaryButton: {
+                        ContinueButton(title: "Suivant") {
+                            viewModel.currentStep = 8 // Assure-toi que case 7 = CulturalProfileResultView
+                        }
+                    },
+                    secondaryButton: {
+                        EmptyView() // pas de second bouton
+                    }
+                )
+                .padding(.bottom, 20)
             }
+            
+     
         }
-        .padding()
+        
     }
 }
 

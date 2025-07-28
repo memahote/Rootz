@@ -45,8 +45,8 @@ struct CultureData {
         CulturesModel(
                     name: "Réunion",
                     flag: "Reunion_flag",
-                    mascott: "Lion1",
-                    chapters: ChapterData.berbereChapters,
+                    mascott: "Cameleon1",
+                    chapters: ChapterData.reunionChapters,
                     backgroundColor: "BubbleBackground",
                     buttonColor: "ButtonBlue",
                     accentColor: "BackgroundBlue",
@@ -163,7 +163,63 @@ struct CultureData {
                     associatedCountries: ["irlande", "ecosse", "bretagne", "pays de galles"],
                     associatedRegions: ["europe"],
                     keywords: ["celtique", "gaélique", "druidique", "celte"]
-                )
+                ),
+        CulturesModel(
+            name: "France",
+            flag: "France_flag",
+            mascott: "CoqMascotte",
+            chapters: ChapterData.berbereChapters,
+            backgroundColor: "FondEurope",
+            buttonColor: "ButtonEurope",
+            accentColor: "CouleurAccentFrance",
+            accent2Color: "CouleurAccent2France",
+            isUnlock: false,
+            progressbar: 0.3,
+            associatedCountries: [
+                "france", "belgique", "suisse", "luxembourg", "canada", "monaco"
+            ],
+            associatedRegions: [
+                "europe", "europa", "hexagone", "francophonie", "francophone"
+            ],
+            keywords: [
+                "francophone", "langue française", "révolution", "renaissance", "châteaux", "gothique",
+                "gastronomie", "culture française", "cathédrale", "paris", "bleu blanc rouge"
+            ]
+        ),
+        CulturesModel(
+            name: "Maghrébine",
+            flag: "Maghreb_flag",
+            mascott: "FennecMascotte",
+            chapters: ChapterData.berbereChapters,
+            backgroundColor: "FondMaghreb",
+            buttonColor: "ButtonMaghreb",
+            accentColor: "CouleurMaghrebAccent",
+            accent2Color: "CouleurAccent2",
+            isUnlock: false,
+            progressbar: 0.0,
+            associatedCountries: ["maroc", "algérie", "tunisie", "libye", "mauritanie"],
+            associatedRegions: ["afrique du nord", "maghreb","afrique"],
+            keywords: ["arabe", "maghrébin", "islam", "ramadan", "coran", "tajine", "médina", "darija"]
+        ),
+        CulturesModel(
+            name: "Touarègue",
+            flag: "Touareg_flag",
+            mascott: "DromadaireMascotte",
+            chapters: ChapterData.berbereChapters,
+            backgroundColor: "FondDesert",
+            buttonColor: "ButtonDesert",
+            accentColor: "CouleurTouareg",
+            accent2Color: "CouleurAccent2",
+            isUnlock: false,
+            progressbar: 0.0,
+            associatedCountries: ["mali", "niger", "algérie", "libye", "burkina faso"],
+            associatedRegions: ["sahara", "sahel", "afrique"],
+            keywords: ["touareg", "nomade", "amazigh", "bleu", "désert", "tifinagh", "sable", "azawad"]
+        )
+
+
+        
+
 
         
     ]

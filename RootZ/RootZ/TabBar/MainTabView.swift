@@ -24,8 +24,8 @@ struct MainTabView: View {
                         storymode(appViewModel: viewModel)
                     }
                 case .quest:
-                    NavigationStack {
-                        QuestView()
+                    NavigationStack{
+                        QuestView(appViewModel: viewModel)
                     }
                 case .ranking:
                     NavigationStack {

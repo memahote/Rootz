@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ListQuests: View {
+    @Bindable var appViewModel: AppViewModel
+    
     let quests: [[Quest]]
     
     var indexDuJour: Int {
@@ -27,15 +29,15 @@ struct ListQuests: View {
         }.frame(width: 331, height: 323)
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color.couleurAccent).ignoresSafeArea()
+                .fill(Color(appViewModel.selectedCulture.accentColor)).ignoresSafeArea()
                 
         ).overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.black, lineWidth: 2) // 👈 Bordure noire
+                .stroke(Color.black, lineWidth: 2)
         )
     }
 }
 
 #Preview {
-    ListQuests(quests: quests)
+    ListQuests(appViewModel: (AppViewModel()), quests: quests)
 }

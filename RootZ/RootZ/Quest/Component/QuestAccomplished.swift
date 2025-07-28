@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct QuestAccomplished: View {
+    @Bindable var appViewModel: AppViewModel
     var body: some View {
         VStack{
             HStack{
@@ -23,7 +24,7 @@ struct QuestAccomplished: View {
         .frame(width: 331, height: 108)
         .background(
             RoundedRectangle(cornerRadius: 10)
-                //.fill(Color.fondAfrique).ignoresSafeArea()
+                .fill(Color(appViewModel.selectedCulture.backgroundColor)).ignoresSafeArea()
                 
         ).overlay(
             RoundedRectangle(cornerRadius: 10)
@@ -34,5 +35,5 @@ struct QuestAccomplished: View {
 }
 
 #Preview {
-    QuestAccomplished()
+    QuestAccomplished(appViewModel: (AppViewModel()))
 }

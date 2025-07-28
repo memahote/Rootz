@@ -8,19 +8,26 @@
 import SwiftUI
 
 struct StoryModeModulePath: View {
-    @Bindable var viewModel: AppViewModel
-    
+    let modules: [Module]
+    let culture: CulturesModel
+
     var body: some View {
         ScrollView {
             VStack(spacing: 80) {
-            
-                ForEach(Array(viewModel.storyModeViewModel.currentChapter.modules.enumerated()), id: \.offset) { index, module in
+                ForEach(Array(modules.enumerated()), id: \.offset) { index, module in
                     if (index + 1) % 6 == 0 {
                         ZStack {
-                            
-                            StorymodeButton(moduleColor: module.color, imageName: module.icon)
-                                .offset(x: sinOffset(for: index))
-                            Image(viewModel.selectedCulture.mascott)
+                            if module.isUnlocked {
+                                StorymodeButton(module: module, culture: culture)
+                                    .offset(x: sinOffset(for: index))
+                            } else {
+                                StorymodeButton(module: module, culture: culture)
+                                    .offset(x: sinOffset(for: index))
+                                    .opacity(0.5)
+                                    .disabled(true)
+                            }
+
+                            Image(culture.mascott)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 100)
@@ -29,19 +36,33 @@ struct StoryModeModulePath: View {
                         }
                     } else if (index + 1) % 3 == 0 {
                         ZStack {
-                            Image(viewModel.selectedCulture.mascott)
+                            Image(culture.mascott)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 100)
                                 .offset(x: sinOffset(for: index) * -1)
-                            
-                            StorymodeButton(moduleColor: module.color, imageName: module.icon)
-                                .offset(x: sinOffset(for: index))
+
+                            if module.isUnlocked {
+                                StorymodeButton(module: module, culture: culture)
+                                    .offset(x: sinOffset(for: index))
+                            } else {
+                                StorymodeButton(module: module, culture: culture)
+                                    .offset(x: sinOffset(for: index))
+                                    .opacity(0.5)
+                                    .disabled(true)
+                            }
+                                
                         }
                     } else {
-                    
-                        StorymodeButton(moduleColor: module.color, imageName: module.icon)
-                            .offset(x: sinOffset(for: index))
+                        if module.isUnlocked {
+                            StorymodeButton(module: module, culture: culture)
+                                .offset(x: sinOffset(for: index))
+                        } else {
+                            StorymodeButton(module: module, culture: culture)
+                                .offset(x: sinOffset(for: index))
+                                .opacity(0.5)
+                                .disabled(true)
+                        }
                     }
                 }
             }
@@ -50,8 +71,7 @@ struct StoryModeModulePath: View {
             .padding(.vertical, 40)
         }
     }
-    
-  
+
     func sinOffset(for index: Int) -> CGFloat {
         let amplitude: CGFloat = 100
         return CGFloat(sin(Double(index) * .pi / 4)) * amplitude
@@ -60,6 +80,10 @@ struct StoryModeModulePath: View {
 
 
 
+
 #Preview {
-    StoryModeModulePath(viewModel: AppViewModel())
+    StoryModeModulePath(
+        modules: ChapterData.berbereChapters[0].modules,
+        culture: CultureData.defaultCulture
+    )
 }

@@ -1,0 +1,59 @@
+//
+//  MascotteUnlockedView.swift
+//  RootZ
+//
+//  Created by Apprenant156 on 28/07/2025.
+//
+import SwiftUI
+
+struct MascotteUnlockedView: View {
+    @ObservedObject var viewModel: OnboardingViewModel
+    @State private var navigateToMascotteAlert = false
+
+    var body: some View {
+        ZStack {
+            Color(.backgroundDefault)
+                .ignoresSafeArea()
+
+            VStack(spacing: 20) {
+
+                // Mascotte affichée selon la culture
+                if let mascotteName = viewModel.selectedCulture()?.mascott {
+                    Image(mascotteName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 300)
+                } else {
+                    Image(.planete1)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 200)
+                }
+
+                Text("Bravo ! Tu as débloqué un nouveau compagnon pour ton avatar !")
+                    .font(.custom("Baloo 2", size: 22))
+                    .multilineTextAlignment(.center)
+                    .padding()
+
+                Spacer()
+
+                ContinueButton(title: "Continue") {
+                    viewModel.nextStep()
+                    navigateToMascotteAlert = true
+                }
+
+                NavigationLink(
+                    destination: MascotteSwitchAlertView(viewModel: viewModel),
+                    isActive: $navigateToMascotteAlert
+                ) {
+                    EmptyView()
+                }
+                .hidden()
+            }
+            .padding()
+        }
+    }
+}
+
+
+
