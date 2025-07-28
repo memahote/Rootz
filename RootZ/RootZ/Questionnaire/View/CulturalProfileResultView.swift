@@ -11,6 +11,9 @@ struct CulturalProfileResultView: View {
     @ObservedObject var viewModel: OnboardingViewModel
     @State private var hasOpenedChest = false
     @State private var navigateToSuggestions = false
+    @State private var navigateToMascotteUnlocked = false
+
+    
 
 
     var body: some View {
@@ -60,12 +63,17 @@ struct CulturalProfileResultView: View {
 
 
                            Button("Oui") {
+                               navigateToMascotteUnlocked = true
                                
                            }
                            .padding()
                            .background(Color.green.opacity(0.7))
                            .foregroundColor(.white)
                            .cornerRadius(12)
+                           NavigationLink(destination: MascotteUnlockedView(viewModel: viewModel), isActive: $navigateToMascotteUnlocked) {
+                               EmptyView()
+                           }
+
                            
                        }
                    }

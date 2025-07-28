@@ -68,3 +68,29 @@ struct OnBoardingButton: View {
     }
 }
 
+
+struct BottomButtonsArea<Primary: View, Secondary: View>: View {
+    let primaryButton: Primary
+    let secondaryButton: Secondary?
+
+    init(
+        @ViewBuilder primaryButton: () -> Primary,
+        @ViewBuilder secondaryButton: () -> Secondary? = { nil }
+    ) {
+        self.primaryButton = primaryButton()
+        self.secondaryButton = secondaryButton()
+    }
+
+    var body: some View {
+        VStack(spacing: 8) {
+            primaryButton
+
+            if let secondary = secondaryButton {
+                secondary
+            }
+        }
+        .padding(.bottom, 20)
+    }
+}
+
+

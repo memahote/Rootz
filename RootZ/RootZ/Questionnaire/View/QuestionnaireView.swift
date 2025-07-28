@@ -9,51 +9,57 @@ import SwiftUI
 
 struct OnboardingStepView: View {
     @ObservedObject var viewModel: OnboardingViewModel
-    
+
     var body: some View {
+        ZStack {
+            Color(.backgroundDefault)
+                .ignoresSafeArea()
+
             VStack {
-            Spacer()
-                
+                Spacer()
+
                 Image(.planete1)
                     .resizable()
                     .scaledToFit()
                     .frame(height: 200)
-                
+
                 Text("Où es-tu né(e) ?")
-                    .font(
-                      Font.custom("Baloo 2", size: 30)
-                        .weight(.medium)
-                    )
+                    .font(Font.custom("Baloo 2", size: 30).weight(.medium))
                     .fontWeight(.semibold)
                     .padding(.top)
-                
+
                 TextField("ville", text: $viewModel.city)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal)
-                    .padding(.bottom, 40)
                     .frame(width: 268, height: 42)
-                
+                    .padding(.top, 10)
+
                 TextField("pays", text: $viewModel.country)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal)
-                    .padding(.bottom)
-                    .padding(.vertical, 20)
                     .frame(width: 268, height: 42)
-                
-                Spacer()
-                ContinueButton(title: "Continue") {
-                    viewModel.birthCity = viewModel.city
-                    viewModel.birthCountry = viewModel.country
-                    viewModel.nextStep()
-                }
+                    .padding(.vertical, 10)
 
-                .padding(.bottom)
-              
+                Spacer() // pousse le contenu vers le haut
             }
-   
-   
+
+            VStack {
+                Spacer()
+                BottomButtonsArea(
+                    primaryButton: {
+                        ContinueButton(title: "Continue") {
+                            viewModel.birthCity = viewModel.city
+                            viewModel.birthCountry = viewModel.country
+                            viewModel.nextStep()
+                        }
+                    },
+                    secondaryButton: {
+                        EmptyView() // pas de second bouton
+                    }
+                )
+            }
+        }
     }
 }
+
 
 struct OnboardingStepView2: View {
     @ObservedObject var viewModel: OnboardingViewModel
@@ -75,7 +81,7 @@ struct OnboardingStepView2: View {
               .multilineTextAlignment(.center)
               .foregroundColor(.black)
              
-            
+           
             Rectangle()
               .foregroundColor(.clear)
               .frame(width: 224, height: 220)
@@ -96,26 +102,29 @@ struct OnboardingStepView2: View {
                 .frame(width: 268, height: 42)
                 
             
+            
             Spacer()
             
-            ContinueButton(title: "Continue") {
-                viewModel.nextStep()
+            VStack(spacing: 20) {
+                BottomButtonsArea(
+                    primaryButton: {
+                        ContinueButton(title: "Continue") {
+                            viewModel.nextStep()
+                        }
+                    },
+                    secondaryButton: {
+                        Button(action: {
+                            viewModel.skipToStep5()
+                        }) {
+                            Text("Je ne sais pas")
+                                .font(Font.custom("SF Pro Text", size: 17).weight(.semibold))
+                                .foregroundColor(Color(red: 0.41, green: 0.09, blue: 0))
+                        }
+                    }
+                )
+
             }
 
-            Button(action: {
-                viewModel.skipToStep5()
-            }) {
-                Text("Je ne sais pas")
-                    .font(
-                        Font.custom("SF Pro Text", size: 17)
-                            .weight(.semibold)
-                    )
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(Color(red: 0.41, green: 0.09, blue: 0))
-                    .padding(.top)
-            }
-
-        
             
         }
     }
@@ -156,13 +165,20 @@ struct OnboardingStepView3: View {
             OnBoardingButton(title: "Pas du tout", isSelected: selectedOption == "Pas du tout") {
                 selectedOption = "Pas du tout"
             }
-            Spacer()
+            Spacer(minLength: 50)
             
-            ContinueButton(title: "Continue") {
-                viewModel.selectedCultureMatchLevel = selectedOption
-                viewModel.nextStep()
-            }
-
+            BottomButtonsArea(
+                primaryButton: {
+                    ContinueButton(title: "Continue") {
+                        viewModel.selectedCultureMatchLevel = selectedOption
+                        viewModel.nextStep()
+                    }
+                },
+                secondaryButton: {
+                    EmptyView() // pas de second bouton
+                }
+            )
+            
             .padding(.bottom)
         }
     }
@@ -208,12 +224,18 @@ struct OnboardingStepView4: View {
                 .frame(width: 268, height: 42)
 
                 
-                Spacer()
                 
-                ContinueButton(title: "Continue") {
-                    viewModel.nextStep()
-                }
-            
+           
+                BottomButtonsArea(
+                    primaryButton: {
+                        ContinueButton(title: "Continue") {
+                            viewModel.nextStep()
+                        }
+                    },
+                    secondaryButton: {
+                        EmptyView() // pas de second bouton
+                    }
+                )
                 
             }
         }
@@ -280,11 +302,19 @@ struct OnboardingStepView5: View {
             .frame(height: 5 * 52)
 
             Spacer()
-
-            ContinueButton(title: "Continue") {
-                viewModel.selectedCountry = selectedCountry
-                viewModel.nextStep()
-            }
+            
+            BottomButtonsArea(
+                primaryButton: {
+                    ContinueButton(title: "Continue") {
+                        viewModel.selectedCountry = selectedCountry
+                        viewModel.nextStep()
+                    }
+                },
+                secondaryButton: {
+                    EmptyView() // pas de second bouton
+                }
+            )
+       
             .padding(.bottom)
         }
     }
@@ -325,11 +355,18 @@ struct OnboardingStepView6: View {
             }
         
             Spacer()
-            ContinueButton(title: "Continue") {
-                viewModel.culturalExplorationPreference = selectedOption
-                viewModel.nextStep()
-            }
-
+          
+            BottomButtonsArea(
+                primaryButton: {
+                    ContinueButton(title: "Continue") {
+                        viewModel.culturalExplorationPreference = selectedOption
+                        viewModel.nextStep()
+                    }
+                },
+                secondaryButton: {
+                    EmptyView() // pas de second bouton
+                }
+            )
         }
     }
 }
