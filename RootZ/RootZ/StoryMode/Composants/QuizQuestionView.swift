@@ -62,7 +62,7 @@ struct QuizQuestionView: View {
                     .disabled(viewModel.selectedIndex != nil)
                 }
 
-                if let selected = viewModel.selectedIndex {
+                if viewModel.selectedIndex != nil {
                     MascottChatLeft(
                         mascott: culture.mascott,
                         message: viewModel.isAnswerCorrect == true ? "Bonne réponse ! 🎉" : "Oups, tu fera mieux la prochaine fois !",

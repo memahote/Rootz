@@ -24,4 +24,5 @@ struct Loginview: UIViewControllerRepresentable {
 
 #Preview {
     Loginview()
+        .ignoresSafeArea()
 }
