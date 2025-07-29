@@ -42,9 +42,7 @@ class StoryModeViewModel {
     
     func progression(for chapter: Chapters) -> Double {
         let total = chapter.modules.count
-        print(total)
         let completed = chapter.modules.filter { $0.isFinish }.count
-        print(completed)
         return total == 0 ? 0 : Double(completed) / Double(total)
     }
     

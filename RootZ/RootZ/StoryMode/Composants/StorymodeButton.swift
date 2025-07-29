@@ -48,7 +48,6 @@ struct StorymodeButton: View {
                     .foregroundColor(.green)
                 
                 Button(action: {
-                    // Sélectionner le module avant de l'ouvrir
                     storyViewModel.selectModule(at: index)
                     showModuleView = true
                 }) {
@@ -61,12 +60,13 @@ struct StorymodeButton: View {
                         .cornerRadius(12)
                 }
                 .fullScreenCover(isPresented: $showModuleView) {
+                    
                     if module.type == .quiz {
-                        QuizQuestionView(culture: culture)
+                        QuizQuestionView(culture: culture, showPopover: $showPopover)
                             .environment(QuizViewModel(questions: module.quiz ?? []))
                             .environment(storyViewModel)
                     } else {
-                        ModuleView(culture: culture)
+                        ModuleView(culture: culture, showPopover: $showPopover)
                             .environment(ModuleViewModel(module: module))
                             .environment(storyViewModel)
                     }

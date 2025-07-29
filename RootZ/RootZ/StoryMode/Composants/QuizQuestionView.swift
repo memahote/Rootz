@@ -12,6 +12,7 @@ struct QuizQuestionView: View {
     @Environment(StoryModeViewModel.self) private var storyViewModel
     let culture: CulturesModel
     @Environment(\.dismiss) private var dismiss
+    @Binding var showPopover : Bool
 
     var body: some View {
         VStack {
@@ -70,8 +71,8 @@ struct QuizQuestionView: View {
 
                     Button(action: {
                         if viewModel.isLastQuestion {
-                            // 🎯 IMPORTANT: Débloquer le module suivant pour les quiz aussi
                             storyViewModel.unlockNextModule()
+                            showPopover = false
                             dismiss()
                         } else {
                             viewModel.next()
@@ -126,7 +127,7 @@ struct QuizQuestionView: View {
         )
     ]
     
-    return QuizQuestionView(culture: CultureData.defaultCulture)
+    QuizQuestionView(culture: CultureData.defaultCulture, showPopover: .constant(true))
         .environment(QuizViewModel(questions: sampleQuestions))
         .environment(StoryModeViewModel(chapters: ChapterData.berbereChapters))
 }

@@ -12,6 +12,7 @@ struct ModuleView: View {
     @Environment(ModuleViewModel.self) private var viewModel
     let culture: CulturesModel
     @Environment(\.dismiss) private var dismiss
+    @Binding var showPopover : Bool
 
     var body: some View {
         VStack() {
@@ -19,6 +20,7 @@ struct ModuleView: View {
                 Spacer()
                 
                 Button {
+                    showPopover = false
                     dismiss()
                 } label: {
                     Image(systemName: "xmark")
@@ -69,16 +71,10 @@ struct ModuleView: View {
 
             Button(action: {
                 if viewModel.isLastPage {
-                    // Marquer le module comme terminé
                     viewModel.markAsFinished()
-                    
-                    // Mettre à jour dans le StoryModeViewModel
                     storyViewModel.updateCurrentModule(viewModel.module)
-                    
-                    // Débloquer le module suivant
                     storyViewModel.unlockNextModule()
-                    
-                    // Fermer la vue
+                    showPopover = false
                     dismiss()
                 } else {
                     viewModel.nextPage()
@@ -102,8 +98,8 @@ struct ModuleView: View {
 }
 
 #Preview {
-    let mockStoryVM = StoryModeViewModel(chapters: ChapterData.berbereChapters)
-    let mockModuleVM = ModuleViewModel(
+    let StoryVM = StoryModeViewModel(chapters: ChapterData.berbereChapters)
+    let ModuleVM = ModuleViewModel(
         module: Module(
             title: "Le Drapeau",
             icon: "flag.fill",
@@ -120,7 +116,7 @@ struct ModuleView: View {
         )
     )
     
-    return ModuleView(
+    ModuleView(
         culture: CulturesModel(
             name: "Berbère",
             flag: "Berber_flag",
@@ -135,9 +131,9 @@ struct ModuleView: View {
             associatedCountries: ["maroc", "algérie", "tunisie"],
             associatedRegions: ["afrique"],
             keywords: ["berbere", "tamazight", "arabe", "marocain", "algérien"]
-        )
+        ), showPopover: .constant(true)
     )
-    .environment(mockModuleVM)
-    .environment(mockStoryVM)
+    .environment(ModuleVM)
+    .environment(StoryVM)
 }
 
