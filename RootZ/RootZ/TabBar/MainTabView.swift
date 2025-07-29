@@ -13,6 +13,7 @@ enum Tab {
 
 struct MainTabView: View {
     @State private var viewModel = AppViewModel()
+    @State private var questViewModel = QuestViewModel(quests: quests, questOfMonthProgress: 0)
     @State private var selectedTab: Tab = .story
     
     var body: some View {
@@ -25,7 +26,7 @@ struct MainTabView: View {
                     }
                 case .quest:
                     NavigationStack{
-                        QuestView(appViewModel: viewModel)
+                        QuestView(appViewModel: viewModel, questViewModel: questViewModel)
                     }
                 case .ranking:
                     NavigationStack {

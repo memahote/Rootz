@@ -9,7 +9,7 @@ import SwiftUI
 
 struct QuestView: View {
     @Bindable var appViewModel: AppViewModel
-
+    @Bindable var questViewModel: QuestViewModel
     var body: some View {
         
         ZStack{
@@ -19,23 +19,21 @@ struct QuestView: View {
                 
 //               MARK: - FIRST PART
                 VStack{
-
                     HStack{
-                        
 //                        MARK: - MONTH
-                        MonthOfQuests(appViewModel: (AppViewModel())).background(Color(appViewModel.selectedCulture.accentColor))
+                        MonthOfQuests(appViewModel: appViewModel).background(Color(appViewModel.selectedCulture.accentColor))
                         
                         Spacer()
                         
 //                        MARK: - CIRCLE COSMETIC REWARD
-                        CircleCosmeticReward(appViewModel: (AppViewModel()))
+                        CircleCosmeticReward(appViewModel: appViewModel)
                     }.padding(.horizontal)
-//                MARK: - TIME LEFT
                     
+//                MARK: - TIME LEFT
                     TimeLeftQuest()
                     
 //                        MARK: - QUEST ACCOMPLISHED
-                    QuestAccomplished(appViewModel: (AppViewModel()))
+                    QuestAccomplished(appViewModel: appViewModel, questViewModel: questViewModel)
                     
                 }.background(
                     RoundedRectangle(cornerRadius: 10)
@@ -55,8 +53,8 @@ struct QuestView: View {
                     
 //                    MARK: - LIST OF QUESTS
                     ScrollView{
-                        ListQuests(appViewModel: (AppViewModel()), quests: quests)
-                    }.background(Color(appViewModel.selectedCulture.accentColor))
+                        ListQuests(appViewModel: appViewModel, questViewModel: questViewModel)
+                    }
                 }
                 .padding(.bottom, 150)
 //                MARK: - END SECOND PART
@@ -67,6 +65,6 @@ struct QuestView: View {
 
 #Preview {
     NavigationStack{
-        QuestView(appViewModel: (AppViewModel()))
+        QuestView(appViewModel: (AppViewModel()), questViewModel: (QuestViewModel(quests: quests, questOfMonthProgress: 0)))
     }
 }
