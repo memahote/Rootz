@@ -9,7 +9,7 @@ import Foundation
 
 @Observable
 class QuizViewModel: ObservableObject {
-    let questions: [QuizQuestion]
+    var questions: [QuizQuestion]
 
     var currentIndex = 0
     var selectedIndex: Int? = nil

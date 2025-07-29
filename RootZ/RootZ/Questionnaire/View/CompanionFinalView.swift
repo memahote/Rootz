@@ -54,7 +54,7 @@ struct CompanionFinalView: View {
                     }
                 )
             }
-            NavigationLink(destination: Loginview(), isActive: $navigateToLogin) {
+            NavigationLink(destination: Loginview().navigationBarBackButtonHidden(true), isActive: $navigateToLogin) {
                 EmptyView()
             }
             .navigationBarBackButtonHidden(true)

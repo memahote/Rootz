@@ -70,6 +70,7 @@ struct ModuleView: View {
 
             Button(action: {
                 if viewModel.isLastPage {
+                    viewModel.isFinish()
                     dismiss()
                 } else {
                     viewModel.nextPage()
@@ -125,7 +126,7 @@ struct ModuleView: View {
                         mascott: "Lion1",
                         image: "Berber_flag"
                     )
-                ], type: .content, quiz: nil
+                ], type: .content, quiz: nil, isFinish: true
             )
         )
     )

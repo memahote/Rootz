@@ -9,8 +9,9 @@ import Foundation
 
 @Observable
 class ModuleViewModel : ObservableObject {
-    let module: Module
+    var module: Module
     var currentPageIndex: Int = 0
+   
 
     var pages: [ModulePage] {
         module.modulesPages
@@ -36,6 +37,13 @@ class ModuleViewModel : ObservableObject {
     func nextPage() {
         if !isLastPage {
             currentPageIndex += 1
+        }
+    }
+    
+    func isFinish() {
+        if isLastPage {
+            module.isFinish = true
+            print("Is bien finish")
         }
     }
 

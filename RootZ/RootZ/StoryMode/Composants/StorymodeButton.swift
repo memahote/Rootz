@@ -96,7 +96,7 @@ struct StorymodeButton: View {
                 content: "Chaque couleur du drapeau a une signification. Le rouge symbolise la force, le vert l'espoir, et le jaune la richesse de la terre.",
                 mascott: "Lion2",
                 image: "drapeau_couleurs"
-            )], type: .content, quiz: nil
+            )], type: .content, quiz: nil, isFinish: true
         
     ),
                     culture:  CulturesModel(

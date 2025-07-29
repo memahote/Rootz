@@ -20,6 +20,10 @@ class StoryModeViewModel {
     var currentModule: Module {
         currentChapter.modules[currentModuleIndex]
     }
+    
+    var chapterProgression: Double {
+        progression(for: currentChapter)
+    }
 
     init(chapters: [Chapters]) {
         self.chapters = chapters
@@ -35,6 +39,22 @@ class StoryModeViewModel {
         guard currentChapter.modules.indices.contains(index) else { return }
         currentModuleIndex = index
     }
+    
+    func progression(for chapter: Chapters) -> Double {
+        let total = chapter.modules.count
+        let completed = chapter.modules.filter { $0.isFinish }.count
+        return total == 0 ? 0 : Double(completed) / Double(total)
+    }
+    
+    func updateCurrentModule(_ updatedModule: Module) {
+        guard chapters.indices.contains(currentChapterIndex),
+              chapters[currentChapterIndex].modules.indices.contains(currentModuleIndex) else { return }
+
+        var chapter = chapters[currentChapterIndex]
+        chapter.modules[currentModuleIndex] = updatedModule
+        chapters[currentChapterIndex] = chapter 
+    }
+    
 }
 
 

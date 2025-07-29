@@ -14,5 +14,5 @@ struct Chapters : Identifiable {
     let description : String
     let isUnlocked : Bool
     let progression : Double
-    let modules : [Module]
+    var modules : [Module]
 }

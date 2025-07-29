@@ -12,14 +12,13 @@ struct SummaryCard: View {
     @Environment(\.dismiss) private var dismiss
     var chapter : Chapters
     var index : Int
-    var isCollapsed : Bool = false
     
     var body: some View {
         VStack(spacing: 0) {
             ZStack(alignment: .bottomTrailing) {
                 Rectangle()
                     .foregroundStyle(Color(viewModel.selectedCulture.accentColor))
-                    .frame(width: 350, height: isCollapsed ? 0 : 175)
+                    .frame(width: 350, height: 175)
                     .clipShape(
                         .rect(
                             topLeadingRadius: 20,
@@ -29,7 +28,7 @@ struct SummaryCard: View {
                         )
                     )
                 
-                if !isCollapsed {
+               
                     if index % 2 != 0 {
                         MascottChatRight(
                             mascott: viewModel.selectedCulture.mascott, message: chapter.title,
@@ -41,7 +40,7 @@ struct SummaryCard: View {
                             messageColor: viewModel.selectedCulture.accent2Color
                         )
                     }
-                }
+                
                 
             }
             
@@ -54,7 +53,7 @@ struct SummaryCard: View {
                     Text("Chapitre \(index)")
                         .foregroundStyle(.white)
                     if chapter.isUnlocked {
-                        ProgressView(value: chapter.progression)
+                        ProgressView(value: viewModel.storyModeViewModel.chapterProgression)
                             .tint(Color(viewModel.selectedCulture.accent2Color))
                     } else {
                         Text("Commencer")

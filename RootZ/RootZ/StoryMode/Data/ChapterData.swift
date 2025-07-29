@@ -16,7 +16,7 @@ struct ChapterData {
             title: "Les Symboles de ma culture",
             description: "Connaître les symboles emblématiques de son héritage",
             isUnlocked: true,
-            progression: 1,
+            progression: 1,                                                                                                        
             modules: [
                 Module(
                     title: "Le Drapeau",
@@ -50,7 +50,8 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: true
                 ),
                 Module(
                     title: "Les Emblèmes",
@@ -84,12 +85,13 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 ),
                 Module(
                         title: "Quiz Intermédiaire",
                         icon: "questionmark.circle.fill",
-                        isUnlocked: true,
+                        isUnlocked: false,
                         color: "ButtonAfrique",
                         modulesPages: [
                             ModulePage(
@@ -116,7 +118,8 @@ struct ChapterData {
                                 answers: ["Rouge", "Vert", "Jaune", "Bleu"],
                                 correctAnswerIndex: 2
                             )
-                        ]
+                        ],
+                        isFinish: false
                     ),
                 Module(
                     title: "Les Proverbes",
@@ -144,7 +147,8 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 ),
                 Module(
                     title: "Les Célèbrations",
@@ -172,7 +176,8 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 ),
                 Module(
                     title: "Le Drapeau",
@@ -194,7 +199,8 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 )
                 
                 
@@ -204,13 +210,13 @@ struct ChapterData {
             nbChap: 2,
             title: "Les Rituels du quotidien",
             description: "Apprendre les gestes, habitudes et coutumes",
-            isUnlocked: true,
+            isUnlocked: false,
             progression: 0.2,
             modules: [
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
-                    isUnlocked: true,
+                    isUnlocked: false,
                     color: "ButtonAfrique",
                     modulesPages: [
                         ModulePage(
@@ -233,12 +239,13 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 ),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
-                    isUnlocked: true,
+                    isUnlocked: false,
                     color: "ButtonAfrique",
                     modulesPages: [
                         ModulePage(
@@ -261,12 +268,13 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 ),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
-                    isUnlocked: true,
+                    isUnlocked: false,
                     color: "ButtonAfrique",
                     modulesPages: [
                         ModulePage(
@@ -289,12 +297,13 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 ),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
-                    isUnlocked: true,
+                    isUnlocked: false,
                     color: "ButtonAfrique",
                     modulesPages: [
                         ModulePage(
@@ -317,7 +326,8 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 )
                 
                 
@@ -349,12 +359,13 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 ),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
-                    isUnlocked: true,
+                    isUnlocked: false,
                     color: "ButtonAfrique",
                     modulesPages: [
                         ModulePage(
@@ -371,12 +382,13 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 ),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
-                    isUnlocked: true,
+                    isUnlocked: false,
                     color: "ButtonAfrique",
                     modulesPages: [
                         ModulePage(
@@ -393,12 +405,13 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 ),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
-                    isUnlocked: true,
+                    isUnlocked: false,
                     color: "ButtonAfrique",
                     modulesPages: [
                         ModulePage(
@@ -415,7 +428,8 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 )
                 
                 
@@ -463,12 +477,13 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 ),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
-                    isUnlocked: true,
+                    isUnlocked: false,
                     color: "ButtonBlue",
                     modulesPages: [
                         ModulePage(
@@ -491,12 +506,13 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 ),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
-                    isUnlocked: true,
+                    isUnlocked: false,
                     color: "ButtonBlue",
                     modulesPages: [
                         ModulePage(
@@ -519,12 +535,13 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 ),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
-                    isUnlocked: true,
+                    isUnlocked: false,
                     color: "ButtonBlue",
                     modulesPages: [
                         ModulePage(
@@ -547,7 +564,8 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 ),
                 
                 
@@ -585,12 +603,13 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 ),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
-                    isUnlocked: true,
+                    isUnlocked: false,
                     color: "ButtonBlue",
                     modulesPages: [
                         ModulePage(
@@ -613,12 +632,13 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 ),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
-                    isUnlocked: true,
+                    isUnlocked: false,
                     color: "ButtonBlue",
                     modulesPages: [
                         ModulePage(
@@ -641,12 +661,13 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 ),
                 Module(
                     title: "Le Drapeau",
                     icon: "flag.fill",
-                    isUnlocked: true,
+                    isUnlocked: false,
                     color: "ButtonBlue",
                     modulesPages: [
                         ModulePage(
@@ -669,7 +690,8 @@ struct ChapterData {
                         )
                     ],
                     type: .content,
-                    quiz: nil
+                    quiz: nil,
+                    isFinish: false
                 )
                 
                 
