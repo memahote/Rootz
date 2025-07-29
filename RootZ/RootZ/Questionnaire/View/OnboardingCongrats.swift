@@ -11,12 +11,12 @@ import SwiftUI
 
 struct OnboardingCongratsView: View {
     @ObservedObject var viewModel: OnboardingViewModel
-
+    
     var body: some View {
         VStack {
             Spacer(minLength: 40)
-
-  
+            
+            
             Text("Bravo !\n Tu as complété ton profil.")
                 .font(.custom("Baloo 2", size: 30).weight(.medium))
                 .multilineTextAlignment(.center)
@@ -28,27 +28,27 @@ struct OnboardingCongratsView: View {
                 LottieView(name: "PlaneteWin", loopMode: .playOnce)
                     .frame(width: 300, height: 300)
                     .allowsHitTesting(false)
-
+                
                 LottieView(name: "Confetti", loopMode: .playOnce)
                     .frame(width: 400, height: 350)
                     .allowsHitTesting(false)
             }
-
-          
+            
+            
             Text("Clique sur Suivant pour découvrir ce que cache ton profil culturel…")
                 .font(.custom("Nunito", size: 24).weight(.light))
                 .multilineTextAlignment(.center)
                 .foregroundColor(.black)
                 .padding(.horizontal)
                 .padding(.top, 10)
-
+            
             Spacer()
-
+            
             // ✅ Bouton en bas
             BottomButtonsArea(
                 primaryButton: {
                     ContinueButton(title: "Suivant") {
-                        viewModel.currentStep = 8
+                        viewModel.nextStep()
                     }
                 },
                 secondaryButton: {

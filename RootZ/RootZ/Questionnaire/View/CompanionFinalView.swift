@@ -38,10 +38,7 @@ struct CompanionFinalView: View {
                     .multilineTextAlignment(.center)
                     .padding()
 
-                NavigationLink(destination: Loginview(), isActive: $navigateToLogin) {
-                    EmptyView()
-                }
-                .hidden()
+               
             }
             
             VStack{
@@ -49,7 +46,6 @@ struct CompanionFinalView: View {
                 BottomButtonsArea(
                     primaryButton: {
                         ContinueButton(title: "Continue") {
-                            viewModel.hasCompletedOnboarding = true
                             navigateToLogin = true
                         }
                     },
@@ -58,6 +54,11 @@ struct CompanionFinalView: View {
                     }
                 )
             }
+            NavigationLink(destination: Loginview(), isActive: $navigateToLogin) {
+                EmptyView()
+            }
+            .navigationBarBackButtonHidden(true)
+            
           
             .padding()
         }

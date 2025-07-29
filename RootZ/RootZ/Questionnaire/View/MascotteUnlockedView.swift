@@ -45,7 +45,6 @@ struct MascotteUnlockedView: View {
                 Spacer()
 
                 ContinueButton(title: "Continue") {
-                    viewModel.nextStep()
                     navigateToMascotteAlert = true
                 }
 
@@ -55,7 +54,7 @@ struct MascotteUnlockedView: View {
                 ) {
                     EmptyView()
                 }
-                .hidden()
+                .navigationBarBackButtonHidden(true)
             }
             .padding()
         }

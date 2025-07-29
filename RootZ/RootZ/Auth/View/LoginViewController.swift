@@ -100,6 +100,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .backgroundDefault
         self.additionalSafeAreaInsets = UIEdgeInsets.zero
+        self.navigationItem.hidesBackButton = true
         
         // Do any additional setup after loading the view.
         
