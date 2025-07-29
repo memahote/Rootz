@@ -6,6 +6,8 @@
 //
 import SwiftUI
 
+import SwiftUI
+
 struct CompanionFinalView: View {
     @ObservedObject var viewModel: OnboardingViewModel
     @State private var navigateToLogin = false
@@ -36,21 +38,35 @@ struct CompanionFinalView: View {
                     .multilineTextAlignment(.center)
                     .padding()
 
-        
-                ContinueButton(title: "Continue") {
-                    viewModel.hasCompletedOnboarding = true
-                    navigateToLogin = true
-                }
-
-               
-
                 NavigationLink(destination: Loginview(), isActive: $navigateToLogin) {
                     EmptyView()
                 }
                 .hidden()
             }
+            
+            VStack{
+                Spacer()
+                BottomButtonsArea(
+                    primaryButton: {
+                        ContinueButton(title: "Continue") {
+                            viewModel.hasCompletedOnboarding = true
+                            navigateToLogin = true
+                        }
+                    },
+                    secondaryButton: {
+                        EmptyView() // pas de second bouton
+                    }
+                )
+            }
+          
             .padding()
         }
       
+    }
+}
+struct CompanionFinalView_Previews: PreviewProvider {
+    static var previews: some View {
+        CompanionFinalView(viewModel: OnboardingViewModel())
+            .previewDevice("iPhone 15 Pro")
     }
 }

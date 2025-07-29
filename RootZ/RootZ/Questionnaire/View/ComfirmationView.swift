@@ -28,3 +28,10 @@ struct ConfirmationView: View {
         .padding()
     }
 }
+
+struct ConfirmationView_Previews: PreviewProvider {
+    static var previews: some View {
+        ConfirmationView(viewModel: OnboardingViewModel())
+            .previewDevice("iPhone 15 Pro")
+    }
+}
