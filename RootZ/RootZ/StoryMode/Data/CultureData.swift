@@ -167,7 +167,7 @@ struct CultureData {
         CulturesModel(
             name: "France",
             flag: "France_flag",
-            mascott: "CoqMascotte",
+            mascott: "Coq",
             chapters: ChapterData.berbereChapters,
             backgroundColor: "FondEurope",
             buttonColor: "ButtonEurope",
