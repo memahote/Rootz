@@ -13,10 +13,11 @@ struct ProfilView: View {
     @Bindable   var appViewModel: AppViewModel
     
     var body: some View {
-        ZStack(alignment: .bottom) {
+        VStack {
+            HeaderView(appViewModel: appViewModel)
+
             ScrollView {
                 VStack {
-                    HeaderView(appViewModel: appViewModel)
                     
                     VStack(alignment: .leading, spacing: 16) {
                         // Nom + origines
