@@ -47,7 +47,7 @@ struct MascotteSwitchAlertView: View {
                 ) {
                     EmptyView()
                 }
-                .hidden()
+                .navigationBarBackButtonHidden(true)
             }
             .padding()
         }

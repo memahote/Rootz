@@ -73,6 +73,7 @@ struct CulturalProfileResultView: View {
                            NavigationLink(destination: MascotteUnlockedView(viewModel: viewModel), isActive: $navigateToMascotteUnlocked) {
                                EmptyView()
                            }
+                           .navigationBarBackButtonHidden(true)
 
                            
                        }
