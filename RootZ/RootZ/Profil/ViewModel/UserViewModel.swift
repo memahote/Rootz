@@ -12,6 +12,6 @@ class UserViewModel{
      var user: User
 
     init() {
-        self.user = User(nom: "Mounir", pseudo: "Mounir76", mascotte: "Lion", score: 2580)
+        self.user = User(nom: "Mounir", pseudo: "Mounir76", mascotte: "Lion1", score: 2580)
     }
 }
