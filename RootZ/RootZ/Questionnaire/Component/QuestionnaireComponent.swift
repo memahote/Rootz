@@ -96,4 +96,48 @@ struct BottomButtonsArea<Primary: View, Secondary: View>: View {
     }
 }
 
+//bouton valider
+struct ValidateButton: View {
+    let title: String
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack(alignment: .center, spacing: 10) {
+                Text(title)
+                    .font(.custom("Baloo 2", size: 20))
+                    .foregroundColor(.white)
+            }
+            .padding(.horizontal, 32)
+            .padding(.vertical, 7)
+            .frame(width: 150, height: 52, alignment: .center)
+            .background(Color(red: 0.19, green: 0.68, blue: 0.35))
+            .cornerRadius(10)
+        }
+    }
+}
+
+//bouton annuler
+struct CancelButton: View {
+    let title: String
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack(alignment: .center, spacing: 10) {
+                Text(title)
+                    .font(.custom("Baloo 2", size: 20))
+                    .foregroundColor(.red)
+            }
+            .padding(.horizontal, 32)
+            .padding(.vertical, 7)
+            .frame(width: 150, height: 52, alignment: .center)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .inset(by: -0.5)
+                    .stroke(Color.red, lineWidth: 1)
+            )
+        }
+    }
+}
 

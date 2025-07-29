@@ -16,7 +16,9 @@ struct CultureSuggestionView: View {
                 .ignoresSafeArea()
             
         VStack {
-            
+            PreviousButton {
+                viewModel.previousStep()
+            }
                 Text("Voici d'autres cultures proches de toi :")
                     .font(.custom("Baloo 2", size: 36).weight(.medium))
                     .multilineTextAlignment(.center)
@@ -47,7 +49,7 @@ struct CultureSuggestionView: View {
                 NavigationLink(destination: ConfirmationView(viewModel: viewModel), isActive: $navigateToNext) {
                     EmptyView()
                 }
-                .hidden()
+                .navigationBarBackButtonHidden(true)
 
                 ContinueButton(title: "Suivant") {
                     if selectedCulture != nil {
