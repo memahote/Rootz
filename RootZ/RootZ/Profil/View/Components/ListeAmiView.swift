@@ -12,11 +12,13 @@ struct ListeAmisView: View {
     @Environment(\.dismiss) var dismiss
     @State private var nomNouveauAmi: String = ""
     @State private var animate = false
+    @Bindable   var appViewModel: AppViewModel
+
 
     var body: some View {
         NavigationView {
             ZStack {
-                Color("CouleurAccent")
+                Color(appViewModel.selectedCulture.backgroundColor)
                     .ignoresSafeArea()
 
                 VStack(spacing: 20) {
@@ -36,7 +38,7 @@ struct ListeAmisView: View {
                             }) {
                                 Image(systemName: "plus.circle.fill")
                                     .font(.title2)
-                                    .foregroundColor(Color("CouleurAccent"))
+                                    .foregroundColor(Color(.white))
                             }
                             .disabled(nomNouveauAmi.isEmpty)
                         }

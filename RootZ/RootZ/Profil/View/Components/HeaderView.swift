@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HeaderView: View {
+    @Bindable   var appViewModel: AppViewModel
+
     var body: some View {
         VStack {
             Image("Lion1")
@@ -16,6 +18,6 @@ struct HeaderView: View {
                 .frame(width: 200, height: 200)
         }
         .frame(maxWidth: .infinity)
-        .background(Color("CouleurAccent"))
+        .background(Color(appViewModel.selectedCulture.backgroundColor))
     }
 }

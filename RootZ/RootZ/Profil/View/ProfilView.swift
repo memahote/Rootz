@@ -16,7 +16,7 @@ struct ProfilView: View {
         ZStack(alignment: .bottom) {
             ScrollView {
                 VStack {
-                    HeaderView()
+                    HeaderView(appViewModel: appViewModel)
                     
                     VStack(alignment: .leading, spacing: 16) {
                         // Nom + origines
@@ -66,7 +66,7 @@ struct ProfilView: View {
         
         // Feuilles modales
         .sheet(isPresented: $profilViewModel.showListeAmis) {
-            ListeAmisView(viewModel: amisViewModel)
+            ListeAmisView(viewModel: amisViewModel, appViewModel: appViewModel,)
         }
         
         .sheet(isPresented: $profilViewModel.showPersonnalisation) {
