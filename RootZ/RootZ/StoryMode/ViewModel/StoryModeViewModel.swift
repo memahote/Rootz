@@ -42,7 +42,9 @@ class StoryModeViewModel {
     
     func progression(for chapter: Chapters) -> Double {
         let total = chapter.modules.count
+        print(total)
         let completed = chapter.modules.filter { $0.isFinish }.count
+        print(completed)
         return total == 0 ? 0 : Double(completed) / Double(total)
     }
     
@@ -50,11 +52,23 @@ class StoryModeViewModel {
         guard chapters.indices.contains(currentChapterIndex),
               chapters[currentChapterIndex].modules.indices.contains(currentModuleIndex) else { return }
 
-        var chapter = chapters[currentChapterIndex]
-        chapter.modules[currentModuleIndex] = updatedModule
-        chapters[currentChapterIndex] = chapter 
+        chapters[currentChapterIndex].modules[currentModuleIndex].isFinish = updatedModule.isFinish
     }
     
+    func unlockNextModule() {
+        guard chapters.indices.contains(currentChapterIndex) else { return }
+
+        let nextIndex = currentModuleIndex + 1
+//        print("Tentative de déblocage du module \(nextIndex)")
+
+        guard chapters[currentChapterIndex].modules.indices.contains(nextIndex) else {
+            return
+        }
+
+//        print("Avant déblocage: \(chapters[currentChapterIndex].modules[nextIndex].isUnlocked)")
+        
+        chapters[currentChapterIndex].modules[nextIndex].isUnlocked = true
+        
+//        print("Après déblocage: \(chapters[currentChapterIndex].modules[nextIndex].isUnlocked)")
+    }
 }
-
-

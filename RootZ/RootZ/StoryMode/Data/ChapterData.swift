@@ -56,7 +56,7 @@ struct ChapterData {
                 Module(
                     title: "Les Emblèmes",
                     icon: "star.fill",
-                    isUnlocked: true,
+                    isUnlocked: false,
                     color: "ButtonAfrique",
                     modulesPages: [
                         ModulePage(

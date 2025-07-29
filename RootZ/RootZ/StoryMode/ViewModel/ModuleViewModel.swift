@@ -8,10 +8,9 @@
 import Foundation
 
 @Observable
-class ModuleViewModel : ObservableObject {
+class ModuleViewModel {
     var module: Module
     var currentPageIndex: Int = 0
-   
 
     var pages: [ModulePage] {
         module.modulesPages
@@ -40,10 +39,9 @@ class ModuleViewModel : ObservableObject {
         }
     }
     
-    func isFinish() {
+    func markAsFinished() {
         if isLastPage {
             module.isFinish = true
-            print("Is bien finish")
         }
     }
 

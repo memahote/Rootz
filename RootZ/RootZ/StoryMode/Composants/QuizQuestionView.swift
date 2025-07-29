@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct QuizQuestionView: View {
-    @EnvironmentObject var viewModel: QuizViewModel
+    @Environment(QuizViewModel.self) private var viewModel
+    @Environment(StoryModeViewModel.self) private var storyViewModel
     let culture: CulturesModel
     @Environment(\.dismiss) private var dismiss
 
@@ -26,7 +27,6 @@ struct QuizQuestionView: View {
                 .padding(.trailing, 25)
             }
 
-         
             VStack {
                 ProgressView(value: viewModel.progress)
                     .progressViewStyle(LinearProgressViewStyle(tint: Color(culture.accent2Color)))
@@ -41,7 +41,6 @@ struct QuizQuestionView: View {
             .padding(.top)
             
             VStack(spacing: 20) {
-                
                 Text(viewModel.currentQuestion.question)
                     .font(.custom("Baloo2", size: 24))
                     .multilineTextAlignment(.center)
@@ -71,6 +70,8 @@ struct QuizQuestionView: View {
 
                     Button(action: {
                         if viewModel.isLastQuestion {
+                            // 🎯 IMPORTANT: Débloquer le module suivant pour les quiz aussi
+                            storyViewModel.unlockNextModule()
                             dismiss()
                         } else {
                             viewModel.next()
@@ -111,12 +112,10 @@ struct QuizQuestionView: View {
 }
 
 
-
-
 #Preview {
     let sampleQuestions = [
         QuizQuestion(
-            question: "Quel est l’emblème protecteur ?",
+            question: "Quel est l'emblème protecteur ?",
             answers: ["Khamsa", "Yaz", "Tambour", "Drapeau"],
             correctAnswerIndex: 0
         ),
@@ -126,12 +125,12 @@ struct QuizQuestionView: View {
             correctAnswerIndex: 1
         )
     ]
-
-    let sampleCulture = CultureData.defaultCulture
-
-    return QuizQuestionView(culture: sampleCulture)
-        .environmentObject(QuizViewModel(questions: sampleQuestions))
+    
+    return QuizQuestionView(culture: CultureData.defaultCulture)
+        .environment(QuizViewModel(questions: sampleQuestions))
+        .environment(StoryModeViewModel(chapters: ChapterData.berbereChapters))
 }
+
 
 
 

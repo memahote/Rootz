@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ModuleView: View {
-    @EnvironmentObject var viewModel: ModuleViewModel
+    @Environment(StoryModeViewModel.self) private var storyViewModel
+    @Environment(ModuleViewModel.self) private var viewModel
     let culture: CulturesModel
     @Environment(\.dismiss) private var dismiss
 
@@ -25,8 +26,8 @@ struct ModuleView: View {
                         .font(.title)
                 }
                 .padding(.trailing, 25)
-
             }
+            
             VStack {
                 ProgressView(value: viewModel.progress)
                     .progressViewStyle(LinearProgressViewStyle(tint: Color(culture.accent2Color)))
@@ -55,7 +56,6 @@ struct ModuleView: View {
 
                     Spacer()
                         .padding(.top)
-                    
 
                     MascottChatLeft(
                         mascott: viewModel.currentPage.mascott,
@@ -64,13 +64,21 @@ struct ModuleView: View {
                     )
                 }
                 .padding()
-                
             }
             .scrollIndicators(.hidden)
 
             Button(action: {
                 if viewModel.isLastPage {
-                    viewModel.isFinish()
+                    // Marquer le module comme terminé
+                    viewModel.markAsFinished()
+                    
+                    // Mettre à jour dans le StoryModeViewModel
+                    storyViewModel.updateCurrentModule(viewModel.module)
+                    
+                    // Débloquer le module suivant
+                    storyViewModel.unlockNextModule()
+                    
+                    // Fermer la vue
                     dismiss()
                 } else {
                     viewModel.nextPage()
@@ -93,9 +101,26 @@ struct ModuleView: View {
     }
 }
 
-
 #Preview {
-    ModuleView(
+    let mockStoryVM = StoryModeViewModel(chapters: ChapterData.berbereChapters)
+    let mockModuleVM = ModuleViewModel(
+        module: Module(
+            title: "Le Drapeau",
+            icon: "flag.fill",
+            isUnlocked: true,
+            color: "ButtonAfrique",
+            modulesPages: [
+                ModulePage(
+                    title: "Intro",
+                    content: "Bienvenue dans le module",
+                    mascott: "Lion1",
+                    image: "Berber_flag"
+                )
+            ], type: .content, quiz: nil, isFinish: false
+        )
+    )
+    
+    return ModuleView(
         culture: CulturesModel(
             name: "Berbère",
             flag: "Berber_flag",
@@ -112,24 +137,7 @@ struct ModuleView: View {
             keywords: ["berbere", "tamazight", "arabe", "marocain", "algérien"]
         )
     )
-    .environmentObject(
-        ModuleViewModel(
-            module: Module(
-                title: "Le Drapeau",
-                icon: "flag.fill",
-                isUnlocked: true,
-                color: "ButtonAfrique",
-                modulesPages: [
-                    ModulePage(
-                        title: "Intro",
-                        content: "Bienvenue dans le module",
-                        mascott: "Lion1",
-                        image: "Berber_flag"
-                    )
-                ], type: .content, quiz: nil, isFinish: true
-            )
-        )
-    )
+    .environment(mockModuleVM)
+    .environment(mockStoryVM)
 }
-
 
