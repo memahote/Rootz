@@ -19,4 +19,6 @@ class CustomizeAvatarViewModel{
         self.selectedLunette = selectedLunette
         self.selectedNourriture = selectedNourriture
     }
+    
+
 }

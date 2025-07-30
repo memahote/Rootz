@@ -12,4 +12,8 @@ struct Mascotte: Identifiable {
     let imageName: String
     let score: Int
     let position: Int
+    
+    // Add variable of selectedHat, selectedLunette, selectedNourriture
+    // Move variable Score and position
+    
 }

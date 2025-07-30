@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CustomizeAvatarView: View {
     @Bindable var appViewModel: AppViewModel
-    @Bindable var userViewModel: UserViewModel
+    @Bindable var profilViewModel: ProfilViewModel
+    
     @State var selectedCategory: ECosmeticCategory = .tete
     @State private var selectedCosmeticID: UUID? = nil
     
@@ -19,7 +20,7 @@ struct CustomizeAvatarView: View {
         VStack{
             HStack(alignment: .center){
                 Spacer()
-                Image(userViewModel.user.mascotte)
+                Image(profilViewModel.user.mascotte)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 200, height: 200)
@@ -77,5 +78,5 @@ struct CustomizeAvatarView: View {
 
 
 #Preview {
-    CustomizeAvatarView(appViewModel: (AppViewModel()), userViewModel: (UserViewModel()))
+    CustomizeAvatarView(appViewModel: (AppViewModel()), profilViewModel: (ProfilViewModel()))
 }

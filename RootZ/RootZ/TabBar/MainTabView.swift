@@ -14,6 +14,7 @@ enum Tab {
 struct MainTabView: View {
     @State private var viewModel = AppViewModel()
     @State private var questViewModel = QuestViewModel(quests: quests, questOfMonthProgress: 0)
+    @State private var profilViewModel = ProfilViewModel()
     @State private var selectedTab: Tab = .story
     
     var body: some View {
@@ -35,8 +36,7 @@ struct MainTabView: View {
                     }
                 case .profil:
                     NavigationStack {
-                        ProfilView(appViewModel: viewModel)
-                            .environmentObject(ProfilViewModel())
+                        ProfilView(profilViewModel: profilViewModel, appViewModel: viewModel)
                             .environmentObject(AmisViewModel())
                     }
                 }
