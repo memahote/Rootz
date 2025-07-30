@@ -29,7 +29,7 @@ class RankingWordlist: ObservableObject {
         Joueur(rang: 5, nom: "Mounir", score: 1760),
         Joueur(rang: 6, nom: "Claire", score: 787),
         Joueur(rang: 7, nom: "Garance", score: 350),
-        Joueur(rang: 8, nom: "Tarek", score: 290),
+        Joueur(rang: 8, nom: "Josh Hamton", score: 290),
         Joueur(rang: 9, nom: "Elina", score: 240),
         Joueur(rang: 10, nom: "Loris", score: 180)
     ]

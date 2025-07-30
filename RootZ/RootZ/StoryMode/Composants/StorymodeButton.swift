@@ -13,6 +13,8 @@ struct StorymodeButton: View {
     let module: Module
     let culture : CulturesModel
     
+//    @Environment(AppViewModel.self) var appViewModel
+    
     var body: some View {
         Button(action: {
             showPopover.toggle()
