@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CosmeticCard: View {
     @Bindable var appViewModel: AppViewModel
-    
+//    @Bindable var customizeAvatarViewModel: CustomizeAvatarViewModel
     var cosmetic: Cosmetic
     var onSelect: () -> Void
     var isSelected = false

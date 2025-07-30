@@ -9,14 +9,16 @@ import SwiftUI
 
 struct QuestAccomplished: View {
     @Bindable var appViewModel: AppViewModel
+    @Bindable var questViewModel: QuestViewModel
+    
     var body: some View {
         VStack{
             HStack{
                 Text("Finir les quêtes du mois")
-                Text("6/25")
+                Text("\(questViewModel.questOfMonthProgress)/\(questViewModel.totalMonthlyQuests)")
             }.bold()
             
-            ProgressView(value: 6, total: 25)
+            ProgressView(value: Double(questViewModel.questOfMonthProgress), total: Double(questViewModel.totalMonthlyQuests))
                 .frame(width: 48, height: 50)
                 .tint(.green)
                 .scaleEffect(6.0)
@@ -35,5 +37,5 @@ struct QuestAccomplished: View {
 }
 
 #Preview {
-    QuestAccomplished(appViewModel: (AppViewModel()))
+    QuestAccomplished(appViewModel: (AppViewModel()), questViewModel: (QuestViewModel(quests: quests, questOfMonthProgress: 0)))
 }

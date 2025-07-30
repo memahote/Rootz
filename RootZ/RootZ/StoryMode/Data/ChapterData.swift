@@ -97,7 +97,7 @@ struct ChapterData {
                             ModulePage(
                                 title: "Petit Quiz !",
                                 content: "Quel symbole protège du mauvais œil ?",
-                                mascott: "Lion2",
+                                mascott: "Lion1",
                                 image: nil
                             )
                         ],

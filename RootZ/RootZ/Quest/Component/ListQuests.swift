@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ListQuests: View {
     @Bindable var appViewModel: AppViewModel
-    
-    let quests: [[Quest]]
+    @Bindable var questViewModel: QuestViewModel
     
     var indexDuJour: Int {
         let calendar = Calendar.current
@@ -21,10 +20,13 @@ struct ListQuests: View {
     
     var body: some View {
         
-        let questsOfTheDay = quests[indexDuJour]
+        let questsOfTheDay = questViewModel.quests[indexDuJour]
 
                 ForEach(questsOfTheDay) { quest in
-                    QuestRow(quest: quest)
+                    
+                        QuestRow(quest: quest)
+                    
+                   
                 
         }.frame(width: 331, height: 323)
         .background(
@@ -39,5 +41,8 @@ struct ListQuests: View {
 }
 
 #Preview {
-    ListQuests(appViewModel: (AppViewModel()), quests: quests)
+    ListQuests(
+        appViewModel: AppViewModel(),
+        questViewModel: QuestViewModel(quests: quests, questOfMonthProgress: 0)
+    )
 }
