@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ClassementListeView: View {
+    @Bindable   var appViewModel: AppViewModel
     let joueurs: [Joueur]
 
     var body: some View {
@@ -21,17 +22,17 @@ struct ClassementListeView: View {
                         .font(.system(size: 20, weight: .bold))
                 }
                 .padding()
-                .background(Color("FondAfrique"))
+                .background(Color(appViewModel.selectedCulture.accentColor))
                 .cornerRadius(6)
             }
         }
         .padding()
-        .background(Color("CouleurAccent"))
+        .background(Color(appViewModel.selectedCulture.backgroundColor))
     }
 }
 
 #Preview {
-    ClassementListeView(joueurs: [
+    ClassementListeView(appViewModel: AppViewModel(), joueurs: [
         Joueur(rang: 1, nom: "Exemple", score: 1500),
         Joueur(rang: 2, nom: "Test", score: 1400)
     ])

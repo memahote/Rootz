@@ -13,10 +13,11 @@ struct ProfilView: View {
     @Bindable   var appViewModel: AppViewModel
     
     var body: some View {
-        ZStack(alignment: .bottom) {
+        VStack {
+            HeaderView(appViewModel: appViewModel)
+
             ScrollView {
                 VStack {
-                    HeaderView()
                     
                     VStack(alignment: .leading, spacing: 16) {
                         // Nom + origines
@@ -66,7 +67,7 @@ struct ProfilView: View {
         
         // Feuilles modales
         .sheet(isPresented: $profilViewModel.showListeAmis) {
-            ListeAmisView(viewModel: amisViewModel)
+            ListeAmisView(viewModel: amisViewModel, appViewModel: appViewModel,)
         }
         
         .sheet(isPresented: $profilViewModel.showPersonnalisation) {

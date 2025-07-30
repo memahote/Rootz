@@ -2,8 +2,9 @@
 //  UserModel.swift
 //  RootZ
 //
-//  Created by Mounir on 17/07/2025.
+//  Created by Mounir on 30/07/2025.
 //
+
 import Foundation
 
 struct UserModel {
@@ -13,7 +14,3 @@ struct UserModel {
     var mascotte: String
     var score: Int
 }
-
-
-
-
