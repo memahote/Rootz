@@ -65,6 +65,7 @@ struct StorymodeButton: View {
                         QuizQuestionView(culture: culture, showPopover: $showPopover)
                             .environment(QuizViewModel(questions: module.quiz ?? []))
                             .environment(storyViewModel)
+                            .environment(QuestViewModel(quests: quests, questOfMonthProgress: 12))
                     } else {
                         ModuleView(culture: culture, showPopover: $showPopover)
                             .environment(ModuleViewModel(module: module))

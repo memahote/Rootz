@@ -10,6 +10,7 @@ import SwiftUI
 struct QuizQuestionView: View {
     @Environment(QuizViewModel.self) private var viewModel
     @Environment(StoryModeViewModel.self) private var storyViewModel
+    @Environment(QuestViewModel.self) private var questViewModel
     let culture: CulturesModel
     @Environment(\.dismiss) private var dismiss
     @Binding var showPopover : Bool
@@ -73,6 +74,7 @@ struct QuizQuestionView: View {
                         if viewModel.isLastQuestion {
                             storyViewModel.unlockNextModule()
                             showPopover = false
+                            questViewModel.updateQuestProgress(for: questViewModel.quests[0][0])
                             dismiss()
                         } else {
                             viewModel.next()
@@ -130,6 +132,7 @@ struct QuizQuestionView: View {
     QuizQuestionView(culture: CultureData.defaultCulture, showPopover: .constant(true))
         .environment(QuizViewModel(questions: sampleQuestions))
         .environment(StoryModeViewModel(chapters: ChapterData.berbereChapters))
+        .environment(QuestViewModel(quests: quests, questOfMonthProgress: 12))
 }
 
 
