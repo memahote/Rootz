@@ -11,6 +11,7 @@ import SwiftUI
 struct CompanionFinalView: View {
     @ObservedObject var viewModel: OnboardingViewModel
     @State private var navigateToLogin = false
+    @Binding var showOnboarding : Bool
 
     var body: some View {
         ZStack {
@@ -46,7 +47,8 @@ struct CompanionFinalView: View {
                 BottomButtonsArea(
                     primaryButton: {
                         ContinueButton(title: "Continue") {
-                            navigateToLogin = true
+                            
+                            showOnboarding = false
                         }
                     },
                     secondaryButton: {
@@ -54,10 +56,10 @@ struct CompanionFinalView: View {
                     }
                 )
             }
-            NavigationLink(destination: Loginview().navigationBarBackButtonHidden(true), isActive: $navigateToLogin) {
-                EmptyView()
-            }
-            .navigationBarBackButtonHidden(true)
+//            NavigationLink(destination: Loginview().navigationBarBackButtonHidden(true), isActive: $navigateToLogin) {
+//                EmptyView()
+//            }
+//            .navigationBarBackButtonHidden(true)
             
           
             .padding()
@@ -67,7 +69,7 @@ struct CompanionFinalView: View {
 }
 struct CompanionFinalView_Previews: PreviewProvider {
     static var previews: some View {
-        CompanionFinalView(viewModel: OnboardingViewModel())
+        CompanionFinalView(viewModel: OnboardingViewModel(), showOnboarding: .constant(true))
             .previewDevice("iPhone 15 Pro")
     }
 }

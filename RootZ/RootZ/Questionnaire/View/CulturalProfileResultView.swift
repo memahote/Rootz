@@ -12,6 +12,7 @@ struct CulturalProfileResultView: View {
     @State private var hasOpenedChest = false
     @State private var navigateToSuggestions = false
     @State private var navigateToMascotteUnlocked = false
+    @Binding var showOnboarding : Bool
 
     
 
@@ -69,7 +70,7 @@ struct CulturalProfileResultView: View {
                                
                            }
                           
-                           NavigationLink(destination: MascotteUnlockedView(viewModel: viewModel), isActive: $navigateToMascotteUnlocked) {
+                           NavigationLink(destination: MascotteUnlockedView(viewModel: viewModel, showOnboarding: $showOnboarding), isActive: $navigateToMascotteUnlocked) {
                                EmptyView()
                            }
                            .navigationBarBackButtonHidden(true)
@@ -87,7 +88,7 @@ struct CulturalProfileResultView: View {
 
 struct CulturalProfileResultView_Previews: PreviewProvider {
     static var previews: some View {
-        CulturalProfileResultView(viewModel: OnboardingViewModel())
+        CulturalProfileResultView(viewModel: OnboardingViewModel(), showOnboarding: .constant(true))
             .previewDevice("iPhone 15 Pro")
     }
 }

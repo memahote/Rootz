@@ -43,7 +43,7 @@ struct ContentView: View {
                 case 7:
                     OnboardingCongratsView(viewModel: viewModel)
                 case 8:
-                    CulturalProfileResultView(viewModel: viewModel)
+                    CulturalProfileResultView(viewModel: viewModel, showOnboarding: .constant(true))
 
                 
                 default:

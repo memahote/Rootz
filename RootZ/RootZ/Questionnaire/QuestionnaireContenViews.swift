@@ -10,23 +10,18 @@ import SwiftUI
 
 struct ContentViews: View {
     @StateObject private var viewModel = OnboardingViewModel()
-    init() {
-    #if DEBUG
-        UserDefaults.standard.set(false, forKey: "hasCompletedOnboarding")
-    #endif
-    }
+    @Binding var showOnboarding : Bool
+    
+//    init() {
+//    #if DEBUG
+//        UserDefaults.standard.set(false, forKey: "hasCompletedOnboarding")
+//    #endif
+//    }
 
     var body: some View {
-        Group {
-            if viewModel.hasCompletedOnboarding {
-                Loginview()
-            
-            }
-            if !viewModel.hasCompletedOnboarding{
+      
                 onboardingStepsView
-                
-            }
-        }
+           
     }
 
     private var onboardingStepsView: some View {
@@ -61,11 +56,11 @@ struct ContentViews: View {
                 case 7:
                     OnboardingCongratsView(viewModel: viewModel)
                 case 8:
-                    CulturalProfileResultView(viewModel: viewModel)
+                    CulturalProfileResultView(viewModel: viewModel, showOnboarding: $showOnboarding)
                 default:
                     Text("Étape non définie")
                 }
-
+                
                 Spacer()
             }
         }
@@ -74,6 +69,6 @@ struct ContentViews: View {
 
 struct ContentViews_Previews: PreviewProvider {
     static var previews: some View {
-        ContentViews()
+        ContentViews(showOnboarding: .constant(true))
     }
 }

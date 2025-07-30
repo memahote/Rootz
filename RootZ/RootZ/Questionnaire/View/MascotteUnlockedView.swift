@@ -8,6 +8,7 @@ import SwiftUI
 struct MascotteUnlockedView: View {
     @ObservedObject var viewModel: OnboardingViewModel
     @State private var navigateToMascotteAlert = false
+    @Binding var showOnboarding : Bool
 
     var body: some View {
         ZStack {
@@ -49,7 +50,7 @@ struct MascotteUnlockedView: View {
                 }
 
                 NavigationLink(
-                    destination: MascotteSwitchAlertView(viewModel: viewModel),
+                    destination: MascotteSwitchAlertView(viewModel: viewModel, showOnboarding: $showOnboarding),
                     isActive: $navigateToMascotteAlert
                 ) {
                     EmptyView()
@@ -64,7 +65,7 @@ struct MascotteUnlockedView: View {
 
 struct MascotteUnlockedView_Previews: PreviewProvider {
     static var previews: some View {
-        MascotteUnlockedView(viewModel: OnboardingViewModel())
+        MascotteUnlockedView(viewModel: OnboardingViewModel(), showOnboarding: .constant(true))
             .previewDevice("iPhone 15 Pro")
     }
 }
