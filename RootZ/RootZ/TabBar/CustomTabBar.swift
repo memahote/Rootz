@@ -29,7 +29,7 @@ struct CustomTabBar: View {
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .padding(.horizontal, 20)
             .shadow(radius: 5)
-            .offset(y: 10)
+            .padding(.bottom)
         }
     }
 }

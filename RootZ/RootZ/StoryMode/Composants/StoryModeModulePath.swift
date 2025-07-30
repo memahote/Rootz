@@ -65,10 +65,10 @@ struct StoryModeModulePath: View {
                     }
                 }
             }
-            .scrollIndicators(.hidden)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 40)
         }
+        .scrollIndicators(.hidden)
     }
 
     func sinOffset(for index: Int) -> CGFloat {
