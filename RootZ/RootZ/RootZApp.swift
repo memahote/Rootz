@@ -15,13 +15,13 @@ struct RootZApp: App {
     
     var body: some Scene {
         WindowGroup {
-                if isLogged 
-                    Loginview()
-                            .ignoresSafeArea(.all)
-                            .fullScreenCover(isPresented: $showOnboarding) {
-                                ContentViews(showOnboarding: $showOnboarding)
-                            }
-            
+            if isLogged {
+                Loginview()
+                    .ignoresSafeArea(.all)
+                    .fullScreenCover(isPresented: $showOnboarding) {
+                        ContentViews(showOnboarding: $showOnboarding)
+                    }
+            }
         }
     }
 }

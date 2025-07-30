@@ -27,19 +27,19 @@ struct ChapterData {
                         ModulePage(
                             title: "Introduction",
                             content: "Ce drapeau ne représente pas un pays, mais un peuple. Il est le symbole d'une culture millénaire partagée à travers l'Afrique du Nord. Prêt à en découvrir le sens ?",
-                            mascott: "Lion1",
+                            mascott: "happy_lion",
                             image: "Berber_flag"
                         ),
                         ModulePage(
                             title: "Les Couleurs",
                             content: "Chaque couleur du drapeau a une signification. Le rouge symbolise la force, le vert l'espoir, et le jaune la richesse de la terre.",
-                            mascott: "Lion2",
+                            mascott: "happy_lion",
                             image: "berber_color"
                         ),
                         ModulePage(
                             title: "Le Symbole",
                             content: "Au centre, la lettre Yaz de l’alphabet Tifinagh, qui est l’alphabet berbère symbolise l’homme libre.",
-                            mascott: "Lion3",
+                            mascott: "happy_lion",
                             image: "Yaz_Letter"
                         ),
                         ModulePage(
@@ -62,26 +62,26 @@ struct ChapterData {
                         ModulePage(
                             title: "Introduction aux Emblèmes",
                             content: "Les emblèmes sont des objets ou symboles culturels porteurs de sens spirituel, social ou historique.",
-                            mascott: "Lion2",
-                            image: "khamsa_intro"
+                            mascott: "happy_lion",
+                            image: "livre"
                         ),
                         ModulePage(
                             title: "La Khamsa",
                             content: "Main protectrice, elle symbolise la chance et la protection contre le mauvais œil.",
-                            mascott: "Lion3",
-                            image: "khamsa_main"
+                            mascott: "happy_lion",
+                            image: "khamsa"
                         ),
                         ModulePage(
                             title: "Les Instruments",
                             content: "Tambours, flûtes et instruments à corde sont utilisés lors de cérémonies et rituels traditionnels.",
-                            mascott: "Lion1",
-                            image: "instrument_traditionnel"
+                            mascott: "happy_lion",
+                            image: "flute"
                         ),
                         ModulePage(
                             title: "Objets et Tissus",
                             content: "Certains tissus colorés ou objets artisanaux sont considérés comme sacrés ou représentatifs de l'identité locale.",
-                            mascott: "Lion2",
-                            image: nil
+                            mascott: "happy_lion",
+                            image: "tissu"
                         )
                     ],
                     type: .content,
