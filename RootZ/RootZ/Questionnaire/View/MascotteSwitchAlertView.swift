@@ -15,8 +15,9 @@ struct MascotteSwitchAlertView: View {
         ZStack {
             Color(.backgroundDefault)
                 .ignoresSafeArea()
-            
+          
             VStack(spacing: 20) {
+                Spacer()
                 // Image de la planète qui pleure
                 Image(.planete2)
                     .resizable()
@@ -27,15 +28,15 @@ struct MascotteSwitchAlertView: View {
                     .font(.custom("Baloo 2", size: 22))
                     .multilineTextAlignment(.center)
                     .padding()
-
+                Spacer()
                 HStack(spacing: 30) {
-                    Button("Annuler") {
+                    CancelButton(title:"Annuler") {
                         // Navigation vers CompanionFinalView directement si refus
                         navigateToMascotteReady = true
                     }
                     .foregroundColor(.red)
 
-                    Button("Valider") {
+                    ValidateButton(title:"Valider") {
                         navigateToMascotteReady = true
                     }
                     .foregroundColor(.green)
@@ -47,10 +48,16 @@ struct MascotteSwitchAlertView: View {
                 ) {
                     EmptyView()
                 }
-                .hidden()
+                .navigationBarBackButtonHidden(true)
             }
             .padding()
         }
         
+    }
+}
+struct MascotteSwitchAlertView_Previews: PreviewProvider {
+    static var previews: some View {
+        MascotteSwitchAlertView(viewModel: OnboardingViewModel())
+            .previewDevice("iPhone 15 Pro")
     }
 }

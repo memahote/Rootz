@@ -9,42 +9,45 @@ import SwiftUI
 
 struct QuestView: View {
     @Bindable var appViewModel: AppViewModel
-
+    @Bindable var questViewModel: QuestViewModel
     var body: some View {
         
         ZStack{
             Color(appViewModel.selectedCulture.backgroundColor).ignoresSafeArea()
             
-            ScrollView {
+            VStack {
                 
-//               MARK: - FIRST PART
+                //               MARK: - FIRST PART
                 VStack{
-
+                    
+                    
                     HStack{
-                        
-//                        MARK: - MONTH
-                        MonthOfQuests(appViewModel: (AppViewModel())).background(Color(appViewModel.selectedCulture.accentColor))
+                        //                        MARK: - MONTH
+                        MonthOfQuests(appViewModel: appViewModel).background(Color(appViewModel.selectedCulture.accentColor))
                         
                         Spacer()
                         
-//                        MARK: - CIRCLE COSMETIC REWARD
-                        CircleCosmeticReward(appViewModel: (AppViewModel()))
+                        //                        MARK: - CIRCLE COSMETIC REWARD
+                        CircleCosmeticReward(appViewModel: appViewModel)
                     }.padding(.horizontal)
-//                MARK: - TIME LEFT
                     
+                    
+                    //                MARK: - TIME LEFT
                     TimeLeftQuest()
                     
-//                        MARK: - QUEST ACCOMPLISHED
-                    QuestAccomplished(appViewModel: (AppViewModel()))
+                    //                        MARK: - QUEST ACCOMPLISHED
+                    QuestAccomplished(appViewModel: appViewModel, questViewModel: questViewModel)
                     
-                }.background(
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color(appViewModel.selectedCulture.accentColor)).ignoresSafeArea()
-                        .frame(width: 402, height: 330)
-                )
-//                MARK: - END FIRST PART
+                }.padding(.vertical)
+                    .background(
+                        ZStack {
+                            Color(appViewModel.selectedCulture.accentColor)
+                                .ignoresSafeArea(edges: .top)
+                        }
+                    )
+                //                MARK: - END FIRST PART
                 
-//                MARK: - SECOND PART
+                //                MARK: - SECOND PART
                 VStack{
                     HStack {
                         Text("Quêtes du jour")
@@ -53,13 +56,12 @@ struct QuestView: View {
                         .padding()
                         .bold()
                     
-//                    MARK: - LIST OF QUESTS
+                    //                    MARK: - LIST OF QUESTS
                     ScrollView{
-                        ListQuests(appViewModel: (AppViewModel()), quests: quests)
-                    }.background(Color(appViewModel.selectedCulture.accentColor))
-                }
-                .padding(.bottom, 150)
-//                MARK: - END SECOND PART
+                        ListQuests(appViewModel: appViewModel, questViewModel: questViewModel)
+                    }.frame(height: 325)
+                }.padding(.bottom, 145)
+                //                MARK: - END SECOND PART
             }
         }
     }
@@ -67,6 +69,6 @@ struct QuestView: View {
 
 #Preview {
     NavigationStack{
-        QuestView(appViewModel: (AppViewModel()))
+        QuestView(appViewModel: (AppViewModel()), questViewModel: (QuestViewModel(quests: quests, questOfMonthProgress: 0)))
     }
 }

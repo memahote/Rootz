@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct QuestRow: View {
+    
     var quest: Quest
     var body: some View {
         Text(quest.name)
             .bold()
-        ProgressView(value: quest.value, total: quest.numberOfQuest)
-            .frame(width: 48, height: 50)
-            .tint(.green)
-            .scaleEffect(6.0)
-            .padding(.bottom)
+        
+            ProgressView(value: quest.value, total: quest.numberOfQuest)
+                .frame(width: 48, height: 50)
+                .tint(.green)
+                .scaleEffect(6.0)
+                .padding(.bottom)
+        
     }
 }

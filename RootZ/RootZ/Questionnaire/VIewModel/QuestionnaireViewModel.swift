@@ -48,9 +48,10 @@ class OnboardingViewModel: ObservableObject
     }
 
     func nextStep() {
-        if currentStep < 8 {
+        if currentStep < 9 {
             currentStep += 1
         }
+        print(currentStep)
     }
 
     func previousStep() {

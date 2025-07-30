@@ -15,14 +15,16 @@ struct ContentViews: View {
         UserDefaults.standard.set(false, forKey: "hasCompletedOnboarding")
     #endif
     }
-    @AppStorage("hasCompletedOnboarding") var hasCompletedOnboarding: Bool = false
 
     var body: some View {
         Group {
-            if hasCompletedOnboarding {
-                Loginview() // une fois qu'on est ici, on ne voit plus les étapes d'avant
-            } else {
+            if viewModel.hasCompletedOnboarding {
+                Loginview()
+            
+            }
+            if !viewModel.hasCompletedOnboarding{
                 onboardingStepsView
+                
             }
         }
     }

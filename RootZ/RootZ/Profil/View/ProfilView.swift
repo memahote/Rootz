@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfilView: View {
-    @EnvironmentObject  var profilViewModel:  ProfilViewModel
+    @Bindable  var profilViewModel:  ProfilViewModel
     @EnvironmentObject  var amisViewModel: AmisViewModel
     @Bindable   var appViewModel: AppViewModel
     
@@ -76,7 +76,6 @@ struct ProfilView: View {
     }
 }
 #Preview {
-    ProfilView(appViewModel: AppViewModel())
-        .environmentObject(ProfilViewModel())
+    ProfilView(profilViewModel: (ProfilViewModel()), appViewModel: AppViewModel())
         .environmentObject(AmisViewModel())
 }
