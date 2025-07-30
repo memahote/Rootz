@@ -31,7 +31,7 @@ struct MainTabView: View {
                     }
                 case .ranking:
                     NavigationStack {
-                        PrincipalView()
+                        PrincipalView(appViewModel: viewModel)
                     .environmentObject(RankingWordlist())
                     }
                 case .profil:

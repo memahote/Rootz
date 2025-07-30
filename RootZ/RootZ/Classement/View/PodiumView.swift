@@ -12,11 +12,13 @@ import SwiftUI
 
 struct PodiumView: View {
     let mascottes: [Mascotte]
-    
+    @Bindable   var appViewModel: AppViewModel
+
     var body: some View {
         ZStack {
             
-            Color("CouleurAccent").ignoresSafeArea()
+            Color(appViewModel.selectedCulture.backgroundColor)
+                .ignoresSafeArea()
             
             HStack(alignment: .bottom, spacing: 24) {
                 ForEach([2, 1, 3], id: \.self) { position in
@@ -58,6 +60,7 @@ struct PodiumView: View {
             }
             .padding(.horizontal)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom) // tout collé en bas
+            
         }
     }
     
@@ -102,5 +105,5 @@ struct PodiumView: View {
         Mascotte(imageName: "Planete1", score: 1900, position: 2),
         Mascotte(imageName: "Lion1", score: 2200, position: 1),
         Mascotte(imageName: "Cameleon1", score: 1789, position: 3)
-    ])
+    ], appViewModel: AppViewModel())
 }
