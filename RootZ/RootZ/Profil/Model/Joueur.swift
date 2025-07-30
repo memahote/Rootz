@@ -13,10 +13,4 @@ struct Joueur: Identifiable {
     let score: Int
 }
 
-struct User: Identifiable {
-    let id = UUID()
-    let nom: String
-    let pseudo: String
-    let mascotte: String // nom de l’image dans tes Assets
-    let score: Int
-}
+
