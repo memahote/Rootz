@@ -23,7 +23,7 @@ struct OnboardingStepView: View {
                     .scaledToFit()
                     .frame(height: 200)
 
-                Text("Où es-tu né(e) ?")
+                Text("Où es-tu né·e ?")
                     .font(Font.custom("Baloo 2", size: 30).weight(.medium))
                     .fontWeight(.semibold)
                     .padding(.top)

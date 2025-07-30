@@ -24,6 +24,15 @@ struct CulturalProfileResultView: View {
                
                VStack {
                   
+                   Text("Est-ce que cette culture te correspond ?")
+                     .font(Font.custom("Baloo 2", size: 36).weight(.medium))
+                     .multilineTextAlignment(.center)
+                     .foregroundColor(.black)
+                     .frame(maxWidth: .infinity)
+                     .padding(.horizontal)
+                     .padding(.top, 100)
+
+                
                        ZStack{
                            LottieView(name: "Reward", loopMode: .playOnce)
                                .frame(width: 400, height: 350)
@@ -37,21 +46,14 @@ struct CulturalProfileResultView: View {
                  
                        
 
-                       Text("Est-ce que cette culture te correspond ?")
-                           .font(
-                           Font.custom("Baloo 2", size: 25)
-                           .weight(.medium)
-                           )                   .multilineTextAlignment(.center)
-                           .padding()
-
-                       HStack(spacing: 30) {
-                           Button("Non") {
+                   
+                    
+                   Spacer()
+                       HStack(spacing: 10) {
+                           CancelButton(title:"Non") {
                                navigateToSuggestions = true
                            }
-                           .padding()
-                           .background(Color.red.opacity(0.7))
-                           .foregroundColor(.white)
-                           .cornerRadius(12)
+                           
                            NavigationLink(
                                destination: CultureSuggestionView(viewModel: viewModel),
                                isActive: $navigateToSuggestions
@@ -62,17 +64,15 @@ struct CulturalProfileResultView: View {
 
 
 
-                           Button("Oui") {
+                           ValidateButton(title:"Oui") {
                                navigateToMascotteUnlocked = true
                                
                            }
-                           .padding()
-                           .background(Color.green.opacity(0.7))
-                           .foregroundColor(.white)
-                           .cornerRadius(12)
+                          
                            NavigationLink(destination: MascotteUnlockedView(viewModel: viewModel), isActive: $navigateToMascotteUnlocked) {
                                EmptyView()
                            }
+                           .navigationBarBackButtonHidden(true)
 
                            
                        }

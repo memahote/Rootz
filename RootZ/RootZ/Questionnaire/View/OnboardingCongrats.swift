@@ -7,68 +7,62 @@
 
 import SwiftUI
 import WebKit
+import SwiftUI
 
 struct OnboardingCongratsView: View {
     @ObservedObject var viewModel: OnboardingViewModel
-
+    
     var body: some View {
         VStack {
-            Text("Bravo !")
-              .font(
-                Font.custom("Baloo 2", size: 36)
-                  .weight(.medium)
-              )
-              .multilineTextAlignment(.center)
-              .foregroundColor(.black)
-              .frame(width: 350, height: 42, alignment: .top)
-
-            Text("Tu as complété ton profil culturel !")
-                .font(.headline)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-
-            // GIF d'animation
-            ZStack {
-                          Image(.planete7Gif)
-                              .resizable()
-                              .scaledToFit()
-                              .frame(width: 400, height: 250)
-                          
-                          // Animation de confetti au-dessus
-                          LottieView(name: "Confetti", loopMode: .playOnce)
-                              .frame(width: 400, height: 350)
-                              .allowsHitTesting(false) // Évite d'intercepter les interactions
-                      }
-
-            Text("Clique sur Suivant pour découvrir ce que cache ton profil culturel…")
-              .font(
-                Font.custom("Nunito", size: 25)
-                  .weight(.light)
-              )
-              .multilineTextAlignment(.center)
-              .foregroundColor(.black)
-            Spacer(minLength: 80)
+            Spacer(minLength: 40)
             
-            VStack {
-                Spacer()
-                BottomButtonsArea(
-                    primaryButton: {
-                        ContinueButton(title: "Suivant") {
-                            viewModel.currentStep = 8 // Assure-toi que case 7 = CulturalProfileResultView
-                        }
-                    },
-                    secondaryButton: {
-                        EmptyView() // pas de second bouton
-                    }
-                )
-                .padding(.bottom, 20)
+            
+            Text("Bravo !\n Tu as complété ton profil.")
+                .font(.custom("Baloo 2", size: 30).weight(.medium))
+                .multilineTextAlignment(.center)
+                .foregroundColor(.black)
+                .padding(.horizontal)
+            
+            // Animations centrées dans un bloc
+            ZStack {
+                LottieView(name: "PlaneteWin", loopMode: .playOnce)
+                    .frame(width: 300, height: 300)
+                    .allowsHitTesting(false)
+                
+                LottieView(name: "Confetti", loopMode: .playOnce)
+                    .frame(width: 400, height: 350)
+                    .allowsHitTesting(false)
             }
             
-     
+            
+            Text("Clique sur Suivant pour découvrir ce que cache ton profil culturel…")
+                .font(.custom("Nunito", size: 24).weight(.light))
+                .multilineTextAlignment(.center)
+                .foregroundColor(.black)
+                .padding(.horizontal)
+                .padding(.top, 10)
+            
+            Spacer()
+            
+            // ✅ Bouton en bas
+            BottomButtonsArea(
+                primaryButton: {
+                    ContinueButton(title: "Suivant") {
+                        viewModel.nextStep()
+                    }
+                },
+                secondaryButton: {
+                    EmptyView()
+                }
+            )
+            .padding(.bottom, 20)
         }
-        
+        .padding()
+        .background(Color(.backgroundDefault))
+        .ignoresSafeArea()
     }
 }
+
 
 struct OnboardingCongratsView_Previews: PreviewProvider {
     static var previews: some View {

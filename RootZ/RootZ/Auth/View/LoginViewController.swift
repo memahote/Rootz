@@ -99,13 +99,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundDefault
-       
+        self.additionalSafeAreaInsets = UIEdgeInsets.zero
+        self.navigationItem.hidesBackButton = true
+        
         // Do any additional setup after loading the view.
         
         setupLayout()
         setupAction()
     }
-        
+    
+    
     
     
     private func setupLayout () {
@@ -183,6 +186,14 @@ class ViewController: UIViewController {
         connexionButton.addTarget(self, action: #selector(loginCheck), for: .touchUpInside)
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
     
     @objc private func validateInputs(mail : String, password : String) -> Bool{
         
