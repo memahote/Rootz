@@ -16,9 +16,10 @@ struct Module : Identifiable {
     let id = UUID()
     let title : String
     let icon : String
-    let isUnlocked : Bool
+    var isUnlocked : Bool
     let color : String
     let modulesPages : [ModulePage]
     let type: ModuleType
     let quiz: [QuizQuestion]?
+    var isFinish : Bool
 }

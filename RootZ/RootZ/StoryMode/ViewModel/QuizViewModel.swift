@@ -8,9 +8,8 @@
 import Foundation
 
 @Observable
-class QuizViewModel: ObservableObject {
-    let questions: [QuizQuestion]
-
+class QuizViewModel {
+    var questions: [QuizQuestion]
     var currentIndex = 0
     var selectedIndex: Int? = nil
     var isAnswerCorrect: Bool? = nil
@@ -34,7 +33,7 @@ class QuizViewModel: ObservableObject {
     }
 
     func selectAnswer(index: Int) {
-        guard selectedIndex == nil else { return } // évite double clic
+        guard selectedIndex == nil else { return }
         selectedIndex = index
         isAnswerCorrect = (index == currentQuestion.correctAnswerIndex)
         if isAnswerCorrect == true {

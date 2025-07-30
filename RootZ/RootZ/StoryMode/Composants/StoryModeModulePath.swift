@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct StoryModeModulePath: View {
-    let modules: [Module]
+    @Environment(StoryModeViewModel.self) private var storyViewModel
     let culture: CulturesModel
 
     var body: some View {
         ScrollView {
             VStack(spacing: 80) {
-                ForEach(Array(modules.enumerated()), id: \.offset) { index, module in
+                ForEach(Array(storyViewModel.currentChapter.modules.enumerated()), id: \.offset) { index, module in
                     if (index + 1) % 6 == 0 {
                         ZStack {
                             if module.isUnlocked {
-                                StorymodeButton(module: module, culture: culture)
+                                StorymodeButton(module: module, culture: culture, index: index)
                                     .offset(x: sinOffset(for: index))
                             } else {
-                                StorymodeButton(module: module, culture: culture)
+                                StorymodeButton(module: module, culture: culture, index: index)
                                     .offset(x: sinOffset(for: index))
                                     .opacity(0.5)
                                     .disabled(true)
@@ -43,22 +43,21 @@ struct StoryModeModulePath: View {
                                 .offset(x: sinOffset(for: index) * -1)
 
                             if module.isUnlocked {
-                                StorymodeButton(module: module, culture: culture)
+                                StorymodeButton(module: module, culture: culture, index: index)
                                     .offset(x: sinOffset(for: index))
                             } else {
-                                StorymodeButton(module: module, culture: culture)
+                                StorymodeButton(module: module, culture: culture, index: index)
                                     .offset(x: sinOffset(for: index))
                                     .opacity(0.5)
                                     .disabled(true)
                             }
-                                
                         }
                     } else {
                         if module.isUnlocked {
-                            StorymodeButton(module: module, culture: culture)
+                            StorymodeButton(module: module, culture: culture, index: index)
                                 .offset(x: sinOffset(for: index))
                         } else {
-                            StorymodeButton(module: module, culture: culture)
+                            StorymodeButton(module: module, culture: culture, index: index)
                                 .offset(x: sinOffset(for: index))
                                 .opacity(0.5)
                                 .disabled(true)
@@ -66,10 +65,10 @@ struct StoryModeModulePath: View {
                     }
                 }
             }
-            .scrollIndicators(.hidden)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 40)
         }
+        .scrollIndicators(.hidden)
     }
 
     func sinOffset(for index: Int) -> CGFloat {
@@ -80,10 +79,9 @@ struct StoryModeModulePath: View {
 
 
 
-
 #Preview {
-    StoryModeModulePath(
-        modules: ChapterData.berbereChapters[0].modules,
-        culture: CultureData.defaultCulture
-    )
+    let mockVM = StoryModeViewModel(chapters: ChapterData.berbereChapters)
+    
+    return StoryModeModulePath(culture: CultureData.defaultCulture)
+        .environment(mockVM)
 }

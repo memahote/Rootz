@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate{
     
     //componants
     
@@ -100,7 +100,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .backgroundDefault
         self.additionalSafeAreaInsets = UIEdgeInsets.zero
-        self.navigationItem.hidesBackButton = true
         
         // Do any additional setup after loading the view.
         
@@ -120,6 +119,11 @@ class ViewController: UIViewController {
         view.addSubview(confirmPasswordTextfield)
         view.addSubview(connexionButton)
         view.addSubview(errorLabel)
+        
+        nameTextfield.delegate = self
+        mailTextfield.delegate = self
+        passwordTextfield.delegate = self
+        confirmPasswordTextfield.delegate = self
         
         logoMessage.translatesAutoresizingMaskIntoConstraints = false
         logoApp.translatesAutoresizingMaskIntoConstraints = false
@@ -220,7 +224,7 @@ class ViewController: UIViewController {
         let password = passwordTextfield.text ?? ""
         if validateInputs(mail: mail, password: password)
         {
-            let mainPage = UIHostingController(rootView: MainTabView())
+            let mainPage = UIHostingController(rootView: MainTabView().ignoresSafeArea())
             navigationController?.pushViewController(mainPage, animated: false)
             navigationController?.setNavigationBarHidden(true, animated: false)
             

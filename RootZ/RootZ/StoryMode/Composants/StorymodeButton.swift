@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct StorymodeButton: View {
-    @State var showPopover : Bool = false
-    @State var showModuleView : Bool = false
+    @Environment(StoryModeViewModel.self) private var storyViewModel
+    @State var showPopover: Bool = false
+    @State var showModuleView: Bool = false
     let module: Module
-    let culture : CulturesModel
+    let culture: CulturesModel
+    let index: Int
     
 //    @Environment(AppViewModel.self) var appViewModel
     
@@ -20,11 +22,11 @@ struct StorymodeButton: View {
             showPopover.toggle()
         }) {
             ZStack {
-                
                 Circle()
                     .fill(Color(module.color))
                     .frame(width: 60, height: 60)
-                    .shadow(color: Color.black.opacity(0.2), radius: 8, x: 4, y: 4) .scaleEffect(1.1)
+                    .shadow(color: Color.black.opacity(0.2), radius: 8, x: 4, y: 4)
+                    .scaleEffect(1.1)
                     .overlay(
                         Circle().stroke(Color.white, lineWidth: 2)
                     )
@@ -35,8 +37,6 @@ struct StorymodeButton: View {
                     .frame(width: 30, height: 30)
                     .foregroundColor(.white)
             }
-            
-            
         }
         .popover(isPresented: $showPopover) {
             VStack(spacing: 16) {
@@ -50,6 +50,7 @@ struct StorymodeButton: View {
                     .foregroundColor(.green)
                 
                 Button(action: {
+                    storyViewModel.selectModule(at: index)
                     showModuleView = true
                 }) {
                     Text("Commencer")
@@ -61,59 +62,60 @@ struct StorymodeButton: View {
                         .cornerRadius(12)
                 }
                 .fullScreenCover(isPresented: $showModuleView) {
+                    
                     if module.type == .quiz {
-                        QuizQuestionView(culture: culture)
-                            .environmentObject(QuizViewModel(questions: module.quiz ?? []))
+                        QuizQuestionView(culture: culture, showPopover: $showPopover)
+                            .environment(QuizViewModel(questions: module.quiz ?? []))
+                            .environment(storyViewModel)
+                            .environment(QuestViewModel(quests: quests, questOfMonthProgress: 12))
                     } else {
-                        ModuleView(culture: culture)
-                            .environmentObject(ModuleViewModel(module: module))
+                        ModuleView(culture: culture, showPopover: $showPopover)
+                            .environment(ModuleViewModel(module: module))
+                            .environment(storyViewModel)
                     }
                 }
-                
             }
             .presentationCompactAdaptation(.popover)
             .padding()
-            
         }
-        
-        
     }
 }
 
 #Preview {
-    StorymodeButton(module: Module(
-        title: "Le Drapeau",
-        icon: "flag.fill",
-        isUnlocked: true,
-        color: "ButtonAfrique",
-        modulesPages: [
-            ModulePage(
-                title: "Introduction",
-                content: "Le drapeau est un symbole fort de l'identité culturelle. Il reflète l'histoire, les valeurs et les espoirs d'un peuple.",
-                mascott: "Lion1",
-                image: "drapeau_intro"
-            ),
-            ModulePage(
-                title: "Les Couleurs",
-                content: "Chaque couleur du drapeau a une signification. Le rouge symbolise la force, le vert l'espoir, et le jaune la richesse de la terre.",
-                mascott: "Lion2",
-                image: "drapeau_couleurs"
-            )], type: .content, quiz: nil
-        
-    ),
-                    culture:  CulturesModel(
-                        name: "Berbère",
-                        flag: "Berber_flag",
-                        mascott: "Lion1",
-                        chapters: ChapterData.berbereChapters,
-                        backgroundColor: "FondAfrique",
-                        buttonColor: "ButtonAfrique",
-                        accentColor: "CouleurAccent",
-                        accent2Color: "CouleurAccent2",
-                        isUnlock: true,
-                        progressbar: 0.6,
-                        associatedCountries: ["maroc", "algérie", "tunisie"],
-                        associatedRegions: ["afrique"],
-                        keywords: ["berbere", "tamazight","arabe","marocain","algérien"]
-                    ))
-}
+    StorymodeButton(
+         module: Module(
+             title: "Le Drapeau",
+             icon: "flag.fill",
+             isUnlocked: true,
+             color: "ButtonAfrique",
+             modulesPages: [
+                 ModulePage(
+                     title: "Introduction",
+                     content: "Le drapeau est un symbole fort de l'identité culturelle.",
+                     mascott: "Lion1",
+                     image: "drapeau_intro"
+                 )
+             ],
+             type: .content,
+             quiz: nil,
+             isFinish: false
+         ),
+         culture: CulturesModel(
+             name: "Berbère",
+             flag: "Berber_flag",
+             mascott: "Lion1",
+             chapters: ChapterData.berbereChapters,
+             backgroundColor: "FondAfrique",
+             buttonColor: "ButtonAfrique",
+             accentColor: "CouleurAccent",
+             accent2Color: "CouleurAccent2",
+             isUnlock: true,
+             progressbar: 0.6,
+             associatedCountries: ["maroc", "algérie", "tunisie"],
+             associatedRegions: ["afrique"],
+             keywords: ["berbere", "tamazight","arabe","marocain","algérien"]
+         ),
+         index: 0
+     )
+     .environment(StoryModeViewModel(chapters: ChapterData.berbereChapters))
+ }

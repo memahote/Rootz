@@ -12,19 +12,14 @@ struct storymode: View {
     
     var body: some View {
         VStack {
-            StoryModeHeaderView(viewModel : appViewModel)
+            StoryModeHeaderView(viewModel: appViewModel)
             
-            StoryModeModulePath(
-                modules: appViewModel.storyModeViewModel.currentChapter.modules,
-                culture: appViewModel.selectedCulture
-            )
-
-            
+            StoryModeModulePath(culture: appViewModel.selectedCulture)
+                .environment(appViewModel.storyModeViewModel)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background( Color(appViewModel.selectedCulture.backgroundColor)
+        .background(Color(appViewModel.selectedCulture.backgroundColor)
             .ignoresSafeArea())
-        
     }
 }
 

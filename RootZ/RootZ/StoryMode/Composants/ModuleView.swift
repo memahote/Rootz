@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct ModuleView: View {
-    @EnvironmentObject var viewModel: ModuleViewModel
+    @Environment(StoryModeViewModel.self) private var storyViewModel
+    @Environment(ModuleViewModel.self) private var viewModel
     let culture: CulturesModel
     @Environment(\.dismiss) private var dismiss
+    @Binding var showPopover : Bool
 
     var body: some View {
         VStack() {
@@ -18,6 +20,7 @@ struct ModuleView: View {
                 Spacer()
                 
                 Button {
+                    showPopover = false
                     dismiss()
                 } label: {
                     Image(systemName: "xmark")
@@ -25,8 +28,8 @@ struct ModuleView: View {
                         .font(.title)
                 }
                 .padding(.trailing, 25)
-
             }
+            
             VStack {
                 ProgressView(value: viewModel.progress)
                     .progressViewStyle(LinearProgressViewStyle(tint: Color(culture.accent2Color)))
@@ -55,7 +58,6 @@ struct ModuleView: View {
 
                     Spacer()
                         .padding(.top)
-                    
 
                     MascottChatLeft(
                         mascott: viewModel.currentPage.mascott,
@@ -64,12 +66,15 @@ struct ModuleView: View {
                     )
                 }
                 .padding()
-                
             }
             .scrollIndicators(.hidden)
 
             Button(action: {
                 if viewModel.isLastPage {
+                    viewModel.markAsFinished()
+                    storyViewModel.updateCurrentModule(viewModel.module)
+                    storyViewModel.unlockNextModule()
+                    showPopover = false
                     dismiss()
                 } else {
                     viewModel.nextPage()
@@ -92,8 +97,25 @@ struct ModuleView: View {
     }
 }
 
-
 #Preview {
+    let StoryVM = StoryModeViewModel(chapters: ChapterData.berbereChapters)
+    let ModuleVM = ModuleViewModel(
+        module: Module(
+            title: "Le Drapeau",
+            icon: "flag.fill",
+            isUnlocked: true,
+            color: "ButtonAfrique",
+            modulesPages: [
+                ModulePage(
+                    title: "Intro",
+                    content: "Bienvenue dans le module",
+                    mascott: "Lion1",
+                    image: "Berber_flag"
+                )
+            ], type: .content, quiz: nil, isFinish: false
+        )
+    )
+    
     ModuleView(
         culture: CulturesModel(
             name: "Berbère",
@@ -109,26 +131,9 @@ struct ModuleView: View {
             associatedCountries: ["maroc", "algérie", "tunisie"],
             associatedRegions: ["afrique"],
             keywords: ["berbere", "tamazight", "arabe", "marocain", "algérien"]
-        )
+        ), showPopover: .constant(true)
     )
-    .environmentObject(
-        ModuleViewModel(
-            module: Module(
-                title: "Le Drapeau",
-                icon: "flag.fill",
-                isUnlocked: true,
-                color: "ButtonAfrique",
-                modulesPages: [
-                    ModulePage(
-                        title: "Intro",
-                        content: "Bienvenue dans le module",
-                        mascott: "Lion1",
-                        image: "Berber_flag"
-                    )
-                ], type: .content, quiz: nil
-            )
-        )
-    )
+    .environment(ModuleVM)
+    .environment(StoryVM)
 }
-
 

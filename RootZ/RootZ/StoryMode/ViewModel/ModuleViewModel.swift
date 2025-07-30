@@ -8,8 +8,8 @@
 import Foundation
 
 @Observable
-class ModuleViewModel : ObservableObject {
-    let module: Module
+class ModuleViewModel {
+    var module: Module
     var currentPageIndex: Int = 0
 
     var pages: [ModulePage] {
@@ -36,6 +36,12 @@ class ModuleViewModel : ObservableObject {
     func nextPage() {
         if !isLastPage {
             currentPageIndex += 1
+        }
+    }
+    
+    func markAsFinished() {
+        if isLastPage {
+            module.isFinish = true
         }
     }
 
