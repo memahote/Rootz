@@ -10,6 +10,7 @@ import SwiftUI
 struct QuestView: View {
     @Bindable var appViewModel: AppViewModel
     @Bindable var questViewModel: QuestViewModel
+    
     var body: some View {
         
         ZStack{
@@ -59,7 +60,10 @@ struct QuestView: View {
                     //                    MARK: - LIST OF QUESTS
                     ScrollView{
                         ListQuests(appViewModel: appViewModel, questViewModel: questViewModel)
-                    }.frame(height: 325)
+                    }
+                    .frame(height: 300)
+                    .scrollIndicators(.hidden)
+                    
                 }.padding(.bottom, 145)
                 //                MARK: - END SECOND PART
             }
@@ -68,7 +72,6 @@ struct QuestView: View {
 }
 
 #Preview {
-    NavigationStack{
-        QuestView(appViewModel: (AppViewModel()), questViewModel: (QuestViewModel(quests: quests, questOfMonthProgress: 0)))
-    }
+    
+        QuestView(appViewModel: AppViewModel(), questViewModel: QuestViewModel(quests: quests, questOfMonthProgress: 0, berbereChapters: ChapterData.berbereChapters))
 }

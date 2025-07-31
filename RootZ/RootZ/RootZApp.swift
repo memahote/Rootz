@@ -11,17 +11,17 @@ import SwiftUI
 struct RootZApp: App {
     @State private var isLogged = false
     @State var showOnboarding : Bool = true
-
+    
     
     var body: some Scene {
         WindowGroup {
             
-                Registerview()
-                    .ignoresSafeArea(.all)
-                    .fullScreenCover(isPresented: $showOnboarding) {
-                        ContentViews(showOnboarding: $showOnboarding)
+            Registerview()
+                .ignoresSafeArea(.all)
+                .fullScreenCover(isPresented: $showOnboarding) {
+                    ContentViews(showOnboarding: $showOnboarding)
                     
-            }
+                }
         }
     }
 }

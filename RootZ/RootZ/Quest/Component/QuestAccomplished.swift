@@ -20,7 +20,7 @@ struct QuestAccomplished: View {
             
             ProgressView(value: Double(questViewModel.questOfMonthProgress), total: Double(questViewModel.totalMonthlyQuests))
                 .frame(width: 48, height: 50)
-                .tint(.green)
+                .tint(Color(appViewModel.selectedCulture.accent2Color))
                 .scaleEffect(6.0)
         }
         .frame(width: 331, height: 108)
@@ -36,6 +36,6 @@ struct QuestAccomplished: View {
     }
 }
 
-#Preview {
-    QuestAccomplished(appViewModel: (AppViewModel()), questViewModel: (QuestViewModel(quests: quests, questOfMonthProgress: 0)))
+#Preview {    
+    QuestAccomplished(appViewModel: (AppViewModel()), questViewModel: (QuestViewModel(quests: quests, questOfMonthProgress: 0, berbereChapters: ChapterData.berbereChapters)))
 }

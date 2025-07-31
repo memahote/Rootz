@@ -14,6 +14,7 @@ struct QuizPageView: View {
     let culture: CulturesModel
     @Environment(\.dismiss) private var dismiss
     @Binding var showPopover: Bool
+    let type : ModuleType
     
     var body: some View {
         ZStack {
@@ -21,9 +22,9 @@ struct QuizPageView: View {
                 .ignoresSafeArea()
             
             if viewModel.isFinished {
-                QuizVictoryView(culture: culture, showPopover: $showPopover)
+                QuizVictoryView(culture: culture, showPopover: $showPopover, type: type)
             } else {
-                QuizQuestionView(culture: culture, showPopover: $showPopover)
+                QuizQuestionView(culture: culture, showPopover: $showPopover, quest: questViewModel.quests[1][2])
             }
         }
     }
@@ -43,8 +44,8 @@ struct QuizPageView: View {
         )
     ]
     
-    QuizPageView(culture: CultureData.defaultCulture, showPopover: .constant(true))
+    QuizPageView(culture: CultureData.defaultCulture, showPopover: .constant(true), type: .quiz)
         .environment(QuizViewModel(questions: sampleQuestions))
         .environment(StoryModeViewModel(chapters: ChapterData.berbereChapters))
-        .environment(QuestViewModel(quests: quests, questOfMonthProgress: 12))
+        .environment(QuestViewModel(quests: quests, questOfMonthProgress: 12, berbereChapters: ChapterData.berbereChapters))
 }

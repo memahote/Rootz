@@ -14,6 +14,7 @@ struct QuizVictoryView: View {
     let culture: CulturesModel
     @Environment(\.dismiss) private var dismiss
     @Binding var showPopover: Bool
+    let type : ModuleType
     
     @State private var showAnimation = false
     
@@ -100,7 +101,7 @@ struct QuizVictoryView: View {
             
             Button(action: {
                 storyViewModel.unlockNextModule()
-                questViewModel.updateQuestProgress(for: questViewModel.quests[0][0])
+                questViewModel.updateQuestProgress(for: questViewModel.quests[0][2], moduleType: type )
                 showPopover = false
                 dismiss()
             }) {
@@ -137,8 +138,8 @@ struct QuizVictoryView: View {
         )
     ]
     
-    QuizVictoryView(culture: CultureData.defaultCulture, showPopover: .constant(true))
+    QuizVictoryView(culture: CultureData.defaultCulture, showPopover: .constant(true), type: .quiz)
         .environment(QuizViewModel(questions: sampleQuestions))
         .environment(StoryModeViewModel(chapters: ChapterData.berbereChapters))
-        .environment(QuestViewModel(quests: quests, questOfMonthProgress: 12))
+        .environment(QuestViewModel(quests: quests, questOfMonthProgress: 12, berbereChapters: ChapterData.berbereChapters))
 }

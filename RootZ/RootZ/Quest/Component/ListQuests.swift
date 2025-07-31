@@ -23,8 +23,7 @@ struct ListQuests: View {
         let questsOfTheDay = questViewModel.quests[indexDuJour]
 
                 ForEach(questsOfTheDay) { quest in
-                    
-                        QuestRow(quest: quest)
+                    QuestRow(appViewModel: appViewModel , quest: quest)
                     
                    
                 
@@ -41,8 +40,9 @@ struct ListQuests: View {
 }
 
 #Preview {
+
     ListQuests(
         appViewModel: AppViewModel(),
-        questViewModel: QuestViewModel(quests: quests, questOfMonthProgress: 0)
+        questViewModel: QuestViewModel(quests: quests, questOfMonthProgress: 0, berbereChapters: ChapterData.berbereChapters)
     )
 }
