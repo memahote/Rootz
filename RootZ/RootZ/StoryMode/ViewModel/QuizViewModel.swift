@@ -51,5 +51,24 @@ class QuizViewModel {
         selectedIndex = nil
         isAnswerCorrect = nil
     }
+    
+    func markAsFinished() {
+            isFinished = true
+            print("Quiz marqué comme terminé - Score: \(score)/\(questions.count)")
+        }
+    
+    func getScoreMessage() -> String {
+        let percentage = Double(score) / Double(questions.count)
+        
+        if percentage >= 0.75 {
+            return "Parfait ! Tu maîtrises parfaitement les modules vues ! 🌟"
+        } else if percentage >= 0.5 {
+            return "Excellent ! Tu as bien compris ! 👏"
+        } else if percentage >= 0.25 {
+            return "Bien joué ! Continue d'apprendre les modules passés ! 🎯"
+        } else {
+            return "Tu devrais refaire les modules ! 📚"
+        }
+    }
 }
 

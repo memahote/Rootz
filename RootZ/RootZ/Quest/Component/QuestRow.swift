@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct QuestRow: View {
+    @Bindable var appViewModel: AppViewModel
     
     var quest: Quest
     var body: some View {
@@ -16,7 +17,7 @@ struct QuestRow: View {
         
             ProgressView(value: quest.value, total: quest.numberOfQuest)
                 .frame(width: 48, height: 50)
-                .tint(.green)
+                .tint(Color(appViewModel.selectedCulture.accent2Color))
                 .scaleEffect(6.0)
                 .padding(.bottom)
         

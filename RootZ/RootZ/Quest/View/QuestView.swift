@@ -60,7 +60,10 @@ struct QuestView: View {
                     //                    MARK: - LIST OF QUESTS
                     ScrollView{
                         ListQuests(appViewModel: appViewModel, questViewModel: questViewModel)
-                    }.frame(height: 230)
+                    }
+                    .frame(height: 300)
+                    .scrollIndicators(.hidden)
+                    
                 }.padding(.bottom, 145)
                 //                MARK: - END SECOND PART
             }

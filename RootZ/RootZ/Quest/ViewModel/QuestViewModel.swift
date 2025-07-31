@@ -27,6 +27,8 @@ class QuestViewModel {
 //        MARK: Utiliser le .type de berbereChapters pour valider le +1 dans la ProgressView
         
 //        if moduleType == .quiz {
+        print("coucou toi")
+        print(quest.name)
             quest.value += 1
 //        }
         

@@ -67,17 +67,16 @@ struct QuizQuestionView: View {
 
                 if viewModel.selectedIndex != nil {
                     MascottChatLeft(
-                        mascott: culture.mascott,
+                        mascott: viewModel.isAnswerCorrect == true ? "happy_lion": "sad_lion",
                         message: viewModel.isAnswerCorrect == true ? "Bonne réponse ! 🎉" : "Oups, tu fera mieux la prochaine fois !",
                         messageColor: culture.accentColor
                     )
 
                     Button(action: {
                         if viewModel.isLastQuestion {
-                            storyViewModel.unlockNextModule()
-                            showPopover = false
-                            questViewModel.updateQuestProgress(for: quest, moduleType: .quiz)
-                            dismiss()
+
+                            viewModel.markAsFinished()
+
                         } else {
                             viewModel.next()
                         }

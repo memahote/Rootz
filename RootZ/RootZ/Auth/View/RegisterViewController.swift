@@ -10,7 +10,7 @@ import SwiftUI
 
 class ViewController: UIViewController, UITextFieldDelegate{
     
-    //componants
+    
     
     private let logoMessage : UILabel = {
         let logoMessage = UILabel()
@@ -99,9 +99,6 @@ class ViewController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundDefault
-        self.additionalSafeAreaInsets = UIEdgeInsets.zero
-        
-        // Do any additional setup after loading the view.
         
         setupLayout()
         setupAction()

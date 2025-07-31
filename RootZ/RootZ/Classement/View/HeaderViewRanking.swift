@@ -11,9 +11,9 @@ struct HeaderViewRanking: View {
     var body: some View {
         VStack {
             Text("🏆 Division Argent 🏆")
-                .font(.title)
+                .font(.custom("Baloo2", size: 32))
             Text("⏱ 7 Jours")
-                .font(.title3)
+                .font(.custom("Baloo2-Medium", size: 24))
         }
     }
 }

@@ -16,10 +16,10 @@ struct ClassementListeView: View {
             ForEach(joueurs) { joueur in
                 HStack {
                     Text("\(joueur.rang). \(joueur.nom)")
-                        .font(.system(size: 20, weight: .bold))
+                        .font(.custom("Quicksand-VariableFont_wght", size: 22))
                     Spacer()
                     Text("\(joueur.score)")
-                        .font(.system(size: 20, weight: .bold))
+                        .font(.custom("Quicksand-Bold", size: 22))
                 }
                 .padding()
                 .background(Color(appViewModel.selectedCulture.accentColor))

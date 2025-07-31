@@ -17,7 +17,7 @@ var quests: [[Quest]] = [
     [
         Quest(name: "Faire un exercice", value: 0, numberOfQuest: 1, isCompleted: false),
         Quest(name: "Faire un chapitre", value: 0, numberOfQuest: 1, isCompleted: false),
-        Quest(name: "Compléter un quiz", value: 0, numberOfQuest: 1, isCompleted: false)
+        Quest(name: "Compléter un quiz", value: 1, numberOfQuest: 1, isCompleted: true)
     ],
     
     [
