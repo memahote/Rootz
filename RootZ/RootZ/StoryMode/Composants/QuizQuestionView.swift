@@ -11,12 +11,10 @@ struct QuizQuestionView: View {
     @Environment(QuizViewModel.self) private var viewModel
     @Environment(StoryModeViewModel.self) private var storyViewModel
     @Environment(QuestViewModel.self) private var questViewModel
+    let culture: CulturesModel
     @Environment(\.dismiss) private var dismiss
-    
     @Binding var showPopover : Bool
     
-    let culture: CulturesModel
-    let module: ModuleType
     var quest: Quest
 
     var body: some View {

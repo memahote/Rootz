@@ -12,13 +12,13 @@ class QuestViewModel {
     var quests: [[Quest]]
     var questOfMonthProgress: Int = 0
     var berbereChapters: [Chapters]
-    var moduleType: ModuleType
+//    var moduleType: ModuleType
     
-    init(quests: [[Quest]], questOfMonthProgress: Int, berbereChapters: [Chapters], moduleType: ModuleType) {
+    init(quests: [[Quest]], questOfMonthProgress: Int, berbereChapters: [Chapters]/*, moduleType: ModuleType*/) {
         self.quests = quests
         self.questOfMonthProgress = questOfMonthProgress
         self.berbereChapters = berbereChapters
-        self.moduleType = moduleType
+//        self.moduleType = moduleType
     }
     
 
@@ -26,9 +26,9 @@ class QuestViewModel {
 //        Si isCompleted est true, on continue sinon return rien
 //        MARK: Utiliser le .type de berbereChapters pour valider le +1 dans la ProgressView
         
-        if moduleType == .quiz {
+//        if moduleType == .quiz {
             quest.value += 1
-        }
+//        }
         
         if let isCompleted = quest.isCompleted, isCompleted == false { return }
         

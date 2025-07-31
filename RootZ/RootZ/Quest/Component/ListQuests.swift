@@ -43,6 +43,6 @@ struct ListQuests: View {
 
     ListQuests(
         appViewModel: AppViewModel(),
-        questViewModel: QuestViewModel(quests: quests, questOfMonthProgress: 0, berbereChapters: ChapterData.berbereChapters, moduleType: .quiz)
+        questViewModel: QuestViewModel(quests: quests, questOfMonthProgress: 0, berbereChapters: ChapterData.berbereChapters)
     )
 }

@@ -37,5 +37,5 @@ struct QuestAccomplished: View {
 }
 
 #Preview {    
-    QuestAccomplished(appViewModel: (AppViewModel()), questViewModel: (QuestViewModel(quests: quests, questOfMonthProgress: 0, berbereChapters: ChapterData.berbereChapters, moduleType: .quiz)))
+    QuestAccomplished(appViewModel: (AppViewModel()), questViewModel: (QuestViewModel(quests: quests, questOfMonthProgress: 0, berbereChapters: ChapterData.berbereChapters)))
 }

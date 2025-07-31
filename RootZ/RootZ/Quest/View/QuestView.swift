@@ -60,7 +60,7 @@ struct QuestView: View {
                     //                    MARK: - LIST OF QUESTS
                     ScrollView{
                         ListQuests(appViewModel: appViewModel, questViewModel: questViewModel)
-                    }.frame(height: 325)
+                    }.frame(height: 230)
                 }.padding(.bottom, 145)
                 //                MARK: - END SECOND PART
             }
@@ -70,5 +70,5 @@ struct QuestView: View {
 
 #Preview {
     
-        QuestView(appViewModel: AppViewModel(), questViewModel: QuestViewModel(quests: quests, questOfMonthProgress: 0, berbereChapters: ChapterData.berbereChapters, moduleType: .quiz))
+        QuestView(appViewModel: AppViewModel(), questViewModel: QuestViewModel(quests: quests, questOfMonthProgress: 0, berbereChapters: ChapterData.berbereChapters))
 }

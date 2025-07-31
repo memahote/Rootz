@@ -14,7 +14,7 @@ enum Tab {
 struct MainTabView: View {
     @State private var viewModel = AppViewModel()
 //    @State private var quizViewModel = QuizViewModel()
-    @State private var questViewModel = QuestViewModel(quests: quests, questOfMonthProgress: 0, berbereChapters: ChapterData.berbereChapters, moduleType: .quiz)
+    @State private var questViewModel = QuestViewModel(quests: quests, questOfMonthProgress: 0, berbereChapters: ChapterData.berbereChapters)
     @State private var profilViewModel = ProfilViewModel()
     @State private var selectedTab: Tab = .story
     
