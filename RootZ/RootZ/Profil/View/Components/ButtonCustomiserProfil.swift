@@ -8,13 +8,10 @@
 import SwiftUI
 
 struct ButtonCustomiserProfil: View {
-    let onCustomiserProfil: () -> Void
     @Bindable var appViewModel: AppViewModel
 
     var body: some View {
-        Button(action: {
-            onCustomiserProfil()
-        }) {
+
             HStack {
                 Image(systemName: "paintbrush")
                 Text("Personnaliser le profil")
@@ -26,4 +23,3 @@ struct ButtonCustomiserProfil: View {
             .cornerRadius(12)
         }
     }
-}

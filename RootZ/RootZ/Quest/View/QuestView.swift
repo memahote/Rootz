@@ -10,6 +10,7 @@ import SwiftUI
 struct QuestView: View {
     @Bindable var appViewModel: AppViewModel
     @Bindable var questViewModel: QuestViewModel
+    
     var body: some View {
         
         ZStack{
@@ -68,7 +69,6 @@ struct QuestView: View {
 }
 
 #Preview {
-    NavigationStack{
-        QuestView(appViewModel: (AppViewModel()), questViewModel: (QuestViewModel(quests: quests, questOfMonthProgress: 0)))
-    }
+    
+        QuestView(appViewModel: AppViewModel(), questViewModel: QuestViewModel(quests: quests, questOfMonthProgress: 0, berbereChapters: ChapterData.berbereChapters, moduleType: .quiz))
 }
