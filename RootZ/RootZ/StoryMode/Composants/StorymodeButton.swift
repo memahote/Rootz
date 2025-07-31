@@ -64,10 +64,10 @@ struct StorymodeButton: View {
                 .fullScreenCover(isPresented: $showModuleView) {
                     
                     if module.type == .quiz {
-                        QuizQuestionView(culture: culture, showPopover: $showPopover)
+                        QuizQuestionView(culture: culture, showPopover: $showPopover, quest: quests[0][0])
                             .environment(QuizViewModel(questions: module.quiz ?? []))
                             .environment(storyViewModel)
-                            .environment(QuestViewModel(quests: quests, questOfMonthProgress: 12))
+                            .environment(QuestViewModel(quests: quests, questOfMonthProgress: 12, berbereChapters: ChapterData.berbereChapters))
                     } else {
                         ModuleView(culture: culture, showPopover: $showPopover)
                             .environment(ModuleViewModel(module: module))

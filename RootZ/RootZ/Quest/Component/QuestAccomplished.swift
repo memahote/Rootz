@@ -36,6 +36,6 @@ struct QuestAccomplished: View {
     }
 }
 
-#Preview {
-    QuestAccomplished(appViewModel: (AppViewModel()), questViewModel: (QuestViewModel(quests: quests, questOfMonthProgress: 0)))
+#Preview {    
+    QuestAccomplished(appViewModel: (AppViewModel()), questViewModel: (QuestViewModel(quests: quests, questOfMonthProgress: 0, berbereChapters: ChapterData.berbereChapters)))
 }

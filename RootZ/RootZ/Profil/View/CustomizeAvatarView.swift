@@ -20,12 +20,7 @@ struct CustomizeAvatarView: View {
         VStack{
             HStack(alignment: .center){
                 Spacer()
-                Image(profilViewModel.user.mascotte)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 200, height: 200)
-                    .shadow(radius: 10)
-                    .offset(y: 65)
+                MascotteCustom(profilViewModel: profilViewModel)
                 Spacer()
             }
         }.padding()
@@ -52,7 +47,7 @@ struct CustomizeAvatarView: View {
                                     
                         ).foregroundStyle(.white)
                 }
-            }.padding(.vertical, 4)
+            }.padding(.vertical, 23)
             
         }.frame(height: 60)
             .padding(.top, 65)

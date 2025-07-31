@@ -14,6 +14,8 @@ struct QuizQuestionView: View {
     let culture: CulturesModel
     @Environment(\.dismiss) private var dismiss
     @Binding var showPopover : Bool
+    
+    var quest: Quest
 
     var body: some View {
         VStack {
@@ -74,7 +76,7 @@ struct QuizQuestionView: View {
                         if viewModel.isLastQuestion {
                             storyViewModel.unlockNextModule()
                             showPopover = false
-                            questViewModel.updateQuestProgress(for: questViewModel.quests[0][0])
+                            questViewModel.updateQuestProgress(for: quest, moduleType: .quiz)
                             dismiss()
                         } else {
                             viewModel.next()
@@ -114,26 +116,26 @@ struct QuizQuestionView: View {
     }
 }
 
-
-#Preview {
-    let sampleQuestions = [
-        QuizQuestion(
-            question: "Quel est l'emblème protecteur ?",
-            answers: ["Khamsa", "Yaz", "Tambour", "Drapeau"],
-            correctAnswerIndex: 0
-        ),
-        QuizQuestion(
-            question: "Que représente la lettre Yaz ?",
-            answers: ["Force", "Liberté", "Terre", "Tradition"],
-            correctAnswerIndex: 1
-        )
-    ]
-    
-    QuizQuestionView(culture: CultureData.defaultCulture, showPopover: .constant(true))
-        .environment(QuizViewModel(questions: sampleQuestions))
-        .environment(StoryModeViewModel(chapters: ChapterData.berbereChapters))
-        .environment(QuestViewModel(quests: quests, questOfMonthProgress: 12))
-}
+//
+//#Preview {
+//    let sampleQuestions = [
+//        QuizQuestion(
+//            question: "Quel est l'emblème protecteur ?",
+//            answers: ["Khamsa", "Yaz", "Tambour", "Drapeau"],
+//            correctAnswerIndex: 0
+//        ),
+//        QuizQuestion(
+//            question: "Que représente la lettre Yaz ?",
+//            answers: ["Force", "Liberté", "Terre", "Tradition"],
+//            correctAnswerIndex: 1
+//        )
+//    ]
+//    
+//    QuizQuestionView(showPopover: .constant(true), culture: CultureData.defaultCulture, module: , quest: quests[0][0])
+//        .environment(QuizViewModel(questions: sampleQuestions))
+//        .environment(StoryModeViewModel(chapters: ChapterData.berbereChapters))
+//        .environment(QuestViewModel(quests: quests, questOfMonthProgress: 12, berbereChapters: ChapterData.berbereChapters, module: .quiz))
+//}
 
 
 
