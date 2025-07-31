@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct Loginview: UIViewControllerRepresentable {
+struct Registerview: UIViewControllerRepresentable {
     
     
     func makeUIViewController(context: Context) -> some UIViewController {
-        let loginVC = ViewController()
+        let registerVC = ViewController()
        
-        return UINavigationController(rootViewController: loginVC)
+        return UINavigationController(rootViewController: registerVC)
     }
     
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
@@ -23,6 +23,6 @@ struct Loginview: UIViewControllerRepresentable {
 }
 
 #Preview {
-    Loginview()
+    Registerview()
         .ignoresSafeArea()
 }

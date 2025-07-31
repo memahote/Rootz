@@ -15,12 +15,12 @@ struct RootZApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if isLogged {
-                Loginview()
+            
+                Registerview()
                     .ignoresSafeArea(.all)
                     .fullScreenCover(isPresented: $showOnboarding) {
                         ContentViews(showOnboarding: $showOnboarding)
-                    }
+                    
             }
         }
     }

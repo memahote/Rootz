@@ -57,10 +57,10 @@ struct ConfirmationView: View {
                         }
                     )
                 }
-                NavigationLink(destination: Loginview(), isActive: $navigateToLogin) {
-                    EmptyView()
-                }
-                .navigationBarBackButtonHidden(true)
+//                NavigationLink(destination: Loginview(), isActive: $navigateToLogin) {
+//                    EmptyView()
+//                }
+//                .navigationBarBackButtonHidden(true)
                 
                 
                 .padding()

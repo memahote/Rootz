@@ -77,6 +77,7 @@ struct CulturalProfileResultView: View {
 
                            
                        }
+                   Spacer()
                    }
                }
             
